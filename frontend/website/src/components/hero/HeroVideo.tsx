@@ -98,7 +98,7 @@ export default function HeroVideo({
           muted
           playsInline
           loop
-          preload="auto"
+          preload="metadata"
           poster={posterSrc}
           className={`absolute inset-0 w-full h-full object-contain md:object-cover object-center pointer-events-none transition-opacity duration-1000 z-10 ${
             videoReady ? "opacity-100" : "opacity-0"

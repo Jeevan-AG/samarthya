@@ -173,6 +173,7 @@ export default function Hero({ onVideoLoaded }: HeroProps) {
 
       {/* 4. Bottom Supporting Tagline & Scroll Indicator */}
       <div className="relative z-20 flex flex-col items-center pb-6 md:pb-8 gap-3 px-6 pointer-events-auto select-none">
+        <h1 className="sr-only">SAMARTHYA — ECE Department Technical Club</h1>
         {/* Supporting Tagline */}
         <div ref={taglineRef} className="text-center max-w-lg">
           <p className="font-mono text-xs md:text-sm text-text-muted tracking-[0.2em] uppercase">

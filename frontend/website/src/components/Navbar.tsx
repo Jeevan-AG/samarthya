@@ -46,7 +46,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link
+            href="/"
+            className="flex items-center gap-3 group rounded-lg p-1 -ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+            aria-label="SAMARTHYA Home"
+          >
             <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
               <Image
                 src="/logo.svg"
@@ -63,18 +67,19 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1" role="navigation" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 ${
                     isActive
                       ? "text-accent"
                       : "text-text-secondary hover:text-text-primary"
                   }`}
+                  aria-current={isActive ? "page" : undefined}
                 >
                   {link.label}
                   {isActive && (
@@ -96,10 +101,12 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center"
-            aria-label="Toggle menu"
+            className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav-menu"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           >
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5" aria-hidden="true">
               <motion.span
                 animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
                 className="block w-6 h-0.5 bg-text-primary origin-center transition-colors"
@@ -121,6 +128,9 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-nav-menu"
+            role="region"
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -139,7 +149,9 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                      onClick={() => setIsOpen(false)}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 ${
                         isActive
                           ? "text-accent bg-accent-glow"
                           : "text-text-secondary hover:text-text-primary hover:bg-surface-hover"
