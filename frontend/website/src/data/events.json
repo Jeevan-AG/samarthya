@@ -1,0 +1,74 @@
+[
+  {
+    "id": "evt-001",
+    "title": "Circuit Design Workshop",
+    "description": "Hands-on workshop on PCB design and circuit simulation using industry-standard tools. Learn to design, simulate, and prototype your own circuits.",
+    "date": "2026-10-15",
+    "time": "10:00 AM - 4:00 PM",
+    "venue": "ECE Lab, Block A",
+    "image": "/events/workshop.jpg",
+    "category": "Workshop",
+    "status": "upcoming",
+    "registrationOpen": true
+  },
+  {
+    "id": "evt-002",
+    "title": "TechVista — Annual Technical Symposium",
+    "description": "Our flagship annual event featuring paper presentations, project exhibitions, coding competitions, and guest lectures from industry leaders.",
+    "date": "2026-11-20",
+    "time": "9:00 AM - 6:00 PM",
+    "venue": "Main Auditorium",
+    "image": "/events/symposium.jpg",
+    "category": "Symposium",
+    "status": "upcoming",
+    "registrationOpen": true
+  },
+  {
+    "id": "evt-003",
+    "title": "IoT Hackathon",
+    "description": "24-hour hackathon focused on building innovative IoT solutions for smart campus challenges. Form teams and compete for exciting prizes.",
+    "date": "2026-09-05",
+    "time": "10:00 AM (24 hrs)",
+    "venue": "Innovation Hub",
+    "image": "/events/hackathon.jpg",
+    "category": "Hackathon",
+    "status": "past",
+    "registrationOpen": false
+  },
+  {
+    "id": "evt-004",
+    "title": "Embedded Systems Bootcamp",
+    "description": "A 3-day intensive bootcamp covering ARM microcontrollers, RTOS fundamentals, and real-time embedded system design patterns.",
+    "date": "2026-08-10",
+    "time": "9:00 AM - 5:00 PM",
+    "venue": "ECE Seminar Hall",
+    "image": "/events/bootcamp.jpg",
+    "category": "Bootcamp",
+    "status": "past",
+    "registrationOpen": false
+  },
+  {
+    "id": "evt-005",
+    "title": "Alumni Connect — Industry Insights",
+    "description": "Interactive session with SAMARTHYA alumni working at top tech companies. Get insights into career paths, skill requirements, and industry trends.",
+    "date": "2026-12-08",
+    "time": "3:00 PM - 6:00 PM",
+    "venue": "Virtual (Online)",
+    "image": "/events/alumni.jpg",
+    "category": "Talk",
+    "status": "upcoming",
+    "registrationOpen": false
+  },
+  {
+    "id": "evt-006",
+    "title": "Signal Processing Challenge",
+    "description": "Competitive coding challenge focused on DSP algorithms, filter design, and real-time signal analysis. Test your skills against the best.",
+    "date": "2026-07-22",
+    "time": "2:00 PM - 6:00 PM",
+    "venue": "Computer Lab 3",
+    "image": "/events/challenge.jpg",
+    "category": "Competition",
+    "status": "past",
+    "registrationOpen": false
+  }
+]
