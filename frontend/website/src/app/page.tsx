@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import EventCard from "@/components/EventCard";
+import CyberEmbers from "@/components/CyberEmbers";
 import eventsData from "@/data/events.json";
 
 export default function Home() {
@@ -14,11 +15,11 @@ export default function Home() {
   return (
     <>
       {/* ═══════════════════════════════════════════
-          HERO SECTION (Exact Cinematic Visual Match)
+          HERO SECTION (Exact Cinematic Visual + Idle Float & Embers)
           ═══════════════════════════════════════════ */}
       <section className="relative h-[100dvh] min-h-[100dvh] w-full overflow-hidden bg-canvas">
-        {/* Full-bleed Exact 3D Cinematic Render Background */}
-        <div className="absolute inset-0 z-0">
+        {/* Full-bleed 3D Cinematic Render with Idle Breathing Float */}
+        <div className="absolute inset-0 z-0 animate-hero-breathe">
           <Image
             src="/images/samarthya_hero_exact.png"
             alt="SAMARTHYA 3D Scene"
@@ -27,9 +28,13 @@ export default function Home() {
             unoptimized
             className="object-cover object-center select-none pointer-events-none"
           />
-          {/* Subtle bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-canvas via-canvas/30 to-transparent pointer-events-none" />
         </div>
+
+        {/* Floating Cyan Micro-Particles reacting to depth and cursor */}
+        <CyberEmbers />
+
+        {/* Subtle bottom fade matching cyber canvas */}
+        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-canvas via-canvas/30 to-transparent pointer-events-none z-20" />
       </section>
 
       {/* ═══════════════════════════════════════════
