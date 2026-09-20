@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroVideo from "./HeroVideo";
-import ScrollIndicator from "./ScrollIndicator";
+import CyberEmbers from "@/components/CyberEmbers";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -17,8 +17,6 @@ interface HeroProps {
 export default function Hero({ onVideoLoaded }: HeroProps) {
   const containerRef = useRef<HTMLElement | null>(null);
   const visualWrapperRef = useRef<HTMLDivElement | null>(null);
-  const taglineRef = useRef<HTMLDivElement | null>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -48,36 +46,6 @@ export default function Hero({ onVideoLoaded }: HeroProps) {
           gsap.set(visualWrapperRef.current, { opacity: 0 });
           tl.to(visualWrapperRef.current, { opacity: 1, duration: 0.8 }, "+=0.1");
         }
-      }
-
-      // Tagline entrance
-      if (taglineRef.current) {
-        gsap.set(taglineRef.current, { opacity: 0, y: 12 });
-        tl.to(
-          taglineRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.0,
-            ease: "sine.inOut",
-          },
-          "-=0.8"
-        );
-      }
-
-      // Scroll indicator entrance
-      if (scrollIndicatorRef.current) {
-        gsap.set(scrollIndicatorRef.current, { opacity: 0, y: 10 });
-        tl.to(
-          scrollIndicatorRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-          },
-          "-=0.4"
-        );
       }
 
       // ══════════════════════════════════════════════════
@@ -122,20 +90,6 @@ export default function Hero({ onVideoLoaded }: HeroProps) {
           opacity: 0.3,
           ease: "none",
         });
-
-        if (taglineRef.current) {
-          gsap.to(taglineRef.current, {
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top top",
-              end: "30% top",
-              scrub: 0.5,
-            },
-            opacity: 0,
-            y: -20,
-            ease: "none",
-          });
-        }
       }
     }, containerRef);
 
@@ -145,13 +99,15 @@ export default function Hero({ onVideoLoaded }: HeroProps) {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100dvh] min-h-[100dvh] w-full overflow-hidden bg-canvas flex flex-col justify-between"
+      className="relative h-[100dvh] min-h-[100dvh] w-full overflow-hidden bg-canvas"
       aria-label="Hero Section"
     >
+      <h1 className="sr-only">SAMARTHYA — ECE Department Technical Club</h1>
+
       {/* 1. Background Atmosphere & Vignette */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Soft cyan atmospheric radial glow behind center */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] max-w-[800px] h-[50vh] max-h-[600px] bg-cyan/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-[800px] h-[50%] max-h-[600px] bg-cyan/5 rounded-full blur-[120px]" />
         {/* Vignette edges */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(5,7,12,0.7)_100%)]" />
         {/* Subtle bottom fade to blend smoothly into next section */}
@@ -162,30 +118,16 @@ export default function Hero({ onVideoLoaded }: HeroProps) {
       <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
         <div
           ref={visualWrapperRef}
-          className="relative w-full h-full max-w-[1920px] max-h-[1080px] flex items-center justify-center pointer-events-auto"
+          className="relative w-full h-full flex items-center justify-center pointer-events-auto"
         >
-          <HeroVideo onLoaded={onVideoLoaded} />
+          <div className="relative w-full h-full pointer-events-none">
+            <HeroVideo onLoaded={onVideoLoaded} />
+          </div>
         </div>
       </div>
 
-      {/* 3. Spacer for Navbar Height */}
-      <div className="h-20 w-full z-20 pointer-events-none" />
-
-      {/* 4. Bottom Supporting Tagline & Scroll Indicator */}
-      <div className="relative z-20 flex flex-col items-center pb-6 md:pb-8 gap-3 px-6 pointer-events-auto select-none">
-        <h1 className="sr-only">SAMARTHYA — ECE Department Technical Club</h1>
-        {/* Supporting Tagline */}
-        <div ref={taglineRef} className="text-center max-w-lg">
-          <p className="font-mono text-xs md:text-sm text-text-muted tracking-[0.2em] uppercase">
-            Empowering Innovation Through Technology
-          </p>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div ref={scrollIndicatorRef}>
-          <ScrollIndicator />
-        </div>
-      </div>
+      {/* 3. Ambient Floating Cyan Micro-Embers (React to Depth) */}
+      <CyberEmbers />
     </section>
   );
 }

@@ -19,12 +19,16 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 20);
+      setScrolledPastHero(scrollY > window.innerHeight * 0.35);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -45,10 +49,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo / Brand — Hidden on Hero to let 3D emblem shine, smoothly reveals on scroll or inner pages */}
           <Link
             href="/"
-            className="flex items-center gap-3 group rounded-lg p-1 -ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+            className={`flex items-center gap-3 group rounded-lg p-1 -ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 transition-all duration-500 ${
+              pathname === "/" && !scrolledPastHero
+                ? "opacity-0 -translate-x-3 pointer-events-none"
+                : "opacity-100 translate-x-0 pointer-events-auto"
+            }`}
             aria-label="SAMARTHYA Home"
           >
             <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">

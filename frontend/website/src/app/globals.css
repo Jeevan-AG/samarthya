@@ -32,6 +32,9 @@
 
 html {
   scroll-behavior: auto; /* Lenis handles smooth scrolling */
+  overflow-x: clip;
+  scrollbar-color: var(--color-surface-hover) transparent;
+  scrollbar-width: thin;
 }
 
 html.lenis, html.lenis body {
@@ -56,7 +59,7 @@ body {
   font-family: var(--font-geist);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ═══════════════════════════════════════════
@@ -68,7 +71,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-canvas);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -274,21 +277,5 @@ body {
 .stagger-5 { animation-delay: 0.5s; }
 .stagger-6 { animation-delay: 0.6s; }
 
-/* ═══════════════════════════════════════════
-   Hero Idle Breathing Floating Animation
-   ═══════════════════════════════════════════ */
 
-@keyframes heroBreathing {
-  0%, 100% {
-    transform: scale(1.02) translateY(0px);
-  }
-  50% {
-    transform: scale(1.035) translateY(-7px);
-  }
-}
-
-.animate-hero-breathe {
-  animation: heroBreathing 7.5s ease-in-out infinite;
-  will-change: transform;
-}
 

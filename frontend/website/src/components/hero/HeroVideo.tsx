@@ -72,7 +72,10 @@ export default function HeroVideo({
   }, [onLoaded, prefersReducedMotion]);
 
   return (
-    <div className={`relative w-full h-full select-none overflow-hidden ${className}`}>
+    <div
+      onContextMenu={(e) => e.preventDefault()}
+      className={`relative w-full h-full select-none overflow-hidden [mask-image:radial-gradient(ellipse_85%_80%_at_50%_50%,black_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_85%_80%_at_50%_50%,black_50%,transparent_100%)] ${className}`}
+    >
       {/* 1. Static Poster Image (Guaranteed First Paint & Fail-safe) */}
       <div
         className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
@@ -86,7 +89,7 @@ export default function HeroVideo({
           priority
           unoptimized
           sizes="100vw"
-          className="object-contain md:object-cover object-center pointer-events-none select-none"
+          className="object-cover object-center pointer-events-none select-none"
         />
       </div>
 
@@ -100,7 +103,10 @@ export default function HeroVideo({
           loop
           preload="metadata"
           poster={posterSrc}
-          className={`absolute inset-0 w-full h-full object-contain md:object-cover object-center pointer-events-none transition-opacity duration-1000 z-10 ${
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
+          onContextMenu={(e) => e.preventDefault()}
+          className={`absolute inset-0 w-full h-full object-cover object-center pointer-events-none transition-opacity duration-1000 z-10 ${
             videoReady ? "opacity-100" : "opacity-0"
           }`}
         >
