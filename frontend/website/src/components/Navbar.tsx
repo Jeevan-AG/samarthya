@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/faculty", label: "Faculty" },
   { href: "/team", label: "Core Team" },
@@ -19,13 +18,10 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [scrolledPastHero, setScrolledPastHero] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 20);
-      setScrolledPastHero(scrollY > window.innerHeight * 0.35);
+      setScrolled(window.scrollY > 20);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -44,19 +40,15 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-canvas/80 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
+          : "bg-gradient-to-b from-canvas/80 via-canvas/30 to-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo / Brand — Hidden on Hero to let 3D emblem shine, smoothly reveals on scroll or inner pages */}
+          {/* Logo / Brand — Always visible, redirects to Home */}
           <Link
             href="/"
-            className={`flex items-center gap-3 group rounded-lg p-1 -ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 transition-all duration-500 ${
-              pathname === "/" && !scrolledPastHero
-                ? "opacity-0 -translate-x-3 pointer-events-none"
-                : "opacity-100 translate-x-0 pointer-events-auto"
-            }`}
+            className="flex items-center group rounded-lg p-1 -ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
             aria-label="SAMARTHYA Home"
           >
             <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
@@ -64,14 +56,11 @@ export default function Navbar() {
                 src="/logo.svg"
                 alt="SAMARTHYA Logo"
                 fill
-                className="object-contain rounded-full"
+                className="object-contain"
                 priority
                 unoptimized
               />
             </div>
-            <span className="heading-section text-lg tracking-tight">
-              SAMARTHYA
-            </span>
           </Link>
 
           {/* Desktop Nav */}

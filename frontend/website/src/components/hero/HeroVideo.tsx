@@ -74,7 +74,7 @@ export default function HeroVideo({
   return (
     <div
       onContextMenu={(e) => e.preventDefault()}
-      className={`relative w-full h-full select-none overflow-hidden [mask-image:radial-gradient(ellipse_85%_80%_at_50%_50%,black_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_85%_80%_at_50%_50%,black_50%,transparent_100%)] ${className}`}
+      className={`relative w-full h-full select-none overflow-hidden ${className}`}
     >
       {/* 1. Static Poster Image (Guaranteed First Paint & Fail-safe) */}
       <div

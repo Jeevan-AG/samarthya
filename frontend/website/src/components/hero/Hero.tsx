@@ -110,15 +110,13 @@ export default function Hero({ onVideoLoaded }: HeroProps) {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-[800px] h-[50%] max-h-[600px] bg-cyan/5 rounded-full blur-[120px]" />
         {/* Vignette edges */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(5,7,12,0.7)_100%)]" />
-        {/* Subtle bottom fade to blend smoothly into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-canvas via-canvas/50 to-transparent z-20" />
       </div>
 
       {/* 2. Center 3D Cinematic Visual (Blender Source of Truth) */}
       <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
         <div
           ref={visualWrapperRef}
-          className="relative w-full h-full flex items-center justify-center pointer-events-auto"
+          className="absolute -inset-4 flex items-center justify-center pointer-events-auto"
         >
           <div className="relative w-full h-full pointer-events-none">
             <HeroVideo onLoaded={onVideoLoaded} />
@@ -126,7 +124,10 @@ export default function Hero({ onVideoLoaded }: HeroProps) {
         </div>
       </div>
 
-      {/* 3. Ambient Floating Cyan Micro-Embers (React to Depth) */}
+      {/* 3. Subtle Bottom Transition into About section (Extremely gentle dissolve, preserves real reflection) */}
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-canvas via-canvas/40 to-transparent pointer-events-none z-20" />
+
+      {/* 4. Ambient Floating Cyan Micro-Embers (React to Depth) */}
       <CyberEmbers />
     </section>
   );
