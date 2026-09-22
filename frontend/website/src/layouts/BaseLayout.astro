@@ -1,0 +1,94 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar";
+import Preloader from "../components/Preloader";
+import SiteCursor from "../components/SiteCursor";
+import SmoothScroll from "../components/SmoothScroll";
+
+interface Props {
+  title: string;
+  description?: string;
+  current?: string;
+}
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/events", label: "Events" },
+  { href: "/achievements", label: "Achievements" },
+  { href: "/team", label: "Team" },
+  { href: "/faculty", label: "Faculty" },
+];
+
+const { title, description, current = "/" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+  </head>
+  <body class="grain scanlines bg-void text-paper relative min-h-[100dvh]">
+    <a href="#content" class="skip-link">Skip to content</a>
+
+    <!-- Universal Background matching Homepage across ALL pages -->
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[radial-gradient(circle_at_center,transparent_45%,rgba(3,6,13,0.85)_100%)]" aria-hidden="true"></div>
+    <div class="pointer-events-none fixed inset-0 z-0 grid-floor opacity-40" aria-hidden="true"></div>
+
+    <Preloader client:load />
+    <SiteCursor client:load />
+    <SmoothScroll client:load />
+    <Navbar client:load pathname={current} />
+    <main id="content" class="relative z-10">
+      <slot />
+    </main>
+    <footer class="relative z-10 mt-16 border-t border-line/40 bg-void/90 backdrop-blur-md" aria-label="Site footer">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent"></div>
+      <div class="mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-12 lg:px-8">
+        <div class="md:col-span-5">
+          <a href="/" class="mb-4 inline-flex items-center gap-3">
+            <img src="/logo.svg" alt="" class="h-10 w-10 object-contain" />
+            <span class="font-display text-2xl tracking-[0.16em]">SAMARTHYA</span>
+          </a>
+          <p class="max-w-sm text-sm leading-relaxed text-mute">
+            Official technical club of the Electronics &amp; Communication Engineering
+            department. Hardware first. Theory with solder on it.
+          </p>
+        </div>
+        <div class="md:col-span-3">
+          <p class="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-faint">Navigate</p>
+          <ul class="space-y-2">
+            {links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class:list={["text-sm text-mute hover:text-cyan", current === link.href && "text-cyan"]}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="md:col-span-4">
+          <p class="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-faint">Department office</p>
+          <p class="text-sm text-mute">ECE Block, campus infrastructure</p>
+          <a href="mailto:samarthya@college.edu" class="mt-2 inline-block text-sm text-cyan">
+            samarthya@college.edu
+          </a>
+        </div>
+      </div>
+      <div class="mx-auto flex max-w-[1400px] flex-col gap-3 border-t border-line px-5 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between lg:px-8">
+        <p>© 2026 SAMARTHYA — ECE Department Club</p>
+        <p class="font-mono tracking-[0.16em] uppercase">Signal. Circuit. Field.</p>
+      </div>
+    </footer>
+  </body>
+</html>

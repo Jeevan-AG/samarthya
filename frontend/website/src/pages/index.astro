@@ -1,0 +1,427 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroScene3D from "../components/HeroScene3D";
+import RevealOnView from "../components/RevealOnView";
+import TiltCard from "../components/TiltCard";
+import AboutCollage from "../components/AboutCollage.astro";
+import TypewriterText from "../components/TypewriterText";
+import ScrambleText from "../components/ScrambleText";
+import GlitchText from "../components/GlitchText";
+import faculty from "../data/faculty.json";
+import team from "../data/team.json";
+import achievements from "../data/achievements.json";
+import events from "../data/events.json";
+
+const upcomingEvents = events.filter((e) => e.status === "upcoming").slice(0, 3);
+const featuredAchievements = achievements.slice(0, 4);
+
+function formatDate(value: string) {
+  const [y, m, d] = value.split("-");
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${months[Number(m) - 1]} ${d ? d + ", " : ""}${y}`;
+}
+---
+
+<BaseLayout
+  current="/"
+  title="SAMARTHYA"
+  description="SAMARTHYA is the official technical club of the ECE department — hardware labs, symposiums, and student-built systems."
+>
+  <!-- ═══════════════════════════════════════════
+       HERO SCREEN (Centered 3D Core with Reference HUD Layout)
+       ═══════════════════════════════════════════ -->
+  <section class="relative isolate min-h-[100dvh] flex items-center justify-center overflow-hidden pt-24 lg:pt-28 pb-16 lg:pb-20" aria-label="Hero">
+    <h1 class="sr-only">SAMARTHYA — Where Ideas Become Reality</h1>
+
+    <!-- Ambient central glow aura behind the 3D core -->
+    <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+      <div class="h-[450px] w-[450px] sm:h-[600px] sm:w-[600px] lg:h-[700px] lg:w-[700px] rounded-full bg-gradient-to-tr from-cyan/20 via-sky-500/15 to-transparent blur-[120px] opacity-70 animate-pulse" style="animation-duration: 6s;"></div>
+    </div>
+
+    <!-- Main Container: Wide Canvas for Perfect 3-Column Balance -->
+    <div class="relative z-10 mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-16 py-6">
+      
+      <!-- Upper / Desktop Grid Overlay matching reference positioning -->
+      <div class="relative min-h-[600px] sm:min-h-[660px] lg:min-h-[720px] flex flex-col justify-center">
+
+        <!-- ═════════════════════════════════════════════
+             CENTER 3D CORE (Elevated in the upper-center)
+             ═════════════════════════════════════════════ -->
+        <div class="lg:absolute inset-0 flex items-center justify-center pointer-events-none z-0 -translate-y-8 sm:-translate-y-12 lg:-translate-y-20">
+          <div class="relative w-full max-w-[560px] sm:max-w-[640px] lg:max-w-[720px] aspect-square flex items-center justify-center pointer-events-auto">
+            <!-- 3D Interactive Model Canvas (Size untouched) -->
+            <HeroScene3D client:only="react" className="relative z-10 h-full w-full" />
+          </div>
+        </div>
+
+        <!-- ═════════════════════════════════════════════
+             MID-LEFT & BOTTOM-RIGHT FLOATING CONTENT
+             ═════════════════════════════════════════════ -->
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[560px] sm:min-h-[600px] lg:min-h-[660px] gap-8 pt-4 lg:pt-0">
+          
+          <!-- Left Column: Top aligns exactly with the top edge of the 3D Black Disc -->
+          <div class="lg:col-span-4 flex flex-col justify-start items-start text-left pt-3 sm:pt-4 lg:pt-8">
+            <!-- Left Edge Label: "SAMARTHYA is" with line -->
+            <div class="flex items-center gap-3 mb-5">
+              <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-white/70 uppercase">
+                SAMARTHYA is
+              </span>
+              <div class="h-px w-10 sm:w-16 bg-gradient-to-r from-white/40 to-transparent"></div>
+            </div>
+
+            <!-- Traits Stack matching reference image typography (Clean Sans) -->
+            <div class="space-y-1 sm:space-y-1.5 text-left font-sans normal-case">
+              <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
+                Innovation,
+              </p>
+              <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
+                Friendly, Stable,
+              </p>
+              <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-cyan leading-[1.12] drop-shadow-[0_0_20px_rgba(0,251,248,0.3)]">
+                Accessible
+              </p>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="mt-8 flex flex-wrap items-center gap-3.5">
+              <a
+                href="#events"
+                class="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.45)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <span>Explore Events</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="#team"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium text-paper bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-cyan/40 hover:text-white transition-all duration-200 backdrop-blur-md"
+              >
+                <span>Team</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Empty Right Column spacer to balance grid -->
+          <div class="hidden lg:block lg:col-span-8 pointer-events-none"></div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       01 — ABOUT SAMARTHYA
+       ═══════════════════════════════════════════ -->
+  <section id="about" class="relative pt-12 lg:pt-16 pb-20 lg:pb-28 scroll-mt-28" aria-label="About SAMARTHYA">
+    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
+      <div class="grid items-start gap-10 lg:gap-14 lg:grid-cols-12 -translate-y-3 lg:-translate-y-6">
+        
+        <!-- Left: Mission & Details -->
+        <div class="lg:col-span-6 flex flex-col justify-start pt-1">
+          <RevealOnView client:visible>
+            <div class="mb-4">
+              <TypewriterText client:visible text="// about" />
+            </div>
+            <p class="mt-6 text-base sm:text-lg leading-relaxed text-mute">
+              The Samarthya Club is the official technical society of the Electronics and Communication Engineering Department, dedicated to enhancing students' technical skills, promoting project-based learning, and cultivating leadership qualities. The club actively engages in cutting-edge domains such as embedded systems, image processing, and biomedical applications, with an emphasis on social innovation. By organizing workshops, seminars, and hands-on projects, Samarthya provides students with practical experience, bridging theoretical knowledge with real-world engineering applications.
+            </p>
+            <p class="mt-4 text-base sm:text-lg leading-relaxed text-mute">
+              Collaborative projects encourage teamwork, innovative thinking, and problem-solving skills, preparing members for competitive industry challenges. The club's focus on social innovation ensures that technological advancements address societal needs, fostering responsibility among students. Through these initiatives, Samarthya equips members with technical proficiency, leadership, and ethical values, ensuring complete readiness for professional endeavors.
+            </p>
+            
+          </RevealOnView>
+        </div>
+
+        <!-- Right: Scattered Photo Collage Showcase -->
+        <div class="lg:col-span-6">
+          <RevealOnView client:visible delay={120}>
+            <AboutCollage />
+          </RevealOnView>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       02 — FACULTY CO-ORDINATORS
+       ═══════════════════════════════════════════ -->
+  <section id="faculty" class="relative py-24 lg:py-32 scroll-mt-20" aria-label="Faculty Coordinators">
+    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="mb-14">
+        <RevealOnView client:visible>
+          <div class="mb-4">
+            <TypewriterText client:visible text="faculty co-ordinators" speed={35} delay={60} />
+          </div>
+          
+        </RevealOnView>
+      </div>
+
+      <!-- Faculty Cards Grid -->
+      <div class="grid gap-6 md:grid-cols-2">
+        {faculty.map((member, i) => (
+          <RevealOnView client:visible delay={i * 100}>
+            <TiltCard client:visible className="h-full">
+              <article class="hud-border relative group flex flex-col justify-between h-full p-8 md:p-10 rounded-2xl bg-surface/40 backdrop-blur-sm transition-all duration-500 hover:border-cyan/40 hover:shadow-[0_0_18px_rgba(0,229,224,0.08)] hover:-translate-y-1 overflow-hidden">
+                
+                <!-- Ambient Hover Glow Accent -->
+                <div class="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan/8 via-transparent to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" aria-hidden="true"></div>
+
+                <!-- Card Top: Tag & Icon -->
+                <div class="relative z-10">
+                  <div class="flex items-center justify-between gap-3 mb-6">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full font-mono text-[11px] uppercase tracking-[0.16em] bg-cyan/10 text-cyan border border-cyan/25 group-hover:border-cyan/50 group-hover:bg-cyan/15 transition-all duration-300">
+                      {member.role || "Faculty Coordinator"}
+                    </span>
+                    <span class="font-mono text-xs text-faint tracking-wider uppercase group-hover:text-cyan/70 transition-colors">ECE Dept</span>
+                  </div>
+
+                  <!-- Faculty Name & Designation -->
+                  <h3 class="font-display text-3xl sm:text-4xl text-paper group-hover:text-cyan transition-colors duration-300">
+                    {member.name}
+                  </h3>
+                  <p class="mt-2 font-mono text-[12px] uppercase tracking-[0.14em] text-cyan/90">
+                    {member.designation} · {member.department || "ECE Department"}
+                  </p>
+
+                  <!-- Specialization Badge -->
+                  <div class="mt-5 inline-flex items-center gap-2 rounded-lg bg-white/[0.04] px-3.5 py-2 border border-white/10 group-hover:border-cyan/30 transition-colors duration-300">
+                    <svg class="w-4 h-4 text-cyan shrink-0 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                    <span class="font-mono text-xs text-paper/90">{member.specialization}</span>
+                  </div>
+
+                  <!-- Bio / Advisory Scope -->
+                  <p class="mt-5 text-sm sm:text-base leading-relaxed text-mute">
+                    {member.bio || "Dedicated faculty mentor guiding student innovations, technical symposiums, and advanced laboratory experiments."}
+                  </p>
+
+                  <!-- Qualifications if available -->
+                  {member.qualifications && (
+                    <div class="mt-5 flex flex-wrap gap-2">
+                      {member.qualifications.map((q: string) => (
+                        <span class="font-mono text-[11px] px-2.5 py-1 rounded bg-panel text-paper/75 border border-line/30 group-hover:border-cyan/20 transition-colors">
+                          {q}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <!-- Card Bottom: Office / Contact -->
+                <div class="relative z-10 mt-8 pt-5 border-t border-line/30 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-faint">
+                  <span>{member.office || "ECE Block"}</span>
+                  {member.email && (
+                    <span class="text-cyan/80 hover:text-cyan transition-colors">{member.email}</span>
+                  )}
+                </div>
+
+              </article>
+            </TiltCard>
+          </RevealOnView>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       03 — CORE TEAM (STUDENT CREW)
+       ═══════════════════════════════════════════ -->
+  <section id="team" class="relative py-24 lg:py-32 scroll-mt-20" aria-label="Student Leadership Team">
+    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="mb-14">
+        <RevealOnView client:visible>
+          <div class="mb-4">
+            <ScrambleText client:visible text="core team" />
+          </div>
+        </RevealOnView>
+      </div>
+
+      <!-- Team Members Grid -->
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {team.map((member, i) => (
+          <RevealOnView client:visible delay={i * 45}>
+            <TiltCard client:visible className="h-full">
+              <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-void/90 p-6 transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_18px_rgba(0,229,224,0.08)] hover:-translate-y-1.5 overflow-hidden">
+                
+                <!-- Holographic scanning sweep on hover -->
+                <div class="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-cyan/8 to-transparent" aria-hidden="true"></div>
+
+                <!-- HUD Corner Tech Brackets -->
+                <div class="pointer-events-none absolute top-2.5 right-2.5 w-2 h-2 border-t border-r border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
+                <div class="pointer-events-none absolute bottom-2.5 left-2.5 w-2 h-2 border-b border-l border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
+
+                <div class="relative z-10">
+                  <!-- Role Tag -->
+                  <div class="flex items-center justify-between gap-2 mb-4">
+                    <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] text-cyan font-medium transition-colors">
+                      {member.role}
+                    </span>
+                    <span class="h-1.5 w-1.5 rounded-full bg-cyan/60 group-hover:bg-cyan group-hover:scale-110 transition-all"></span>
+                  </div>
+
+                  <!-- Name -->
+                  <h3 class="font-display text-2xl text-paper transition-colors duration-300 group-hover:text-cyan">
+                    {member.name}
+                  </h3>
+
+                  <!-- Year & Department -->
+                  <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-faint group-hover:text-faint/90">
+                    {member.year} · ECE
+                  </p>
+
+                  <!-- Domain / Focus -->
+                  {member.domain && (
+                    <p class="mt-3 inline-block rounded font-mono text-[10px] px-2 py-0.5 bg-panel text-cyan/85 border border-line/30 group-hover:border-cyan/30 transition-colors">
+                      {member.domain}
+                    </p>
+                  )}
+
+                  <!-- Bio -->
+                  {member.bio && (
+                    <p class="mt-3 text-xs leading-relaxed text-mute line-clamp-3">
+                      {member.bio}
+                    </p>
+                  )}
+                </div>
+
+                <!-- Bottom accent bar -->
+                <div class="relative z-10 mt-5 pt-3 border-t border-line/20 flex items-center justify-between font-mono text-[10px] text-faint">
+                  <span>SAMARTHYA</span>
+                  <span class="group-hover:text-cyan transition-colors">Core Member</span>
+                </div>
+
+              </article>
+            </TiltCard>
+          </RevealOnView>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       04 — UPCOMING EVENTS
+       ═══════════════════════════════════════════ -->
+  <section id="events" class="relative py-24 lg:py-32 scroll-mt-20" aria-label="Upcoming Events">
+    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="mb-14">
+        <RevealOnView client:visible>
+          <div class="mb-4">
+            <GlitchText client:visible text="events" highlightWord="" />
+          </div>
+        </RevealOnView>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {upcomingEvents.map((event, i) => (
+          <RevealOnView client:visible delay={i * 70}>
+            <TiltCard client:visible className="h-full">
+              <article class="group relative flex h-full flex-col justify-between rounded-2xl border border-line bg-void/90 p-7 transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_18px_rgba(0,229,224,0.08)] hover:-translate-y-1.5 overflow-hidden">
+                
+                <!-- Holographic scanning sweep on hover -->
+                <div class="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-cyan/8 to-transparent" aria-hidden="true"></div>
+
+                <!-- HUD Tech Corner Brackets -->
+                <div class="pointer-events-none absolute top-2.5 right-2.5 w-2 h-2 border-t border-r border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
+                <div class="pointer-events-none absolute bottom-2.5 left-2.5 w-2 h-2 border-b border-l border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
+
+                <div class="relative z-10">
+                  <div class="flex items-center justify-between gap-2 mb-4">
+                    <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/25 group-hover:border-cyan/50 transition-colors">
+                      {event.category}
+                    </span>
+                    <span class="flex items-center gap-1.5 font-mono text-[10px] text-cyan uppercase tracking-wider">
+                      <span class="h-2 w-2 rounded-full bg-cyan animate-ping"></span>
+                      Live
+                    </span>
+                  </div>
+                  <h3 class="font-display text-2xl sm:text-3xl leading-tight text-paper group-hover:text-cyan transition-colors duration-300">{event.title}</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-mute">{event.description}</p>
+                </div>
+
+                <div class="relative z-10 mt-6 pt-4 border-t border-line/30 space-y-1">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
+                    {formatDate(event.date)} · {event.time}
+                  </p>
+                  <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-faint">{event.venue}</p>
+                </div>
+              </article>
+            </TiltCard>
+          </RevealOnView>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       05 — ACHIEVEMENTS
+       ═══════════════════════════════════════════ -->
+  <section id="achievements" class="relative py-24 lg:py-32 scroll-mt-20" aria-label="Achievements">
+    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="mb-14">
+        <RevealOnView client:visible>
+          <div class="mb-4">
+            <TypewriterText client:visible text="// achievements" speed={35} delay={60} />
+          </div>
+        </RevealOnView>
+      </div>
+
+      <!-- Achievements Grid -->
+      <div class="grid gap-5 md:grid-cols-2">
+        {featuredAchievements.map((item, i) => (
+          <RevealOnView client:visible delay={i * 60}>
+            <TiltCard client:visible className="h-full">
+              <article class="hud-border group relative flex flex-col justify-between h-full p-7 md:p-8 rounded-2xl transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_18px_rgba(0,229,224,0.08)] hover:-translate-y-1 overflow-hidden">
+                
+                <!-- Holographic scanning sweep on hover -->
+                <div class="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-cyan/8 to-transparent" aria-hidden="true"></div>
+
+                <!-- HUD Tech Corner Brackets -->
+                <div class="pointer-events-none absolute top-2.5 right-2.5 w-2 h-2 border-t border-r border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
+                <div class="pointer-events-none absolute bottom-2.5 left-2.5 w-2 h-2 border-b border-l border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
+
+                <div class="relative z-10">
+                  <div class="flex items-center justify-between gap-3 mb-4">
+                    <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/20">
+                      {item.category}
+                    </span>
+                    <time class="font-mono text-[11px] text-faint" datetime={item.date}>
+                      {formatDate(item.date)}
+                    </time>
+                  </div>
+                  <h3 class="font-display text-2xl sm:text-3xl text-paper transition-colors duration-300 group-hover:text-cyan">
+                    {item.title}
+                  </h3>
+                  <p class="mt-3 text-sm sm:text-base leading-relaxed text-mute">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div class="relative z-10 mt-6 pt-4 border-t border-line/20 flex items-center justify-between font-mono text-[10px] text-faint">
+                  <span class="uppercase">Verified Milestone</span>
+                  <span class="text-cyan/70 group-hover:text-cyan transition-colors">#Impact</span>
+                </div>
+              </article>
+            </TiltCard>
+          </RevealOnView>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

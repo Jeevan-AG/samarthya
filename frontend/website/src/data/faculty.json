@@ -2,39 +2,25 @@
   {
     "id": "fac-001",
     "name": "Dr. Placeholder Faculty",
-    "designation": "Associate Professor, ECE Department",
+    "role": "Faculty Coordinator",
+    "designation": "Associate Professor",
     "department": "Electronics & Communication Engineering",
-    "image": "https://picsum.photos/seed/faculty1/400/400",
-    "bio": "An accomplished academician with over 15 years of experience in VLSI design and embedded systems. Passionate about fostering innovation among students through hands-on learning and industry collaboration.",
     "specialization": "VLSI Design & Embedded Systems",
-    "contact": {
-      "email": "faculty@college.edu",
-      "phone": "+91-XXXXXXXXXX",
-      "office": "Room 204, ECE Block"
-    },
-    "qualifications": [
-      "Ph.D. in Electronics Engineering",
-      "M.Tech in VLSI Design",
-      "B.Tech in ECE"
-    ]
+    "bio": "Guiding research and hardware development with over 15 years in VLSI architectures and embedded computing.",
+    "email": "faculty@college.edu",
+    "office": "Room 204, ECE Block",
+    "qualifications": ["Ph.D. in Electronics Engineering", "M.Tech in VLSI Design"]
   },
   {
     "id": "fac-002",
     "name": "Prof. Placeholder Co-Coordinator",
-    "designation": "Assistant Professor, ECE Department",
+    "role": "Faculty Co-Coordinator",
+    "designation": "Assistant Professor",
     "department": "Electronics & Communication Engineering",
-    "image": "https://picsum.photos/seed/faculty2/400/400",
-    "bio": "Specializing in signal processing and communication systems with a strong focus on student mentorship and project guidance. Actively involved in guiding student research projects and competitions.",
     "specialization": "Signal Processing & Communications",
-    "contact": {
-      "email": "cofaculty@college.edu",
-      "phone": "+91-XXXXXXXXXX",
-      "office": "Room 210, ECE Block"
-    },
-    "qualifications": [
-      "Ph.D. in Communication Engineering",
-      "M.Tech in Signal Processing",
-      "B.Tech in ECE"
-    ]
+    "bio": "Mentoring competition teams, student symposiums, and research paper publications across all ECE cohorts.",
+    "email": "cofaculty@college.edu",
+    "office": "Room 210, ECE Block",
+    "qualifications": ["Ph.D. in Communication Engineering", "M.Tech in Signal Processing"]
   }
 ]

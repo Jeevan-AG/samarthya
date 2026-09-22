@@ -2,49 +2,29 @@
   {
     "id": "ach-001",
     "title": "First Place — National Level Hackathon",
-    "description": "SAMARTHYA team secured first place at the National Level IoT Hackathon, developing a smart energy monitoring system for campus buildings.",
+    "description": "SAMARTHYA secured first place at the National Level IoT Hackathon with a smart energy monitoring system for campus buildings.",
     "date": "2026-03-15",
-    "category": "Hackathon",
-    "image": "https://picsum.photos/seed/hackwin/600/400"
+    "category": "Hackathon"
   },
   {
     "id": "ach-002",
     "title": "Best Paper Award — IEEE Conference",
-    "description": "Club members presented a research paper on advanced signal processing techniques and received the Best Paper Award at the IEEE regional conference.",
+    "description": "Club members received the Best Paper Award for research on advanced signal processing techniques.",
     "date": "2025-11-20",
-    "category": "Research",
-    "image": "https://picsum.photos/seed/ieeeaward/600/400"
+    "category": "Research"
   },
   {
     "id": "ach-003",
     "title": "Smart India Hackathon Finalists",
-    "description": "Two teams from SAMARTHYA qualified for the Smart India Hackathon grand finale, competing against top engineering colleges nationwide.",
+    "description": "Two teams qualified for the SIH grand finale, competing against top engineering colleges nationwide.",
     "date": "2025-08-10",
-    "category": "Hackathon",
-    "image": "https://picsum.photos/seed/sihfinal/600/400"
+    "category": "Hackathon"
   },
   {
     "id": "ach-004",
-    "title": "Robotics Competition — Runner Up",
-    "description": "Our robotics team designed an autonomous line-following robot that secured second place at the inter-college robotics championship.",
+    "title": "Robotics Championship — Runner Up",
+    "description": "Autonomous line-following robot secured second place at the inter-college robotics championship.",
     "date": "2025-05-22",
-    "category": "Competition",
-    "image": "https://picsum.photos/seed/robotics/600/400"
-  },
-  {
-    "id": "ach-005",
-    "title": "Workshop Series — Community Impact",
-    "description": "Successfully conducted a series of 12 workshops reaching over 500 students across departments, covering topics from PCB design to machine learning.",
-    "date": "2026-01-30",
-    "category": "Community",
-    "image": "https://picsum.photos/seed/workshopseries/600/400"
-  },
-  {
-    "id": "ach-006",
-    "title": "Project Expo — Innovation Award",
-    "description": "SAMARTHYA's smart agriculture monitoring project won the Innovation Award at the annual inter-departmental project exhibition.",
-    "date": "2025-09-15",
-    "category": "Project",
-    "image": "https://picsum.photos/seed/projexpo/600/400"
+    "category": "Competition"
   }
 ]

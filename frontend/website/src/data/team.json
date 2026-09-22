@@ -3,112 +3,64 @@
     "id": "tm-001",
     "name": "Placeholder President",
     "role": "President",
-    "department": "ECE",
     "year": "Final Year",
-    "image": "https://picsum.photos/seed/president/400/400",
-    "bio": "Leading SAMARTHYA with a vision to bridge the gap between academics and industry.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "president@samarthya.club"
-    }
+    "domain": "Hardware & Leadership",
+    "bio": "Leading SAMARTHYA with a vision to bridge the gap between academics and industry."
   },
   {
     "id": "tm-002",
     "name": "Placeholder Vice President",
     "role": "Vice President",
-    "department": "ECE",
     "year": "Third Year",
-    "image": "https://picsum.photos/seed/vicepresident/400/400",
-    "bio": "Coordinating technical initiatives and mentoring junior members.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "vp@samarthya.club"
-    }
+    "domain": "Embedded Systems",
+    "bio": "Coordinating technical initiatives and mentoring junior members across projects."
   },
   {
     "id": "tm-003",
     "name": "Placeholder Secretary",
     "role": "Secretary",
-    "department": "ECE",
     "year": "Third Year",
-    "image": "https://picsum.photos/seed/secretary/400/400",
-    "bio": "Managing operations, documentation, and inter-departmental coordination.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "secretary@samarthya.club"
-    }
+    "domain": "Operations & Logistics",
+    "bio": "Managing club operations, lab documentation, and inter-departmental workflows."
   },
   {
     "id": "tm-004",
     "name": "Placeholder Technical Lead",
     "role": "Technical Lead",
-    "department": "ECE",
     "year": "Third Year",
-    "image": "https://picsum.photos/seed/techlead/400/400",
-    "bio": "Spearheading workshops, hackathons, and hands-on technical training.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "tech@samarthya.club"
-    }
+    "domain": "VLSI & Firmware",
+    "bio": "Spearheading hands-on workshops, hackathons, and hardware prototyping."
   },
   {
     "id": "tm-005",
     "name": "Placeholder Event Coordinator",
     "role": "Event Coordinator",
-    "department": "ECE",
     "year": "Second Year",
-    "image": "https://picsum.photos/seed/eventcoord/400/400",
-    "bio": "Planning and executing all club events with precision and creativity.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "events@samarthya.club"
-    }
+    "domain": "Symposiums & Events",
+    "bio": "Planning and executing all technical symposiums and competition tracks."
   },
   {
     "id": "tm-006",
     "name": "Placeholder Design Lead",
     "role": "Design Lead",
-    "department": "ECE",
     "year": "Second Year",
-    "image": "https://picsum.photos/seed/designlead/400/400",
-    "bio": "Crafting the visual identity of SAMARTHYA across all platforms.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "design@samarthya.club"
-    }
+    "domain": "UI/UX & Branding",
+    "bio": "Crafting the visual identity and digital assets of SAMARTHYA."
   },
   {
     "id": "tm-007",
     "name": "Placeholder Content Lead",
     "role": "Content Lead",
-    "department": "ECE",
     "year": "Second Year",
-    "image": "https://picsum.photos/seed/contentlead/400/400",
-    "bio": "Creating engaging content and managing digital presence.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "content@samarthya.club"
-    }
+    "domain": "Editorial & Media",
+    "bio": "Creating technical documentation, project write-ups, and community outreach."
   },
   {
     "id": "tm-008",
     "name": "Placeholder Treasurer",
     "role": "Treasurer",
-    "department": "ECE",
     "year": "Third Year",
-    "image": "https://picsum.photos/seed/treasurer/400/400",
-    "bio": "Managing club finances and sponsorship relations.",
-    "socials": {
-      "linkedin": "#",
-      "github": "#",
-      "email": "treasurer@samarthya.club"
-    }
+    "domain": "Finance & Relations",
+    "bio": "Managing club lab procurement, sponsorships, and resource allocation."
   }
 ]

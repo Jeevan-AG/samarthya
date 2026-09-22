@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RevealOnView from "../components/RevealOnView";
+import faculty from "../data/faculty.json";
+---
+
+<BaseLayout
+  current="/faculty"
+  title="Faculty | SAMARTHYA"
+  description="Faculty coordinators guiding SAMARTHYA."
+>
+  <section class="relative mx-auto max-w-[1400px] px-5 pb-24 pt-32 lg:px-8">
+    <p class="relative font-mono text-[11px] uppercase tracking-[0.32em] text-cyan">Department advisory</p>
+    <h1 class="relative mt-4 font-display text-6xl md:text-8xl">Faculty</h1>
+    <div class="mt-14 grid gap-4 md:grid-cols-2">
+      {faculty.map((person, i) => (
+        <RevealOnView client:visible delay={i * 60}>
+          <article class="hud-border p-8">
+            <h2 class="font-display text-4xl leading-none">{person.name}</h2>
+            <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-cyan">{person.designation}</p>
+            <p class="mt-4 text-sm text-mute">{person.specialization}</p>
+          </article>
+        </RevealOnView>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

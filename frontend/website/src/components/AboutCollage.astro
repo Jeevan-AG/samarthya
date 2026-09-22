@@ -1,0 +1,135 @@
+---
+import { Image } from "astro:assets";
+import pic1 from "../assets/pics/ev8_sharp.jpg";
+import pic2 from "../assets/pics/ev5_sharp.jpg";
+import pic3 from "../assets/pics/ev4_sharp.jpg";
+import pic4 from "../assets/pics/ev6_sharp.jpg";
+import picBack1 from "../assets/pics/ev9_sharp.jpg";
+import picBack2 from "../assets/pics/ev2_sharp.jpg";
+---
+
+<div class="relative w-full max-w-[620px] mx-auto h-[310px] min-[400px]:h-[340px] sm:h-[410px] lg:h-[460px] select-none">
+  
+  <!-- Ambient background cyber glow behind collage -->
+  <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+    <div class="h-56 w-56 sm:h-80 sm:w-80 rounded-full bg-cyan/15 blur-[80px] animate-pulse" style="animation-duration: 4s;"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       BACK LAYER (2 PHOTOS — z-0)
+       ═══════════════════════════════════════════ -->
+
+  <!-- Back Photo 1 (Mid-Left, 4K UHD): Presentation Defense -->
+  <div 
+    class="photo-card absolute top-[24%] sm:top-[26%] left-[8%] sm:left-[10%] w-[52%] sm:w-[48%] z-0 -rotate-1 transition-all duration-500 ease-out hover:z-30 hover:scale-105 hover:rotate-0 hover:shadow-[0_0_35px_rgba(0,229,224,0.35)] cursor-pointer group"
+  >
+    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-white/15 bg-surface/90 shadow-2xl backdrop-blur-sm group-hover:border-cyan transition-colors duration-300">
+      <Image
+        src={picBack1}
+        alt="SAMARTHYA cohort presentation defense showcase"
+        width={640}
+        height={426}
+        format="webp"
+        quality={92}
+        class="aspect-[4/3] w-full object-cover brightness-[0.95] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
+
+  <!-- Back Photo 2 (Mid-Right, 3K Sharp): Student Innovation Showcase -->
+  <div 
+    class="photo-card absolute top-[27%] sm:top-[29%] right-[8%] sm:right-[10%] w-[52%] sm:w-[48%] z-0 rotate-2 transition-all duration-500 ease-out hover:z-30 hover:scale-105 hover:rotate-0 hover:shadow-[0_0_35px_rgba(0,229,224,0.35)] cursor-pointer group"
+  >
+    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-white/15 bg-surface/90 shadow-2xl backdrop-blur-sm group-hover:border-cyan transition-colors duration-300">
+      <Image
+        src={picBack2}
+        alt="SAMARTHYA technical symposium project display"
+        width={640}
+        height={426}
+        format="webp"
+        quality={92}
+        class="aspect-[4/3] w-full object-cover brightness-[0.95] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FRONT LAYER (4 CORNER PHOTOS — z-10)
+       ═══════════════════════════════════════════ -->
+
+  <!-- Photo 1: Top-Left (Problem Statement & Faculty Panel Review - 3K Sharp) -->
+  <div 
+    class="photo-card absolute top-0 left-0 sm:left-1 w-[52%] sm:w-[48%] z-10 -rotate-3 transition-all duration-500 ease-out hover:z-30 hover:scale-105 hover:rotate-0 hover:shadow-[0_0_35px_rgba(0,229,224,0.35)] cursor-pointer group"
+  >
+    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-white/15 bg-surface/90 shadow-2xl backdrop-blur-sm group-hover:border-cyan transition-colors duration-300">
+      <Image
+        src={pic1}
+        alt="SAMARTHYA student presentation to panel"
+        width={640}
+        height={426}
+        format="webp"
+        quality={90}
+        class="aspect-[4/3] w-full object-cover brightness-[0.95] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
+
+  <!-- Photo 2: Top-Right (Block Diagram & IoT Architecture - 3K Sharp) -->
+  <div 
+    class="photo-card absolute top-0 right-0 sm:right-1 w-[52%] sm:w-[48%] z-10 rotate-[3.5deg] transition-all duration-500 ease-out hover:z-30 hover:scale-105 hover:rotate-0 hover:shadow-[0_0_35px_rgba(0,229,224,0.35)] cursor-pointer group"
+  >
+    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-white/15 bg-surface/90 shadow-2xl backdrop-blur-sm group-hover:border-cyan transition-colors duration-300">
+      <Image
+        src={pic2}
+        alt="Digital Metabolic Monitoring IoT architecture"
+        width={640}
+        height={426}
+        format="webp"
+        quality={90}
+        class="aspect-[4/3] w-full object-cover brightness-[0.95] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
+
+  <!-- Photo 3: Bottom-Left (Robotics & Hovercraft Hardware - 3K Sharp) -->
+  <div 
+    class="photo-card absolute bottom-0 left-0 sm:left-1 w-[52%] sm:w-[48%] z-10 rotate-[2.5deg] transition-all duration-500 ease-out hover:z-30 hover:scale-105 hover:rotate-0 hover:shadow-[0_0_35px_rgba(0,229,224,0.35)] cursor-pointer group"
+  >
+    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-white/15 bg-surface/90 shadow-2xl backdrop-blur-sm group-hover:border-cyan transition-colors duration-300">
+      <Image
+        src={pic3}
+        alt="Arduino & robotics hardware prototype defense"
+        width={640}
+        height={426}
+        format="webp"
+        quality={90}
+        class="aspect-[4/3] w-full object-cover brightness-[0.95] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
+
+  <!-- Photo 4: Bottom-Right (Embedded Sensing Cohort - 3K Sharp) -->
+  <div 
+    class="photo-card absolute bottom-0 right-0 sm:right-1 w-[52%] sm:w-[48%] z-10 -rotate-[2.5deg] transition-all duration-500 ease-out hover:z-30 hover:scale-105 hover:rotate-0 hover:shadow-[0_0_35px_rgba(0,229,224,0.35)] cursor-pointer group"
+  >
+    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-white/15 bg-surface/90 shadow-2xl backdrop-blur-sm group-hover:border-cyan transition-colors duration-300">
+      <Image
+        src={pic4}
+        alt="SAMARTHYA spectroscopy sensing project"
+        width={640}
+        height={426}
+        format="webp"
+        quality={90}
+        class="aspect-[4/3] w-full object-cover brightness-[0.95] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
+
+</div>
+
