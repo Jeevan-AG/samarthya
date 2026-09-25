@@ -96,10 +96,10 @@ function formatDate(value: string) {
             <!-- Action buttons -->
             <div class="mt-8 flex flex-wrap items-center gap-3.5">
               <a
-                href="#events"
+                href="/events"
                 class="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.45)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>Circuit Craft</span>
+                <span>Events</span>
                 <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
                 </svg>
@@ -526,28 +526,13 @@ function formatDate(value: string) {
   </section>
 
   <!-- ═══════════════════════════════════════════
-       05 — PARALLAX GALLERY
+       05 — PARALLAX PHOTO STREAM
        ═══════════════════════════════════════════ -->
-  <section id="gallery" class="relative py-24 lg:py-32 scroll-mt-20" aria-label="Parallax Gallery">
-    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="mb-14">
-        <RevealOnView client:visible>
-          <div class="mb-4">
-            <TypewriterText client:visible text="// gallery" speed={35} delay={60} />
-          </div>
-          <p class="font-mono text-xs text-faint uppercase tracking-widest mt-1">
-            Visual archives from Circuit Craft workshops, hands-on debugging sessions, and technical symposiums.
-          </p>
-        </RevealOnView>
-      </div>
-
-      <!-- Parallax Multi-Column Gallery Showcase -->
-      <RevealOnView client:visible delay={100}>
+  <section class="relative py-16 lg:py-24 overflow-hidden" aria-label="Workshop Highlights">
+    <div class="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-8">
+      <RevealOnView client:visible delay={50}>
         <ParallaxGallery />
       </RevealOnView>
-
     </div>
   </section>
 </BaseLayout>

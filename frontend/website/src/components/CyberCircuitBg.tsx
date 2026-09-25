@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function CyberCircuitBg() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const deepLayerRef = useRef<HTMLDivElement | null>(null);
+  const frontLayerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -13,22 +14,39 @@ export default function CyberCircuitBg() {
     let currentX = 0;
     let currentY = 0;
     let rafId = 0;
+    let isMoving = false;
 
     const onMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window;
       targetX = (e.clientX / innerWidth) * 2 - 1;
       targetY = (e.clientY / innerHeight) * 2 - 1;
+      if (!isMoving) {
+        isMoving = true;
+        rafId = requestAnimationFrame(animate);
+      }
     };
 
     const animate = () => {
-      currentX += (targetX - currentX) * 0.05;
-      currentY += (targetY - currentY) * 0.05;
-      setMouse({ x: currentX, y: currentY });
-      rafId = requestAnimationFrame(animate);
+      const dx = targetX - currentX;
+      const dy = targetY - currentY;
+      currentX += dx * 0.08;
+      currentY += dy * 0.08;
+
+      if (deepLayerRef.current) {
+        deepLayerRef.current.style.transform = `translate3d(${(currentX * -10).toFixed(2)}px, ${(currentY * -6).toFixed(2)}px, 0)`;
+      }
+      if (frontLayerRef.current) {
+        frontLayerRef.current.style.transform = `translate3d(${(currentX * -22).toFixed(2)}px, ${(currentY * -12).toFixed(2)}px, 0)`;
+      }
+
+      if (Math.abs(dx) > 0.001 || Math.abs(dy) > 0.001) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        isMoving = false;
+      }
     };
 
     window.addEventListener("mousemove", onMouseMove, { passive: true });
-    rafId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
@@ -49,10 +67,8 @@ export default function CyberCircuitBg() {
 
       {/* 2. Deep Parallax Layer (Backdrop Circuit Tracks & Microchips) */}
       <div
-        className="absolute inset-0 transition-transform duration-75 will-change-transform"
-        style={{
-          transform: `translate3d(${mouse.x * -10}px, ${mouse.y * -6}px, 0)`,
-        }}
+        ref={deepLayerRef}
+        className="absolute inset-0 will-change-transform"
       >
         <svg
           viewBox="0 0 1920 1080"
@@ -109,10 +125,8 @@ export default function CyberCircuitBg() {
 
       {/* 3. Main Foreground Circuit Layer (Crisp Neon Cyan & Electric Blue) */}
       <div
-        className="absolute inset-0 transition-transform duration-75 will-change-transform"
-        style={{
-          transform: `translate3d(${mouse.x * -24}px, ${mouse.y * -14}px, 0)`,
-        }}
+        ref={frontLayerRef}
+        className="absolute inset-0 will-change-transform"
       >
         <svg
           viewBox="0 0 1920 1080"
