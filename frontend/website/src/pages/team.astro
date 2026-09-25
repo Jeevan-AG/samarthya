@@ -172,16 +172,26 @@ const categories = [
   </section>
 </BaseLayout>
 <style>
-  /* Target team photos inside child components on this page only */
+  /* Target EVERY image rendered inside main/section containers on these pages */
   :global(main img),
-  :global(.team-card img) {
+  :global(section img),
+  :global(div img) {
     filter: grayscale(100%) !important;
     transition: filter 0.3s ease-in-out !important;
   }
 
-  /* Reveal full color only when hovering directly over the photo or card */
+  /* Reveal full color ONLY when hovering directly over the card or photo */
   :global(main img:hover),
-  :global(.team-card:hover img) {
+  :global(section img:hover),
+  :global(div:hover > img),
+  :global(a:hover img) {
     filter: grayscale(0%) !important;
+  }
+
+  /* PROTECT NAVBAR: Force header & logo images to stay original color */
+  :global(nav img),
+  :global(header img),
+  :global(.logo img) {
+    filter: none !important;
   }
 </style>

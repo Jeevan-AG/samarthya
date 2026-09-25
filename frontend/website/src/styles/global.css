@@ -431,21 +431,64 @@ html.has-site-cursor * {
   }
 }
 
-/* 1. RESET: Force ALL images (including Events, Gallery, Logos) to stay full color */
-img,
+/* 1. Everything on the website stays full color by default (Events, Logos, Gallery) */
+img {
+  filter: none;
+}
+
+/* 2. Target ONLY photos inside the team container/cards */
+main:has(a[href*="team"]) img,
+section:has(h1:contains("TEAM")),
+div[class*="team"] img,
+.team-card img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-in-out;
+}
+
+/* 3. Turn color back on ONLY when hovering directly over a team photo */
+div[class*="team"] img:hover,
+.team-card img:hover,
+main:has(a[href*="team"]) img:hover {
+  filter: grayscale(0%);
+}
+
+/* 4. Force Event page images to stay 100% full color */
 [class*="event"] img,
 [class*="Event"] img {
   filter: none !important;
 }
 
-/* 2. STRICT TARGET: Apply grayscale ONLY if the URL page or wrapper is team-related */
-:is([class*="team"], [class*="Team"], body:has(#team), section[id*="team"]) img {
+/* 1. Target team, core team, and faculty card images specifically */
+.team-card img,
+.core-team-card img,
+.faculty-card img,
+[class*="team"] img,
+[class*="faculty"] img,
+[class*="core"] img,
+#team img,
+#faculty img {
   filter: grayscale(100%);
   transition: filter 0.3s ease-in-out;
 }
 
-/* 3. HOVER: Color back ONLY for team photos */
-:is([class*="team"], [class*="Team"], body:has(#team), section[id*="team"]) img:hover,
-:is([class*="team"], [class*="Team"], body:has(#team), section[id*="team"])>*:hover img {
+/* 2. Turn full color back on when hovering over the card or photo */
+.team-card:hover img,
+.core-team-card:hover img,
+.faculty-card:hover img,
+[class*="team"]:hover img,
+[class*="faculty"]:hover img,
+[class*="core"]:hover img,
+#team img:hover,
+#faculty img:hover {
   filter: grayscale(0%);
+}
+
+/* 3. SAFETY NET: Protect Navbar, Header, and Event section images */
+nav img,
+header img,
+.logo img,
+[class*="event"] img,
+[class*="Event"] img,
+#events img {
+  filter: none !important;
 }
