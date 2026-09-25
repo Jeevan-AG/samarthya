@@ -1,39 +1,299 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RevealOnView from "../components/RevealOnView";
+import TiltCard from "../components/TiltCard";
 import events from "../data/events.json";
+
+// Import Circuit Craft 1.0 & 2.0 photo assets
+const cc2Images = import.meta.glob<{ default: ImageMetadata }>("../assets/pics/events/circuit_craft_2/*.webp", { eager: true });
+const cc1Images = import.meta.glob<{ default: ImageMetadata }>("../assets/pics/events/circuit_craft_1/*.webp", { eager: true });
+
+const cc2Photos = Object.values(cc2Images).map((m) => m.default);
+const cc1Photos = Object.values(cc1Images).map((m) => m.default);
+
+const flagshipEvents = events.filter((e) => e.featured);
+const otherEvents = events.filter((e) => !e.featured);
 
 function formatDate(value: string) {
   const [y, m, d] = value.split("-");
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${months[Number(m) - 1]} ${d}, ${y}`;
+  return `${months[Number(m) - 1]} ${d ? d + ", " : ""}${y}`;
 }
 ---
 
 <BaseLayout
   current="/events"
-  title="Events | SAMARTHYA"
-  description="Workshops, symposiums, and hackathons from SAMARTHYA."
+  title="Circuit Craft & Events | SAMARTHYA"
+  description="Explore Circuit Craft 1.0, Circuit Craft 2.0, and technical workshops organized by SAMARTHYA ECE Department Technical Society."
 >
-  <section class="relative mx-auto max-w-[1400px] px-5 pb-24 pt-32 lg:px-8">
-    <p class="relative font-mono text-[11px] uppercase tracking-[0.32em] text-cyan">Technical calendar</p>
-    <h1 class="relative mt-4 font-display text-6xl md:text-8xl">Events & workshops</h1>
-    <div class="mt-14 grid gap-5 md:grid-cols-2">
-      {events.map((event, i) => (
-        <RevealOnView client:visible delay={i * 50}>
-          <article class="hud-border h-full p-7 rounded-2xl">
-            <div class="flex items-center justify-between gap-3">
-              <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-cyan">{event.category}</span>
-              <span class="font-mono text-[10px] uppercase text-faint">{event.status}</span>
-            </div>
-            <h2 class="mt-4 font-display text-4xl leading-none">{event.title}</h2>
-            <p class="mt-3 text-sm leading-relaxed text-mute">{event.description}</p>
-            <p class="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-paper/70">
-              {formatDate(event.date)} · {event.time} · {event.venue}
-            </p>
-          </article>
-        </RevealOnView>
-      ))}
+  <section class="relative mx-auto max-w-[1440px] px-5 pb-28 pt-32 lg:px-8">
+    
+    <!-- Header -->
+    <div class="relative max-w-3xl mb-16 sm:mb-20">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-[11px] uppercase tracking-[0.24em] bg-cyan/10 text-cyan border border-cyan/25 mb-4">
+        <span class="h-2 w-2 rounded-full bg-cyan animate-ping"></span>
+        Technical Calendar &amp; Workshops
+      </div>
+      <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight text-paper">
+        Circuit Craft &amp; Events
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-mute">
+        Hands-on electronics workshops, PCB fabrication bootcamps, and technical symposiums designed to bridge theoretical classroom concepts with industry-standard hardware engineering.
+      </p>
     </div>
+
+    <!-- ═══════════════════════════════════════════
+         FEATURED: CIRCUIT CRAFT 2.0
+         ═══════════════════════════════════════════ -->
+    <div class="mb-24">
+      <RevealOnView client:visible>
+        <div class="relative rounded-3xl border border-cyan/30 bg-surface/60 backdrop-blur-md p-6 sm:p-10 lg:p-12 overflow-hidden shadow-[0_0_50px_rgba(0,251,248,0.1)]">
+          
+          <!-- Ambient Background Glow -->
+          <div class="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-cyan/15 blur-[120px]"></div>
+
+          <div class="relative z-10 grid gap-8 lg:grid-cols-12 items-center">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-6 space-y-5">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] bg-cyan text-void font-bold shadow-[0_0_15px_rgba(0,251,248,0.5)]">
+                  FLAGSHIP WORKSHOP
+                </span>
+                <span class="px-3 py-1 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] bg-white/[0.06] text-paper border border-white/10">
+                  EDITION 2.0
+                </span>
+                <span class="font-mono text-xs text-faint">Completed · Sep 2026</span>
+              </div>
+
+              <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-paper">
+                Circuit Craft 2.0
+              </h2>
+
+              <p class="text-sm sm:text-base leading-relaxed text-mute">
+                An intensive, hands-on workshop centered on high-density PCB prototyping, surface-mount soldering (SMD), real-time circuit troubleshooting, and microcontroller hardware interfacing. Participants designed, assembled, and verified functioning hardware boards.
+              </p>
+
+              <!-- Highlights -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">Custom PCB Layout Design</span>
+                </div>
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">Precision SMD Soldering</span>
+                </div>
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">Oscilloscope Signal Debug</span>
+                </div>
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">120+ Active Participants</span>
+                </div>
+              </div>
+
+              <!-- Venue Details -->
+              <div class="pt-4 border-t border-line/30 flex flex-wrap items-center gap-6 font-mono text-xs text-paper/70">
+                <span>📍 ECE Systems &amp; Hardware Lab</span>
+                <span>⏱️ 10:00 AM - 5:30 PM</span>
+              </div>
+            </div>
+
+            <!-- Right Photo Grid Column -->
+            <div class="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {cc2Photos.slice(0, 6).map((img, idx) => (
+                <div class={`relative overflow-hidden rounded-xl bg-void aspect-square border border-white/10 group ${idx === 0 ? "col-span-2 sm:col-span-2 aspect-[16/10]" : ""}`}>
+                  <Image
+                    src={img}
+                    alt="Circuit Craft 2.0 workshop moment"
+                    width={600}
+                    height={400}
+                    format="webp"
+                    quality={90}
+                    loading="lazy"
+                    decoding="async"
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity"></div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </RevealOnView>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         FEATURED: CIRCUIT CRAFT 1.0
+         ═══════════════════════════════════════════ -->
+    <div class="mb-28">
+      <RevealOnView client:visible>
+        <div class="relative rounded-3xl border border-line/60 bg-surface/40 backdrop-blur-md p-6 sm:p-10 lg:p-12 overflow-hidden shadow-2xl">
+          
+          <div class="relative z-10 grid gap-8 lg:grid-cols-12 items-center">
+            
+            <!-- Left Photo Grid Column -->
+            <div class="lg:col-span-6 order-2 lg:order-1 grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {cc1Photos.slice(0, 5).map((img, idx) => (
+                <div class={`relative overflow-hidden rounded-xl bg-void aspect-square border border-white/10 group ${idx === 0 ? "col-span-2 aspect-[16/10]" : ""}`}>
+                  <Image
+                    src={img}
+                    alt="Circuit Craft 1.0 workshop hands-on session"
+                    width={600}
+                    height={400}
+                    format="webp"
+                    quality={90}
+                    loading="lazy"
+                    decoding="async"
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity"></div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Right Info Column -->
+            <div class="lg:col-span-6 order-1 lg:order-2 space-y-5">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] bg-cyan/15 text-cyan border border-cyan/30">
+                  INNAUGURAL EDITION
+                </span>
+                <span class="px-3 py-1 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] bg-white/[0.06] text-paper border border-white/10">
+                  EDITION 1.0
+                </span>
+                <span class="font-mono text-xs text-faint">Completed · Apr 2026</span>
+              </div>
+
+              <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-paper">
+                Circuit Craft 1.0
+              </h2>
+
+              <p class="text-sm sm:text-base leading-relaxed text-mute">
+                The inaugural edition of Circuit Craft establishing the cornerstone of hardware prototyping at SAMARTHYA. Covered analog circuit analysis, digital IC interfacing, breadboard testing, and sensor signal conditioning.
+              </p>
+
+              <!-- Highlights -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">Breadboard Circuit Analysis</span>
+                </div>
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">IC & Passive Component Math</span>
+                </div>
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">Multi-meter Fault Diagnosis</span>
+                </div>
+                <div class="flex items-center gap-2.5 rounded-lg bg-white/[0.03] p-3 border border-white/5">
+                  <svg class="h-4 w-4 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-mono text-xs text-paper/90">Team Circuit Challenges</span>
+                </div>
+              </div>
+
+              <!-- Venue Details -->
+              <div class="pt-4 border-t border-line/30 flex flex-wrap items-center gap-6 font-mono text-xs text-paper/70">
+                <span>📍 ECE Project Laboratory</span>
+                <span>⏱️ 9:30 AM - 4:30 PM</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </RevealOnView>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         UPCOMING & DEPARTMENT CALENDAR
+         ═══════════════════════════════════════════ -->
+    <div class="relative">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-line/50 pb-5 mb-10">
+        <div>
+          <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan font-medium">
+            Calendar &amp; Symposiums
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl text-paper mt-1">
+            Department Technical Schedule
+          </h2>
+        </div>
+        <p class="max-w-md text-xs sm:text-sm text-mute leading-relaxed">
+          Upcoming hardware hackathons, symposia, and embedded bootcamp sessions.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {otherEvents.map((event, i) => (
+          <RevealOnView client:visible delay={i * 50}>
+            <TiltCard client:visible className="h-full">
+              <article class="hud-border group relative flex flex-col justify-between h-full p-8 rounded-2xl bg-surface/40 backdrop-blur-sm transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_20px_rgba(0,251,248,0.1)] hover:-translate-y-1 overflow-hidden">
+                
+                <div class="relative z-10">
+                  <div class="flex items-center justify-between gap-3 mb-4">
+                    <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/25">
+                      {event.category}
+                    </span>
+                    <span class={`font-mono text-[10.5px] uppercase tracking-wider ${event.status === 'upcoming' ? 'text-cyan' : 'text-faint'}`}>
+                      {event.status}
+                    </span>
+                  </div>
+
+                  <h3 class="font-display text-3xl text-paper transition-colors duration-300 group-hover:text-cyan">
+                    {event.title}
+                  </h3>
+
+                  {event.subtitle && (
+                    <p class="mt-1 font-mono text-xs text-paper/70">
+                      {event.subtitle}
+                    </p>
+                  )}
+
+                  <p class="mt-4 text-sm leading-relaxed text-mute">
+                    {event.description}
+                  </p>
+
+                  {event.highlights && (
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      {event.highlights.map((h: string) => (
+                        <span class="font-mono text-[10px] px-2 py-1 rounded bg-white/[0.04] text-paper/70 border border-white/5">
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-faint">
+                  <span>{formatDate(event.date)} · {event.time}</span>
+                  <span>{event.venue}</span>
+                </div>
+
+              </article>
+            </TiltCard>
+          </RevealOnView>
+        ))}
+      </div>
+    </div>
+
   </section>
 </BaseLayout>

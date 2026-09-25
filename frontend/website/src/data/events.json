@@ -1,62 +1,112 @@
 [
   {
-    "id": "evt-001",
-    "title": "Circuit Design Workshop",
-    "description": "Hands-on workshop on PCB design and circuit simulation using industry-standard tools. Learn to design, simulate, and prototype your own circuits.",
-    "date": "2026-10-15",
-    "time": "10:00 AM - 4:00 PM",
-    "venue": "ECE Lab, Block A",
+    "id": "evt-cc-2",
+    "title": "Circuit Craft 2.0",
+    "subtitle": "Advanced PCB Prototyping & Hardware Workshop",
+    "description": "Our flagship hands-on workshop on modern PCB layout, SMD soldering, circuit troubleshooting, and microcontroller hardware interfacing. Students designed and soldered their own working circuits.",
+    "date": "2026-09-22",
+    "time": "10:00 AM - 5:30 PM",
+    "venue": "ECE Systems & Hardware Lab",
+    "category": "Flagship Workshop",
+    "status": "completed",
+    "featured": true,
+    "edition": "2.0",
+    "galleryFolder": "circuit_craft_2",
+    "photosCount": 7,
+    "highlights": [
+      "Custom PCB layout with EDA tools",
+      "Hands-on soldering & component assembly",
+      "Live oscilloscope signal analysis",
+      "Over 120+ student participants"
+    ]
+  },
+  {
+    "id": "evt-cc-1",
+    "title": "Circuit Craft 1.0",
+    "subtitle": "Fundamentals of Hardware Engineering & Prototyping",
+    "description": "The inaugural edition of Circuit Craft introducing core electronics, analog and digital circuitry, breadboard prototyping, and embedded sensor testing for aspiring hardware engineers.",
+    "date": "2026-04-10",
+    "time": "9:30 AM - 4:30 PM",
+    "venue": "ECE Project Laboratory",
+    "category": "Hands-on Workshop",
+    "status": "completed",
+    "featured": true,
+    "edition": "1.0",
+    "galleryFolder": "circuit_craft_1",
+    "photosCount": 5,
+    "highlights": [
+      "Breadboard circuit prototyping & analysis",
+      "Introduction to ICs and passive networks",
+      "Fault detection with multi-meters & probes",
+      "Interactive hardware quiz & team challenges"
+    ]
+  },
+  {
+    "id": "evt-cc-3",
+    "title": "Circuit Craft 3.0 — High-Speed PCB & Embedded IoT",
+    "subtitle": "Next-Gen Hardware Fabrication",
+    "description": "Upcoming edition diving deeper into multi-layer PCB design, high-frequency routing, IoT wireless modules, and automated testbenches.",
+    "date": "2026-11-15",
+    "time": "10:00 AM - 5:00 PM",
+    "venue": "ECE Advanced Fabrication Lab",
     "category": "Workshop",
-    "status": "upcoming"
-  },
-  {
-    "id": "evt-002",
-    "title": "TechVista — Annual Technical Symposium",
-    "description": "Our flagship annual event featuring paper presentations, project exhibitions, coding competitions, and guest lectures from industry leaders.",
-    "date": "2026-11-20",
-    "time": "9:00 AM - 6:00 PM",
-    "venue": "Main Auditorium",
-    "category": "Symposium",
-    "status": "upcoming"
-  },
-  {
-    "id": "evt-003",
-    "title": "IoT Hackathon",
-    "description": "24-hour hackathon focused on building innovative IoT solutions for smart campus challenges.",
-    "date": "2026-09-05",
-    "time": "10:00 AM (24 hrs)",
-    "venue": "Innovation Hub",
-    "category": "Hackathon",
-    "status": "past"
+    "status": "upcoming",
+    "featured": false,
+    "highlights": [
+      "Multi-layer board routing",
+      "ESP32 & STM32 firmware integration",
+      "EMI shielding & impedance matching"
+    ]
   },
   {
     "id": "evt-004",
+    "title": "TechVista — Annual Technical Symposium",
+    "subtitle": "Hardware Hackathon & Paper Presentation",
+    "description": "SAMARTHYA's annual department symposium showcasing cutting-edge student projects, hardware hackathon tracks, and keynote talks from industry leaders.",
+    "date": "2026-12-05",
+    "time": "9:00 AM - 6:00 PM",
+    "venue": "Main Auditorium & ECE Labs",
+    "category": "Symposium",
+    "status": "upcoming",
+    "featured": false,
+    "highlights": [
+      "24-Hour Hardware Hackathon",
+      "Research paper presentations",
+      "Industry executive panel discussions"
+    ]
+  },
+  {
+    "id": "evt-005",
     "title": "Embedded Systems Bootcamp",
-    "description": "A 3-day intensive bootcamp covering ARM microcontrollers, RTOS fundamentals, and real-time embedded design.",
+    "subtitle": "ARM Cortex & Real-Time Operating Systems",
+    "description": "Intensive bootcamp exploring ARM architecture, RTOS task scheduling, device drivers, and real-time firmware development.",
     "date": "2026-08-10",
     "time": "9:00 AM - 5:00 PM",
     "venue": "ECE Seminar Hall",
     "category": "Bootcamp",
-    "status": "past"
-  },
-  {
-    "id": "evt-005",
-    "title": "Alumni Connect — Industry Insights",
-    "description": "Interactive session with SAMARTHYA alumni working at top tech companies.",
-    "date": "2026-12-08",
-    "time": "3:00 PM - 6:00 PM",
-    "venue": "Virtual (Online)",
-    "category": "Talk",
-    "status": "upcoming"
+    "status": "past",
+    "featured": false,
+    "highlights": [
+      "FreeRTOS kernel primitives",
+      "UART, SPI, and I2C hardware drivers",
+      "Logic analyzer debugging sessions"
+    ]
   },
   {
     "id": "evt-006",
-    "title": "Signal Processing Challenge",
-    "description": "Competitive challenge focused on DSP algorithms, filter design, and real-time signal analysis.",
+    "title": "IoT & Smart Systems Challenge",
+    "subtitle": "Campus Automation & Edge AI",
+    "description": "Competition focused on building edge-sensing nodes, power-efficient telemetry systems, and remote monitoring platforms for smart campus environments.",
     "date": "2026-07-22",
     "time": "2:00 PM - 6:00 PM",
-    "venue": "Computer Lab 3",
+    "venue": "Innovation Hub Lab",
     "category": "Competition",
-    "status": "past"
+    "status": "past",
+    "featured": false,
+    "highlights": [
+      "Low-power wireless telemetry",
+      "Edge AI inference on microcontrollers",
+      "Prototype pitching & jury evaluation"
+    ]
   }
 ]

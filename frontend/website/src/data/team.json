@@ -1,66 +1,222 @@
 [
   {
-    "id": "tm-001",
-    "name": "Placeholder President",
+    "id": "tm-01",
+    "name": "Winston Pereira",
     "role": "President",
+    "category": "Executive Leadership",
     "year": "Final Year",
-    "domain": "Hardware & Leadership",
-    "bio": "Leading SAMARTHYA with a vision to bridge the gap between academics and industry."
+    "semester": "VII B",
+    "domain": "Hardware & System Architecture",
+    "image": "Winston_Pereira.webp",
+    "bio": "Leading SAMARTHYA with strategic vision, hardware innovation, and collaborative engineering excellence."
   },
   {
-    "id": "tm-002",
-    "name": "Placeholder Vice President",
+    "id": "tm-02",
+    "name": "Iris Nirel J.",
+    "role": "Deputy President",
+    "category": "Executive Leadership",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Embedded Systems & Robotics",
+    "image": "Iris_Nirel_J.webp",
+    "bio": "Assisting the executive board in club operations, cross-domain initiatives, and student mentoring."
+  },
+  {
+    "id": "tm-03",
+    "name": "Frenny Chrystal Saldanha",
     "role": "Vice President",
-    "year": "Third Year",
-    "domain": "Embedded Systems",
-    "bio": "Coordinating technical initiatives and mentoring junior members across projects."
+    "category": "Executive Leadership",
+    "year": "Final Year",
+    "semester": "VII A",
+    "domain": "VLSI & Digital Design",
+    "image": "Frenny_Chrystal_Saldanha.webp",
+    "bio": "Leading academic alignment, research initiatives, and project lifecycles across club domains."
   },
   {
-    "id": "tm-003",
-    "name": "Placeholder Secretary",
-    "role": "Secretary",
+    "id": "tm-04",
+    "name": "Nikhitha HL",
+    "role": "Vice President",
+    "category": "Executive Leadership",
     "year": "Third Year",
+    "semester": "V B",
+    "domain": "IoT & Sensor Networks",
+    "image": "Nikhitha_HL.webp",
+    "bio": "Overseeing technical project development, hackathon cohorts, and execution frameworks."
+  },
+  {
+    "id": "tm-05",
+    "name": "Kartik Ulhas Salaskar",
+    "role": "General Secretary",
+    "category": "Secretariat & Operations",
+    "year": "Final Year",
+    "semester": "VII A",
     "domain": "Operations & Logistics",
-    "bio": "Managing club operations, lab documentation, and inter-departmental workflows."
+    "image": "Kartik_Ulhas_Salaskar.webp",
+    "bio": "Directing event logistics, laboratory scheduling, and organizational workflows."
   },
   {
-    "id": "tm-004",
-    "name": "Placeholder Technical Lead",
+    "id": "tm-06",
+    "name": "Nayan",
+    "role": "General Secretary",
+    "category": "Secretariat & Operations",
+    "year": "Final Year",
+    "semester": "VII A",
+    "domain": "Administration & Operations",
+    "image": "Nayan.webp",
+    "bio": "Managing internal communications, club records, and inter-team operational sync."
+  },
+  {
+    "id": "tm-07",
+    "name": "Armaan B.M.",
+    "role": "Secretary",
+    "category": "Secretariat & Operations",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Technical Documentation",
+    "image": "Armaan_B.M.webp",
+    "bio": "Managing technical documentation, external outreach, and member relations."
+  },
+  {
+    "id": "tm-08",
+    "name": "Gauthami Shetty",
+    "role": "Secretary",
+    "category": "Secretariat & Operations",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Public Relations & Media",
+    "image": "Gauthami_Shetty.webp",
+    "bio": "Organizing meeting agendas, student relations, and session coordination."
+  },
+  {
+    "id": "tm-09",
+    "name": "Dave Sylvester Vas Naik",
     "role": "Technical Lead",
+    "category": "Technical & Development",
+    "year": "Final Year",
+    "semester": "VII A",
+    "domain": "Embedded Systems & PCB Design",
+    "image": "Dave_Sylvester_Vas_Naik.webp",
+    "bio": "Leading circuit design workshops, hardware debugging, and real-time embedded prototyping."
+  },
+  {
+    "id": "tm-10",
+    "name": "Aditi G Amin",
+    "role": "Technical Lead",
+    "category": "Technical & Development",
+    "year": "Final Year",
+    "semester": "VII A",
+    "domain": "Circuit Simulation & Hardware",
+    "image": "Aditi_G_Amin.webp",
+    "bio": "Mentoring junior members on schematic capture, SPICE simulation, and board layout."
+  },
+  {
+    "id": "tm-11",
+    "name": "Jawahar Lawrence Rodrigues",
+    "role": "Technical Lead",
+    "category": "Technical & Development",
     "year": "Third Year",
-    "domain": "VLSI & Firmware",
-    "bio": "Spearheading hands-on workshops, hackathons, and hardware prototyping."
+    "semester": "V A",
+    "domain": "Signal Processing & Firmware",
+    "image": "Jawahar_Lawrence_Rodrigues.webp",
+    "bio": "Directing microcontroller firmware development and DSP project tracks."
   },
   {
-    "id": "tm-005",
-    "name": "Placeholder Event Coordinator",
-    "role": "Event Coordinator",
-    "year": "Second Year",
-    "domain": "Symposiums & Events",
-    "bio": "Planning and executing all technical symposiums and competition tracks."
-  },
-  {
-    "id": "tm-006",
-    "name": "Placeholder Design Lead",
-    "role": "Design Lead",
-    "year": "Second Year",
-    "domain": "UI/UX & Branding",
-    "bio": "Crafting the visual identity and digital assets of SAMARTHYA."
-  },
-  {
-    "id": "tm-007",
-    "name": "Placeholder Content Lead",
-    "role": "Content Lead",
-    "year": "Second Year",
-    "domain": "Editorial & Media",
-    "bio": "Creating technical documentation, project write-ups, and community outreach."
-  },
-  {
-    "id": "tm-008",
-    "name": "Placeholder Treasurer",
-    "role": "Treasurer",
+    "id": "tm-12",
+    "name": "Jeevan",
+    "role": "Web Lead",
+    "category": "Technical & Development",
     "year": "Third Year",
-    "domain": "Finance & Relations",
-    "bio": "Managing club lab procurement, sponsorships, and resource allocation."
+    "semester": "V A",
+    "domain": "Full-Stack & Cyber Systems",
+    "image": "Jeevan.webp",
+    "bio": "Architecting modern digital platforms, interactive interfaces, and club web infrastructure."
+  },
+  {
+    "id": "tm-13",
+    "name": "Achala A Patel",
+    "role": "Media Coordinator",
+    "category": "Team Leads & Media",
+    "year": "Final Year",
+    "semester": "VII A",
+    "domain": "Visual Design & Multimedia",
+    "image": "Achala_A_Patel.webp",
+    "bio": "Directing visual storytelling, branding, and multimedia event documentation."
+  },
+  {
+    "id": "tm-14",
+    "name": "Hithesh K.",
+    "role": "Core Team Lead",
+    "category": "Team Leads & Media",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Project Coordination & Hardware",
+    "image": "Hithesh_K.webp",
+    "bio": "Facilitating hands-on team builds, workshop equipment, and technical labs."
+  },
+  {
+    "id": "tm-15",
+    "name": "Sarah Matthew Attupuram",
+    "role": "Core Team Lead",
+    "category": "Team Leads & Media",
+    "year": "Third Year",
+    "semester": "V B",
+    "domain": "Community Engagement",
+    "image": "Sarah_Matthew_Attupuram.webp",
+    "bio": "Coordinating student workgroups, mentoring cohorts, and technical initiatives."
+  },
+  {
+    "id": "tm-16",
+    "name": "Avinia Viola Pinto",
+    "role": "Core Team Member",
+    "category": "Core Team",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Digital Electronics",
+    "image": "Avinia_Viola_Pinto.webp",
+    "bio": "Contributing to technical symposium execution and hardware lab initiatives."
+  },
+  {
+    "id": "tm-17",
+    "name": "Bashma",
+    "role": "Core Team Member",
+    "category": "Core Team",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Circuit Design & Prototyping",
+    "image": "Bashma.webp",
+    "bio": "Active member contributing to hardware builds, workshops, and event logistics."
+  },
+  {
+    "id": "tm-18",
+    "name": "Brahmi Lakshmi U.H.",
+    "role": "Core Team Member",
+    "category": "Core Team",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "IoT & Hardware Prototyping",
+    "image": "Brahmi_Lakshmi_U.H.webp",
+    "bio": "Supporting workshop setups, component distribution, and team projects."
+  },
+  {
+    "id": "tm-19",
+    "name": "Dhathri P G",
+    "role": "Core Team Member",
+    "category": "Core Team",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Electronic Instrumentation",
+    "image": "Dhathri_P_G.webp",
+    "bio": "Assisting in project validation, testbench setups, and community workshops."
+  },
+  {
+    "id": "tm-20",
+    "name": "Disha",
+    "role": "Core Team Member",
+    "category": "Core Team",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Embedded Systems & Firmware",
+    "image": "Disha.webp",
+    "bio": "Engaging in hands-on circuit fabrication, sensor integrations, and lab sessions."
   }
 ]

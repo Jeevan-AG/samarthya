@@ -1,0 +1,419 @@
+---
+import { Image } from "astro:assets";
+import gal1 from "../assets/pics/gallery/gallery_1.webp";
+import gal2 from "../assets/pics/gallery/gallery_2.webp";
+import gal3 from "../assets/pics/gallery/gallery_3.webp";
+import gal4 from "../assets/pics/gallery/gallery_4.webp";
+import gal5 from "../assets/pics/gallery/gallery_5.webp";
+import gal6 from "../assets/pics/gallery/gallery_6.webp";
+import gal7 from "../assets/pics/gallery/gallery_7.webp";
+import gal8 from "../assets/pics/gallery/gallery_8.webp";
+import gal9 from "../assets/pics/gallery/gallery_9.webp";
+
+const galleryItems = [
+  {
+    image: gal1,
+    title: "Hardware Prototyping in Action",
+    category: "Circuit Craft",
+    tag: "Workshop",
+    caption: "Hands-on component placement and live circuit verification in the ECE laboratory."
+  },
+  {
+    image: gal2,
+    title: "Soldering & Verification Desk",
+    category: "Circuit Craft",
+    tag: "Lab Session",
+    caption: "Precision soldering of SMD and through-hole components under peer mentorship."
+  },
+  {
+    image: gal3,
+    title: "Collaborative Troubleshooting",
+    category: "Circuit Craft",
+    tag: "Teamwork",
+    caption: "Cross-batch collaboration tackling real-time hardware bugs and signal anomalies."
+  },
+  {
+    image: gal4,
+    title: "Component Assembly & Testing",
+    category: "Circuit Craft",
+    tag: "Hardware",
+    caption: "Step-by-step assembly of digital logic gates and sensor modules."
+  },
+  {
+    image: gal5,
+    title: "Technical Symposium Project Display",
+    category: "Symposium",
+    tag: "Exhibition",
+    caption: "Departmental exhibition presenting cutting-edge student hardware innovations."
+  },
+  {
+    image: gal6,
+    title: "Robotics & Automation Defense",
+    category: "Projects",
+    tag: "Defense",
+    caption: "Live demonstration of robotic obstacle avoidance and telemetry integration."
+  },
+  {
+    image: gal7,
+    title: "Custom PCB & Telemetry Board",
+    category: "Projects",
+    tag: "Prototyping",
+    caption: "Hardware testbench evaluating wireless data transmission and power efficiency."
+  },
+  {
+    image: gal8,
+    title: "Spectroscopy & Optical Sensing",
+    category: "Research",
+    tag: "Biomedical",
+    caption: "Non-invasive sensor array calibrated for metabolic and optical bio-signal monitoring."
+  },
+  {
+    image: gal9,
+    title: "Faculty Evaluation & Project Review",
+    category: "Symposium",
+    tag: "Review",
+    caption: "Constructive evaluation by senior faculty professors on engineering rigor and feasibility."
+  }
+];
+
+// Split into 3 balanced columns for desktop parallax
+const col1 = [galleryItems[0], galleryItems[3], galleryItems[6]];
+const col2 = [galleryItems[1], galleryItems[4], galleryItems[7]];
+const col3 = [galleryItems[2], galleryItems[5], galleryItems[8]];
+---
+
+<div class="parallax-gallery-container relative w-full overflow-hidden" id="parallax-gallery-root">
+  <!-- Subtle ambient background glows -->
+  <div class="pointer-events-none absolute -top-24 left-1/4 -z-10 h-72 w-72 rounded-full bg-cyan/10 blur-[100px]"></div>
+  <div class="pointer-events-none absolute -bottom-24 right-1/4 -z-10 h-72 w-72 rounded-full bg-cyan/10 blur-[100px]"></div>
+
+  <!-- Parallax Multi-Column Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+    
+    <!-- Column 1 (Speed: Normal / 0.04) -->
+    <div class="parallax-col flex flex-col gap-6 lg:gap-8 transition-transform duration-300 ease-out will-change-transform" data-speed="0.04">
+      {col1.map((item) => (
+        <div 
+          class="gallery-card group relative flex flex-col h-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface/50 backdrop-blur-sm shadow-xl transition-all duration-500 hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,251,248,0.25)] hover:-translate-y-1.5"
+          data-title={item.title}
+          data-category={item.category}
+          data-tag={item.tag}
+          data-caption={item.caption}
+          data-src={item.image.src}
+        >
+          <div class="relative overflow-hidden aspect-[16/10] bg-void">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={720}
+              height={450}
+              format="webp"
+              quality={90}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-100"
+            />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/90 via-void/30 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-40"></div>
+            
+            <!-- Category Tag -->
+            <div class="absolute top-3 left-3 z-10">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.16em] bg-void/80 text-cyan border border-cyan/30 backdrop-blur-md">
+                {item.category}
+              </span>
+            </div>
+
+            <!-- View Icon -->
+            <div class="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-void/80 text-cyan border border-cyan/40 backdrop-blur-md shadow-lg">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-between flex-1 p-5">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5 font-mono text-[11px] text-faint">
+                <span>{item.tag}</span>
+                <span class="text-cyan/70 font-mono text-[10px]">#LAB_ARCHIVE</span>
+              </div>
+              <h3 class="font-display text-xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
+                {item.title}
+              </h3>
+              <p class="mt-2 text-xs leading-relaxed text-mute line-clamp-2">
+                {item.caption}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Column 2 (Speed: Offset / -0.05) -->
+    <div class="parallax-col flex flex-col gap-6 lg:gap-8 lg:pt-10 transition-transform duration-300 ease-out will-change-transform" data-speed="-0.05">
+      {col2.map((item) => (
+        <div 
+          class="gallery-card group relative flex flex-col h-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface/50 backdrop-blur-sm shadow-xl transition-all duration-500 hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,251,248,0.25)] hover:-translate-y-1.5"
+          data-title={item.title}
+          data-category={item.category}
+          data-tag={item.tag}
+          data-caption={item.caption}
+          data-src={item.image.src}
+        >
+          <div class="relative overflow-hidden aspect-[16/10] bg-void">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={720}
+              height={450}
+              format="webp"
+              quality={90}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-100"
+            />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/90 via-void/30 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-40"></div>
+            
+            <div class="absolute top-3 left-3 z-10">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.16em] bg-void/80 text-cyan border border-cyan/30 backdrop-blur-md">
+                {item.category}
+              </span>
+            </div>
+
+            <div class="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-void/80 text-cyan border border-cyan/40 backdrop-blur-md shadow-lg">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-between flex-1 p-5">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5 font-mono text-[11px] text-faint">
+                <span>{item.tag}</span>
+                <span class="text-cyan/70 font-mono text-[10px]">#LAB_ARCHIVE</span>
+              </div>
+              <h3 class="font-display text-xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
+                {item.title}
+              </h3>
+              <p class="mt-2 text-xs leading-relaxed text-mute line-clamp-2">
+                {item.caption}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Column 3 (Speed: Elevated / 0.06) -->
+    <div class="parallax-col flex flex-col gap-6 lg:gap-8 transition-transform duration-300 ease-out will-change-transform" data-speed="0.06">
+      {col3.map((item) => (
+        <div 
+          class="gallery-card group relative flex flex-col h-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface/50 backdrop-blur-sm shadow-xl transition-all duration-500 hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,251,248,0.25)] hover:-translate-y-1.5"
+          data-title={item.title}
+          data-category={item.category}
+          data-tag={item.tag}
+          data-caption={item.caption}
+          data-src={item.image.src}
+        >
+          <div class="relative overflow-hidden aspect-[16/10] bg-void">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={720}
+              height={450}
+              format="webp"
+              quality={90}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-100"
+            />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/90 via-void/30 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-40"></div>
+            
+            <div class="absolute top-3 left-3 z-10">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-[0.16em] bg-void/80 text-cyan border border-cyan/30 backdrop-blur-md">
+                {item.category}
+              </span>
+            </div>
+
+            <div class="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-void/80 text-cyan border border-cyan/40 backdrop-blur-md shadow-lg">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-between flex-1 p-5">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5 font-mono text-[11px] text-faint">
+                <span>{item.tag}</span>
+                <span class="text-cyan/70 font-mono text-[10px]">#LAB_ARCHIVE</span>
+              </div>
+              <h3 class="font-display text-xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
+                {item.title}
+              </h3>
+              <p class="mt-2 text-xs leading-relaxed text-mute line-clamp-2">
+                {item.caption}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Interactive Lightbox Modal -->
+  <div 
+    id="gallery-lightbox" 
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-void/90 p-4 sm:p-6 backdrop-blur-xl transition-all duration-300 opacity-0"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image Preview Modal"
+  >
+    <div class="relative max-w-4xl w-full rounded-2xl border border-cyan/40 bg-surface/95 p-4 sm:p-6 shadow-[0_0_50px_rgba(0,251,248,0.25)]">
+      <!-- Close button -->
+      <button 
+        id="lightbox-close"
+        class="absolute -top-3 -right-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-void border border-cyan text-paper hover:text-cyan hover:scale-110 transition-all shadow-xl"
+        aria-label="Close modal"
+      >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="relative overflow-hidden rounded-xl bg-void max-h-[70vh] flex items-center justify-center">
+        <img 
+          id="lightbox-img" 
+          src="" 
+          alt="" 
+          class="max-h-[65vh] w-auto max-w-full object-contain rounded-lg"
+        />
+      </div>
+
+      <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-line/40 pt-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="lightbox-tag" class="font-mono text-[10px] uppercase tracking-wider text-cyan px-2 py-0.5 rounded bg-cyan/10 border border-cyan/30"></span>
+            <span id="lightbox-cat" class="font-mono text-[10px] uppercase text-faint"></span>
+          </div>
+          <h4 id="lightbox-title" class="font-display text-2xl text-paper"></h4>
+          <p id="lightbox-caption" class="mt-1 text-xs sm:text-sm text-mute"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initParallaxGallery() {
+    const container = document.getElementById("parallax-gallery-root");
+    if (!container) return;
+
+    const cols = container.querySelectorAll<HTMLElement>(".parallax-col");
+    let ticking = false;
+
+    function updateParallax() {
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      if (rect.top < viewportHeight && rect.bottom > 0) {
+        const centerY = (rect.top + rect.height / 2) - (viewportHeight / 2);
+        
+        cols.forEach((col) => {
+          const speed = parseFloat(col.getAttribute("data-speed") || "0");
+          if (window.innerWidth >= 768) {
+            const offset = centerY * speed;
+            col.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+          } else {
+            col.style.transform = "none";
+          }
+        });
+      }
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    updateParallax();
+
+    // Lightbox handling
+    const lightbox = document.getElementById("gallery-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
+    const lightboxTitle = document.getElementById("lightbox-title");
+    const lightboxTag = document.getElementById("lightbox-tag");
+    const lightboxCat = document.getElementById("lightbox-cat");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const closeBtn = document.getElementById("lightbox-close");
+
+    if (lightbox && lightboxImg && closeBtn) {
+      const cards = container.querySelectorAll<HTMLElement>(".gallery-card");
+
+      function openModal(card: HTMLElement) {
+        const src = card.getAttribute("data-src") || "";
+        const title = card.getAttribute("data-title") || "";
+        const cat = card.getAttribute("data-category") || "";
+        const tag = card.getAttribute("data-tag") || "";
+        const caption = card.getAttribute("data-caption") || "";
+
+        lightboxImg.src = src;
+        lightboxImg.alt = title;
+        if (lightboxTitle) lightboxTitle.textContent = title;
+        if (lightboxTag) lightboxTag.textContent = tag;
+        if (lightboxCat) lightboxCat.textContent = cat;
+        if (lightboxCaption) lightboxCaption.textContent = caption;
+
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        setTimeout(() => {
+          lightbox.classList.remove("opacity-0");
+          lightbox.classList.add("opacity-100");
+        }, 10);
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        lightbox.classList.remove("opacity-100");
+        lightbox.classList.add("opacity-0");
+        setTimeout(() => {
+          lightbox.classList.remove("flex");
+          lightbox.classList.add("hidden");
+          lightboxImg.src = "";
+          document.body.style.overflow = "";
+        }, 200);
+      }
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => openModal(card));
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeModal();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
+          closeModal();
+        }
+      });
+    }
+  }
+
+  initParallaxGallery();
+  document.addEventListener("astro:page-load", initParallaxGallery);
+</script>

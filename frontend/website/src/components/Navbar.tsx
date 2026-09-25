@@ -5,7 +5,7 @@ const links = [
   { id: "faculty", href: "/#faculty", label: "Faculty" },
   { id: "team", href: "/#team", label: "Team" },
   { id: "events", href: "/#events", label: "Events" },
-  { id: "achievements", href: "/#achievements", label: "Achievements" },
+  { id: "gallery", href: "/#gallery", label: "Gallery" },
 ];
 
 export default function Navbar({ pathname = "/" }: { pathname?: string }) {
@@ -26,7 +26,7 @@ export default function Navbar({ pathname = "/" }: { pathname?: string }) {
       return;
     }
 
-    const sectionIds = ["about", "faculty", "team", "events", "achievements"];
+    const sectionIds = ["about", "faculty", "team", "events", "gallery"];
 
     const updateActive = () => {
       // If in Hero section at top of page, no section is active
@@ -95,7 +95,7 @@ export default function Navbar({ pathname = "/" }: { pathname?: string }) {
         }`}
       >
 
-        {/* Logo SVG (Bigger, Clean, No Text) */}
+        {/* Logo SVG */}
         <a
           href="/"
           className="group relative z-10 inline-flex items-center rounded-xl p-1 -ml-1 focus-visible:outline-2 focus-visible:outline-cyan"
@@ -139,7 +139,7 @@ export default function Navbar({ pathname = "/" }: { pathname?: string }) {
         {/* Right Spacer for balanced centering on desktop */}
         <div className="hidden lg:block w-12" aria-hidden="true" />
 
-        {/* Mobile Menu Toggle Button (44px touch target) */}
+        {/* Mobile Menu Toggle Button */}
         <button
           type="button"
           className="relative z-10 inline-flex h-11 w-11 items-center justify-center p-2.5 text-paper rounded-xl focus-visible:outline-2 focus-visible:outline-cyan lg:hidden"
