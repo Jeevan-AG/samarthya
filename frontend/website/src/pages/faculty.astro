@@ -1,27 +1,114 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RevealOnView from "../components/RevealOnView";
+import TiltCard from "../components/TiltCard";
 import faculty from "../data/faculty.json";
+
+const facultyImages = import.meta.glob<{ default: ImageMetadata }>("../assets/pics/faculty/*.webp", { eager: true });
 ---
 
 <BaseLayout
   current="/faculty"
-  title="Faculty | SAMARTHYA"
-  description="Faculty coordinators guiding SAMARTHYA."
+  title="Faculty Coordinators | SAMARTHYA"
+  description="Faculty coordinators and mentors guiding the SAMARTHYA ECE technical society."
 >
-  <section class="relative mx-auto max-w-[1400px] px-5 pb-24 pt-32 lg:px-8">
-    <p class="relative font-mono text-[11px] uppercase tracking-[0.32em] text-cyan">Department advisory</p>
-    <h1 class="relative mt-4 font-display text-6xl md:text-8xl">Faculty</h1>
-    <div class="mt-14 grid gap-4 md:grid-cols-2">
-      {faculty.map((person, i) => (
-        <RevealOnView client:visible delay={i * 60}>
-          <article class="hud-border p-8">
-            <h2 class="font-display text-4xl leading-none">{person.name}</h2>
-            <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-cyan">{person.designation}</p>
-            <p class="mt-4 text-sm text-mute">{person.specialization}</p>
-          </article>
-        </RevealOnView>
-      ))}
+  <section class="relative mx-auto max-w-[1440px] px-5 pb-28 pt-32 lg:px-8">
+    
+    <!-- Hero Header -->
+    <div class="relative max-w-3xl mb-16 sm:mb-20">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-[11px] uppercase tracking-[0.24em] bg-cyan/10 text-cyan border border-cyan/25 mb-4">
+        <span class="h-2 w-2 rounded-full bg-cyan animate-pulse"></span>
+        Department Advisory &amp; Mentorship
+      </div>
+      <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight text-paper">
+        Faculty Coordinators
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-mute">
+        Senior professors and academic mentors guiding SAMARTHYA's technical vision, research initiatives, and laboratory workshops.
+      </p>
     </div>
+
+    <!-- Faculty Cards Grid -->
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {faculty.map((member, i) => {
+        const imageKey = `../assets/pics/faculty/${member.image}`;
+        const imgMetadata = member.image ? facultyImages[imageKey]?.default : null;
+
+        return (
+          <RevealOnView client:visible delay={i * 80}>
+            <TiltCard client:visible className="h-full">
+              <article class="hud-border relative group flex flex-col justify-between h-full p-6 sm:p-8 rounded-2xl bg-surface/40 backdrop-blur-sm transition-all duration-500 hover:border-cyan/40 hover:shadow-[0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 overflow-hidden">
+                
+                <div class="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan/8 via-transparent to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" aria-hidden="true"></div>
+
+                <div class="relative z-10">
+                  <div class="flex items-center justify-between gap-3 mb-5">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full font-mono text-[10.5px] uppercase tracking-[0.16em] bg-cyan/10 text-cyan border border-cyan/25 group-hover:border-cyan/50 group-hover:bg-cyan/15 transition-all duration-300">
+                      {member.role || "Faculty Coordinator"}
+                    </span>
+                    <span class="font-mono text-xs text-faint tracking-wider uppercase group-hover:text-cyan/70 transition-colors">ECE Dept</span>
+                  </div>
+
+                  {imgMetadata && (
+                    <div class="relative mb-5 overflow-hidden rounded-xl bg-void aspect-[3/4] border border-white/10 group-hover:border-cyan/30 transition-colors duration-300 shadow-inner max-w-[220px]">
+                      <Image
+                        src={imgMetadata}
+                        alt={`Portrait of ${member.name}`}
+                        width={440}
+                        height={580}
+                        format="webp"
+                        quality={88}
+                        loading="lazy"
+                        decoding="async"
+                        class="h-full w-full object-cover object-top brightness-[0.95] contrast-[1.03] transition-all duration-500 group-hover:scale-105"
+                      />
+                      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent opacity-50"></div>
+                    </div>
+                  )}
+
+                  <h2 class="font-display text-2xl sm:text-3xl text-paper group-hover:text-cyan transition-colors duration-300">
+                    {member.name}
+                  </h2>
+                  <p class="mt-1 font-mono text-[11.5px] uppercase tracking-[0.14em] text-cyan/90">
+                    {member.designation} · {member.department}
+                  </p>
+
+                  <div class="mt-4 inline-flex items-center gap-2 rounded-lg bg-white/[0.04] px-3 py-1.5 border border-white/10 group-hover:border-cyan/30 transition-colors duration-300">
+                    <svg class="w-3.5 h-3.5 text-cyan shrink-0 transition-transform duration-500 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                    <span class="font-mono text-xs text-paper/90">{member.specialization}</span>
+                  </div>
+
+                  <p class="mt-4 text-xs sm:text-sm leading-relaxed text-mute">
+                    {member.bio}
+                  </p>
+
+                  {member.qualifications && (
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                      {member.qualifications.map((q: string) => (
+                        <span class="font-mono text-[10.5px] px-2 py-0.5 rounded bg-panel text-paper/75 border border-line/30 group-hover:border-cyan/20 transition-colors">
+                          {q}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-faint">
+                  <span>{member.office}</span>
+                  {member.email && (
+                    <span class="text-cyan/80 hover:text-cyan transition-colors">{member.email}</span>
+                  )}
+                </div>
+
+              </article>
+            </TiltCard>
+          </RevealOnView>
+        );
+      })}
+    </div>
+
   </section>
 </BaseLayout>

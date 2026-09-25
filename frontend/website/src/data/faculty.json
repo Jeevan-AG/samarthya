@@ -1,26 +1,41 @@
 [
   {
     "id": "fac-001",
-    "name": "Dr. Placeholder Faculty",
+    "name": "Ms. Madhavi Gatty",
     "role": "Faculty Coordinator",
-    "designation": "Associate Professor",
+    "designation": "Assistant Professor",
     "department": "Electronics & Communication Engineering",
-    "specialization": "VLSI Design & Embedded Systems",
-    "bio": "Guiding research and hardware development with over 15 years in VLSI architectures and embedded computing.",
-    "email": "faculty@college.edu",
-    "office": "Room 204, ECE Block",
-    "qualifications": ["Ph.D. in Electronics Engineering", "M.Tech in VLSI Design"]
+    "specialization": "Embedded Systems & Signal Processing",
+    "image": "Madhavi_Gatty.webp",
+    "bio": "Guiding Samarthya club initiatives, hardware prototyping workshops, and student technical projects in the ECE Department.",
+    "email": "madhavig@sjec.ac.in",
+    "office": "ECE Faculty Block, SJEC",
+    "qualifications": ["M.Tech in Digital Electronics", "Assistant Professor - ECE"]
   },
   {
     "id": "fac-002",
-    "name": "Prof. Placeholder Co-Coordinator",
-    "role": "Faculty Co-Coordinator",
+    "name": "Mr. Prasad S. M.",
+    "role": "Faculty Coordinator",
     "designation": "Assistant Professor",
     "department": "Electronics & Communication Engineering",
-    "specialization": "Signal Processing & Communications",
-    "bio": "Mentoring competition teams, student symposiums, and research paper publications across all ECE cohorts.",
-    "email": "cofaculty@college.edu",
-    "office": "Room 210, ECE Block",
-    "qualifications": ["Ph.D. in Communication Engineering", "M.Tech in Signal Processing"]
+    "specialization": "VLSI Design & Hardware Systems",
+    "image": "",
+    "bio": "Mentoring hardware engineering cohorts, Circuit Craft workshops, and symposium research testbenches.",
+    "email": "prasads@sjec.ac.in",
+    "office": "ECE Faculty Block, SJEC",
+    "qualifications": ["M.Tech in VLSI & Embedded Systems", "Assistant Professor - ECE"]
+  },
+  {
+    "id": "fac-003",
+    "name": "Dr. Dayakshini",
+    "role": "Head of Department (HOD)",
+    "designation": "Professor & HOD",
+    "department": "Electronics & Communication Engineering",
+    "specialization": "Advanced Signal & Image Processing, VLSI",
+    "image": "",
+    "bio": "Providing executive academic leadership, institutional vision, and strategic direction for departmental student societies.",
+    "email": "hod_ece@sjec.ac.in",
+    "office": "HOD Office, ECE Department, SJEC",
+    "qualifications": ["Ph.D. in Electronics Engineering", "Professor & Head - ECE"]
   }
 ]

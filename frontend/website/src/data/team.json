@@ -89,6 +89,17 @@
   },
   {
     "id": "tm-09",
+    "name": "Alphin David Kunhimon",
+    "role": "Joint Secretary",
+    "category": "Secretariat & Operations",
+    "year": "Third Year",
+    "semester": "V A",
+    "domain": "Operations & Documentation",
+    "image": "Alphin_David_Kunhimon.webp",
+    "bio": "Coordinating club records, logistical planning, and student chapter operations."
+  },
+  {
+    "id": "tm-10",
     "name": "Dave Sylvester Vas Naik",
     "role": "Technical Lead",
     "category": "Technical & Development",
@@ -99,7 +110,7 @@
     "bio": "Leading circuit design workshops, hardware debugging, and real-time embedded prototyping."
   },
   {
-    "id": "tm-10",
+    "id": "tm-11",
     "name": "Aditi G Amin",
     "role": "Technical Lead",
     "category": "Technical & Development",
@@ -110,7 +121,7 @@
     "bio": "Mentoring junior members on schematic capture, SPICE simulation, and board layout."
   },
   {
-    "id": "tm-11",
+    "id": "tm-12",
     "name": "Jawahar Lawrence Rodrigues",
     "role": "Technical Lead",
     "category": "Technical & Development",
@@ -121,7 +132,7 @@
     "bio": "Directing microcontroller firmware development and DSP project tracks."
   },
   {
-    "id": "tm-12",
+    "id": "tm-13",
     "name": "Jeevan",
     "role": "Web Lead",
     "category": "Technical & Development",
@@ -132,7 +143,7 @@
     "bio": "Architecting modern digital platforms, interactive interfaces, and club web infrastructure."
   },
   {
-    "id": "tm-13",
+    "id": "tm-14",
     "name": "Achala A Patel",
     "role": "Media Coordinator",
     "category": "Team Leads & Media",
@@ -143,7 +154,7 @@
     "bio": "Directing visual storytelling, branding, and multimedia event documentation."
   },
   {
-    "id": "tm-14",
+    "id": "tm-15",
     "name": "Hithesh K.",
     "role": "Core Team Lead",
     "category": "Team Leads & Media",
@@ -154,7 +165,7 @@
     "bio": "Facilitating hands-on team builds, workshop equipment, and technical labs."
   },
   {
-    "id": "tm-15",
+    "id": "tm-16",
     "name": "Sarah Matthew Attupuram",
     "role": "Core Team Lead",
     "category": "Team Leads & Media",
@@ -165,7 +176,7 @@
     "bio": "Coordinating student workgroups, mentoring cohorts, and technical initiatives."
   },
   {
-    "id": "tm-16",
+    "id": "tm-17",
     "name": "Avinia Viola Pinto",
     "role": "Core Team Member",
     "category": "Core Team",
@@ -176,7 +187,7 @@
     "bio": "Contributing to technical symposium execution and hardware lab initiatives."
   },
   {
-    "id": "tm-17",
+    "id": "tm-18",
     "name": "Bashma",
     "role": "Core Team Member",
     "category": "Core Team",
@@ -187,7 +198,7 @@
     "bio": "Active member contributing to hardware builds, workshops, and event logistics."
   },
   {
-    "id": "tm-18",
+    "id": "tm-19",
     "name": "Brahmi Lakshmi U.H.",
     "role": "Core Team Member",
     "category": "Core Team",
@@ -198,7 +209,7 @@
     "bio": "Supporting workshop setups, component distribution, and team projects."
   },
   {
-    "id": "tm-19",
+    "id": "tm-20",
     "name": "Dhathri P G",
     "role": "Core Team Member",
     "category": "Core Team",
@@ -209,7 +220,7 @@
     "bio": "Assisting in project validation, testbench setups, and community workshops."
   },
   {
-    "id": "tm-20",
+    "id": "tm-21",
     "name": "Disha",
     "role": "Core Team Member",
     "category": "Core Team",
@@ -218,5 +229,16 @@
     "domain": "Embedded Systems & Firmware",
     "image": "Disha.webp",
     "bio": "Engaging in hands-on circuit fabrication, sensor integrations, and lab sessions."
+  },
+  {
+    "id": "tm-22",
+    "name": "Roshni Victoria Dsouza",
+    "role": "Core Team Member",
+    "category": "Core Team",
+    "year": "Third Year",
+    "semester": "V B",
+    "domain": "Hardware Prototyping & Circuits",
+    "image": "Roshni_Victoria_Dsouza.webp",
+    "bio": "Participating in circuit design, laboratory experiment validations, and event setups."
   }
 ]
