@@ -431,12 +431,21 @@ html.has-site-cursor * {
   }
 }
 
-/* Team photos: B&W by default, Color on Hover */
-img {
+/* 1. RESET: Force ALL images (including Events, Gallery, Logos) to stay full color */
+img,
+[class*="event"] img,
+[class*="Event"] img {
+  filter: none !important;
+}
+
+/* 2. STRICT TARGET: Apply grayscale ONLY if the URL page or wrapper is team-related */
+:is([class*="team"], [class*="Team"], body:has(#team), section[id*="team"]) img {
   filter: grayscale(100%);
   transition: filter 0.3s ease-in-out;
 }
 
-img:hover {
+/* 3. HOVER: Color back ONLY for team photos */
+:is([class*="team"], [class*="Team"], body:has(#team), section[id*="team"]) img:hover,
+:is([class*="team"], [class*="Team"], body:has(#team), section[id*="team"])>*:hover img {
   filter: grayscale(0%);
 }
