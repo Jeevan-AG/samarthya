@@ -42,7 +42,7 @@ const col3 = [
 ];
 ---
 
-<div class="parallax-flow-root relative w-full overflow-hidden py-10" id="parallax-flow-root">
+<div class="parallax-flow-root relative w-full overflow-hidden py-6 select-none pointer-events-none" id="parallax-flow-root">
   <!-- Subtle ambient corner lighting -->
   <div class="pointer-events-none absolute -top-32 left-1/3 -z-10 h-96 w-96 rounded-full bg-cyan/10 blur-[130px]"></div>
   <div class="pointer-events-none absolute -bottom-32 right-1/3 -z-10 h-96 w-96 rounded-full bg-cyan/8 blur-[130px]"></div>
@@ -50,137 +50,72 @@ const col3 = [
   <!-- 3-Column Parallax Grid -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-start">
     
-    <!-- Column 1 (Normal Speed: 0.05) -->
+    <!-- Column 1 (Speed: 0.06) -->
     <div class="parallax-col flex flex-col gap-5 sm:gap-6 lg:gap-8 will-change-transform" data-speed="0.06">
       {col1.map((item) => (
-        <div 
-          class="parallax-photo-card group relative cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-void/60 backdrop-blur-md shadow-2xl transition-all duration-500 hover:border-cyan/60 hover:shadow-[0_0_35px_rgba(0,251,248,0.3)] hover:-translate-y-1.5"
-          data-src={item.img.src}
-        >
+        <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-void/60 shadow-2xl transition-all duration-500 hover:border-cyan/50 hover:shadow-[0_0_35px_rgba(0,251,248,0.25)]">
           <div class={`relative overflow-hidden ${item.aspect} w-full`}>
             <Image
               src={item.img}
-              alt="SAMARTHYA Workshop Archive"
+              alt="SAMARTHYA Workshop Photo"
               width={800}
               height={500}
               format="webp"
-              quality={84}
+              quality={82}
               loading="lazy"
               decoding="async"
-              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-700 ease-out group-hover:scale-108 group-hover:brightness-105"
+              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-105"
             />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity duration-300"></div>
-            
-            <!-- Sleek Glow Corner Icon on Hover -->
-            <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-void/80 text-cyan border border-cyan/40 backdrop-blur-md shadow-lg">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-              </div>
-            </div>
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/75 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-300"></div>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Column 2 (Offset Speed: -0.07 with top offset for dynamic rhythm) -->
+    <!-- Column 2 (Speed: -0.07 with dynamic top offset) -->
     <div class="parallax-col flex flex-col gap-5 sm:gap-6 lg:gap-8 lg:-mt-12 will-change-transform" data-speed="-0.07">
       {col2.map((item) => (
-        <div 
-          class="parallax-photo-card group relative cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-void/60 backdrop-blur-md shadow-2xl transition-all duration-500 hover:border-cyan/60 hover:shadow-[0_0_35px_rgba(0,251,248,0.3)] hover:-translate-y-1.5"
-          data-src={item.img.src}
-        >
+        <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-void/60 shadow-2xl transition-all duration-500 hover:border-cyan/50 hover:shadow-[0_0_35px_rgba(0,251,248,0.25)]">
           <div class={`relative overflow-hidden ${item.aspect} w-full`}>
             <Image
               src={item.img}
-              alt="SAMARTHYA Workshop Archive"
+              alt="SAMARTHYA Workshop Photo"
               width={800}
               height={500}
               format="webp"
-              quality={84}
+              quality={82}
               loading="lazy"
               decoding="async"
-              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-700 ease-out group-hover:scale-108 group-hover:brightness-105"
+              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-105"
             />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity duration-300"></div>
-
-            <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-void/80 text-cyan border border-cyan/40 backdrop-blur-md shadow-lg">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-              </div>
-            </div>
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/75 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-300"></div>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Column 3 (Elevated Speed: 0.08) -->
+    <!-- Column 3 (Speed: 0.08) -->
     <div class="parallax-col flex flex-col gap-5 sm:gap-6 lg:gap-8 will-change-transform" data-speed="0.08">
       {col3.map((item) => (
-        <div 
-          class="parallax-photo-card group relative cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-void/60 backdrop-blur-md shadow-2xl transition-all duration-500 hover:border-cyan/60 hover:shadow-[0_0_35px_rgba(0,251,248,0.3)] hover:-translate-y-1.5"
-          data-src={item.img.src}
-        >
+        <div class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-void/60 shadow-2xl transition-all duration-500 hover:border-cyan/50 hover:shadow-[0_0_35px_rgba(0,251,248,0.25)]">
           <div class={`relative overflow-hidden ${item.aspect} w-full`}>
             <Image
               src={item.img}
-              alt="SAMARTHYA Workshop Archive"
+              alt="SAMARTHYA Workshop Photo"
               width={800}
               height={500}
               format="webp"
-              quality={84}
+              quality={82}
               loading="lazy"
               decoding="async"
-              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-700 ease-out group-hover:scale-108 group-hover:brightness-105"
+              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-105"
             />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity duration-300"></div>
-
-            <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-void/80 text-cyan border border-cyan/40 backdrop-blur-md shadow-lg">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-              </div>
-            </div>
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/75 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-300"></div>
           </div>
         </div>
       ))}
     </div>
 
-  </div>
-
-  <!-- Interactive Lightbox Modal -->
-  <div 
-    id="parallax-lightbox" 
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-void/90 p-4 sm:p-6 backdrop-blur-xl transition-all duration-300 opacity-0"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Image Preview Modal"
-  >
-    <div class="relative max-w-5xl w-full rounded-2xl sm:rounded-3xl border border-cyan/40 bg-surface/95 p-3 sm:p-5 shadow-[0_0_60px_rgba(0,251,248,0.3)]">
-      <!-- Close button -->
-      <button 
-        id="parallax-lightbox-close"
-        class="absolute -top-3.5 -right-3.5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-void border border-cyan text-paper hover:text-cyan hover:scale-110 transition-all shadow-xl"
-        aria-label="Close modal"
-      >
-        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
-      <div class="relative overflow-hidden rounded-xl sm:rounded-2xl bg-void max-h-[80vh] flex items-center justify-center">
-        <img 
-          id="parallax-lightbox-img" 
-          src="" 
-          alt="Enlarged workshop photo" 
-          class="max-h-[75vh] w-auto max-w-full object-contain rounded-xl"
-        />
-      </div>
-    </div>
   </div>
 </div>
 
@@ -223,55 +158,6 @@ const col3 = [
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     updateParallax();
-
-    // Lightbox handling
-    const lightbox = document.getElementById("parallax-lightbox");
-    const lightboxImg = document.getElementById("parallax-lightbox-img") as HTMLImageElement;
-    const closeBtn = document.getElementById("parallax-lightbox-close");
-
-    if (lightbox && lightboxImg && closeBtn) {
-      const cards = container.querySelectorAll<HTMLElement>(".parallax-photo-card");
-
-      function openModal(card: HTMLElement) {
-        const src = card.getAttribute("data-src") || "";
-        if (!src) return;
-        lightboxImg.src = src;
-
-        lightbox.classList.remove("hidden");
-        lightbox.classList.add("flex");
-        setTimeout(() => {
-          lightbox.classList.remove("opacity-0");
-          lightbox.classList.add("opacity-100");
-        }, 10);
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal() {
-        lightbox.classList.remove("opacity-100");
-        lightbox.classList.add("opacity-0");
-        setTimeout(() => {
-          lightbox.classList.remove("flex");
-          lightbox.classList.add("hidden");
-          lightboxImg.src = "";
-          document.body.style.overflow = "";
-        }, 200);
-      }
-
-      cards.forEach((card) => {
-        card.addEventListener("click", () => openModal(card));
-      });
-
-      closeBtn.addEventListener("click", closeModal);
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) closeModal();
-      });
-
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
-          closeModal();
-        }
-      });
-    }
   }
 
   initParallaxFlow();
