@@ -83,7 +83,7 @@ const categories = [
             </p>
           </div>
 
-          <!-- Members Grid with perfectly even card heights & proportions -->
+          <!-- Members Grid with Website1 Card Style -->
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {cat.members.map((member, i) => {
               const imageKey = `../assets/pics/team/${member.image}`;
@@ -92,82 +92,72 @@ const categories = [
               return (
                 <RevealOnView client:visible delay={i * 45}>
                   <TiltCard client:visible className="h-full">
-                    <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/40 backdrop-blur-sm p-5 transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 overflow-hidden">
+                    <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
                       
-                      <!-- Holographic scanning sweep on hover -->
-                      <div class="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-cyan/8 to-transparent" aria-hidden="true"></div>
+                      {/* Image Frame with Website1 Zoom & Gradient Overlay */}
+                      <div class="relative aspect-square w-full overflow-hidden bg-void/80">
+                        {imgMetadata ? (
+                          <Image
+                            src={imgMetadata}
+                            alt={`Portrait of ${member.name}`}
+                            width={500}
+                            height={500}
+                            format="webp"
+                            quality={88}
+                            loading="lazy"
+                            decoding="async"
+                            class="h-full w-full object-cover object-top brightness-[0.95] contrast-[1.03] transition-transform duration-700 ease-out group-hover:scale-108 group-hover:brightness-105"
+                          />
+                        ) : (
+                          <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
+                            [PHOTO]
+                          </div>
+                        )}
 
-                      <!-- Tech Corner Accents -->
-                      <div class="pointer-events-none absolute top-2.5 right-2.5 w-2 h-2 border-t border-r border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
-                      <div class="pointer-events-none absolute bottom-2.5 left-2.5 w-2 h-2 border-b border-l border-cyan/20 group-hover:border-cyan/60 transition-colors duration-300" aria-hidden="true"></div>
+                        <!-- Ambient Gradient Overlay -->
+                        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-300"></div>
 
-                      <div class="relative z-10 flex flex-col flex-1">
-                        <!-- Uniform 3:4 Portrait Image Container -->
-                        <div class="relative mb-5 overflow-hidden rounded-xl bg-void aspect-[3/4] border border-white/10 group-hover:border-cyan/30 transition-colors duration-300 shadow-inner">
-                          {imgMetadata ? (
-                            <Image
-                              src={imgMetadata}
-                              alt={`Portrait of ${member.name}`}
-                              width={480}
-                              height={640}
-                              format="webp"
-                              quality={92}
-                              loading="lazy"
-                              decoding="async"
-                              class="h-full w-full object-cover object-top brightness-[0.95] contrast-[1.03] transition-all duration-500 group-hover:scale-105 group-hover:brightness-100"
-                            />
-                          ) : (
-                            <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
-                              [PHOTO]
-                            </div>
+                        <!-- Role Pill Tag on Image Top -->
+                        <div class="absolute top-3 left-3">
+                          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-mono text-[10px] uppercase tracking-[0.16em] bg-void/85 text-cyan border border-cyan/35 backdrop-blur-md shadow-md">
+                            {member.role}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Info Container */}
+                      <div class="p-5 flex flex-col justify-between flex-1">
+                        <div>
+                          <h3 class="font-display text-xl sm:text-2xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
+                            {member.name}
+                          </h3>
+                          
+                          <div class="mt-1 flex items-center gap-2 font-mono text-[11px] text-cyan/90 font-medium tracking-wider uppercase">
+                            <span>{member.year}</span>
+                            <span>•</span>
+                            <span>{member.semester || "ECE"}</span>
+                          </div>
+
+                          {member.domain && (
+                            <p class="mt-2 text-xs font-mono text-paper/70 line-clamp-1">
+                              {member.domain}
+                            </p>
                           )}
 
-                          <!-- Ambient Gradient Vignette -->
-                          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/85 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-300"></div>
-
-                          <!-- Floating Role Badge -->
-                          <div class="absolute bottom-2.5 left-2.5 right-2.5">
-                            <span class="inline-flex w-full items-center justify-center px-2.5 py-1 rounded-lg font-mono text-[10.5px] uppercase tracking-[0.16em] bg-void/90 text-cyan border border-cyan/35 backdrop-blur-md shadow-md">
-                              {member.role}
-                            </span>
-                          </div>
-                        </div>
-
-                        <!-- Member Info with uniform text boxes -->
-                        <div class="flex-1 flex flex-col justify-between">
-                          <div>
-                            <h3 class="font-display text-2xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
-                              {member.name}
-                            </h3>
-
-                            <div class="mt-1 flex items-center gap-2 font-mono text-[11px] text-faint">
-                              <span>{member.year}</span>
-                              <span>•</span>
-                              <span class="text-paper/70">ECE Dept</span>
-                            </div>
-
-                            <!-- Specialization Pill -->
-                            {member.domain && (
-                              <div class="mt-3">
-                                <span class="inline-block rounded-md bg-white/[0.04] px-2.5 py-1 font-mono text-[10.5px] text-paper/85 border border-white/10 group-hover:border-cyan/25 transition-colors line-clamp-1">
-                                  {member.domain}
-                                </span>
-                              </div>
-                            )}
-                          </div>
-
-                          <!-- Bio Description -->
-                          <p class="mt-3 text-xs leading-relaxed text-mute line-clamp-2">
+                          <p class="mt-3 text-xs leading-relaxed text-mute line-clamp-2 font-sans">
                             {member.bio}
                           </p>
                         </div>
+
+                        <!-- Bottom Tag -->
+                        <div class="mt-4 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
+                          <span>SAMARTHYA</span>
+                          <span class="text-cyan/70 group-hover:text-cyan transition-colors uppercase">SJEC ECE</span>
+                        </div>
                       </div>
 
-                      <!-- Bottom HUD Status -->
-                      <div class="relative z-10 mt-5 pt-3 border-t border-line/20 flex items-center justify-between font-mono text-[10px] text-faint">
-                        <span>SAMARTHYA</span>
-                        <span class="text-cyan/70 group-hover:text-cyan transition-colors">OFFICIAL</span>
-                      </div>
+                      {/* Bottom Accent Bar from Website1 */}
+                      <div class="absolute bottom-0 left-0 right-0 h-[2.5px] bg-cyan scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
                     </article>
                   </TiltCard>
