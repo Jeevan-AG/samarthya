@@ -8,7 +8,7 @@
     "semester": "VII B",
     "domain": "Hardware & System Architecture",
     "image": "Winston_Pereira.webp",
-    "bio": "Leading SAMARTHYA with strategic vision, hardware innovation, and collaborative engineering excellence."
+    "linkedin": "https://www.linkedin.com/in/winston-pereira?utm_source=share_via&utm_content=profile&utm_medium=member_android"
   },
   {
     "id": "tm-02",
@@ -19,7 +19,7 @@
     "semester": "V A",
     "domain": "Embedded Systems & Robotics",
     "image": "Iris_Nirel_J.webp",
-    "bio": "Assisting the executive board in club operations, cross-domain initiatives, and student mentoring."
+    "linkedin": "https://www.linkedin.com/in/irisnirel2005"
   },
   {
     "id": "tm-03",
@@ -30,7 +30,7 @@
     "semester": "VII A",
     "domain": "VLSI & Digital Design",
     "image": "Frenny_Chrystal_Saldanha.webp",
-    "bio": "Leading academic alignment, research initiatives, and project lifecycles across club domains."
+    "linkedin": "https://www.linkedin.com/in/frenny-saldanha"
   },
   {
     "id": "tm-04",
@@ -41,7 +41,7 @@
     "semester": "V B",
     "domain": "IoT & Sensor Networks",
     "image": "Nikhitha_HL.webp",
-    "bio": "Overseeing technical project development, hackathon cohorts, and execution frameworks."
+    "linkedin": "https://www.linkedin.com/in/nikhitha-hl-5345aa351"
   },
   {
     "id": "tm-05",
@@ -51,8 +51,7 @@
     "year": "Final Year",
     "semester": "VII A",
     "domain": "Operations & Logistics",
-    "image": "Kartik_Ulhas_Salaskar.webp",
-    "bio": "Directing event logistics, laboratory scheduling, and organizational workflows."
+    "image": "Kartik_Ulhas_Salaskar.webp"
   },
   {
     "id": "tm-06",
@@ -63,7 +62,7 @@
     "semester": "VII A",
     "domain": "Administration & Operations",
     "image": "Nayan.webp",
-    "bio": "Managing internal communications, club records, and inter-team operational sync."
+    "linkedin": "https://www.linkedin.com/in/nayanr2005?utm_source=share_via&utm_content=profile&utm_medium=member_android"
   },
   {
     "id": "tm-07",
@@ -73,8 +72,7 @@
     "year": "Third Year",
     "semester": "V A",
     "domain": "Technical Documentation",
-    "image": "Armaan_B.M.webp",
-    "bio": "Managing technical documentation, external outreach, and member relations."
+    "image": "Armaan_B.M.webp"
   },
   {
     "id": "tm-08",
@@ -85,7 +83,7 @@
     "semester": "V A",
     "domain": "Public Relations & Media",
     "image": "Gauthami_Shetty.webp",
-    "bio": "Organizing meeting agendas, student relations, and session coordination."
+    "linkedin": "https://www.linkedin.com/in/gauthami-shetty-a0069a3a6?utm_source=share_via&utm_content=profile&utm_medium=member_android"
   },
   {
     "id": "tm-09",
@@ -96,7 +94,7 @@
     "semester": "V A",
     "domain": "Operations & Documentation",
     "image": "Alphin_David_Kunhimon.webp",
-    "bio": "Coordinating club records, logistical planning, and student chapter operations."
+    "linkedin": "https://www.linkedin.com/in/alphin-david-kunhimon-1a79ba343?utm_source=share_via&utm_content=profile&utm_medium=member_android"
   },
   {
     "id": "tm-10",
@@ -107,7 +105,7 @@
     "semester": "VII A",
     "domain": "Embedded Systems & PCB Design",
     "image": "Dave_Sylvester_Vas_Naik.webp",
-    "bio": "Leading circuit design workshops, hardware debugging, and real-time embedded prototyping."
+    "linkedin": "https://www.linkedin.com/in/dave-sylvester-vas-naik"
   },
   {
     "id": "tm-11",
@@ -118,7 +116,7 @@
     "semester": "VII A",
     "domain": "Circuit Simulation & Hardware",
     "image": "Aditi_G_Amin.webp",
-    "bio": "Mentoring junior members on schematic capture, SPICE simulation, and board layout."
+    "linkedin": "https://www.linkedin.com/in/aditi-g-amin"
   },
   {
     "id": "tm-12",
@@ -129,7 +127,7 @@
     "semester": "V A",
     "domain": "Signal Processing & Firmware",
     "image": "Jawahar_Lawrence_Rodrigues.webp",
-    "bio": "Directing microcontroller firmware development and DSP project tracks."
+    "linkedin": "https://www.linkedin.com/in/jawahar-rodrigues-032540331?utm_source=share_via&utm_content=profile&utm_medium=member_android"
   },
   {
     "id": "tm-13",
@@ -140,7 +138,7 @@
     "semester": "V A",
     "domain": "Full-Stack & Cyber Systems",
     "image": "Jeevan.webp",
-    "bio": "Architecting modern digital platforms, interactive interfaces, and club web infrastructure."
+    "linkedin": "https://www.linkedin.com/in/jeevan-523928398"
   },
   {
     "id": "tm-14",
@@ -151,7 +149,7 @@
     "semester": "VII A",
     "domain": "Visual Design & Multimedia",
     "image": "Achala_A_Patel.webp",
-    "bio": "Directing visual storytelling, branding, and multimedia event documentation."
+    "linkedin": "https://www.linkedin.com/in/achalapatel23"
   },
   {
     "id": "tm-15",
@@ -162,7 +160,7 @@
     "semester": "V A",
     "domain": "Project Coordination & Hardware",
     "image": "Hithesh_K.webp",
-    "bio": "Facilitating hands-on team builds, workshop equipment, and technical labs."
+    "linkedin": "https://www.linkedin.com/in/hitheshkkulal"
   },
   {
     "id": "tm-16",
@@ -173,7 +171,7 @@
     "semester": "V B",
     "domain": "Community Engagement",
     "image": "Sarah_Matthew_Attupuram.webp",
-    "bio": "Coordinating student workgroups, mentoring cohorts, and technical initiatives."
+    "linkedin": "https://www.linkedin.com/in/sarah-mathew-b2a517433"
   },
   {
     "id": "tm-17",
@@ -184,7 +182,7 @@
     "semester": "V A",
     "domain": "Digital Electronics",
     "image": "Avinia_Viola_Pinto.webp",
-    "bio": "Contributing to technical symposium execution and hardware lab initiatives."
+    "linkedin": " https://www.linkedin.com/in/avinia-viola-aab2873b8?utm_source=share_via&utm_content=profile&utm_medium=member_android"
   },
   {
     "id": "tm-18",
@@ -195,7 +193,7 @@
     "semester": "V A",
     "domain": "Circuit Design & Prototyping",
     "image": "Bashma.webp",
-    "bio": "Active member contributing to hardware builds, workshops, and event logistics."
+    "linkedin": "https://www.linkedin.com/in/bashma-8ba0753b7"
   },
   {
     "id": "tm-19",
@@ -206,7 +204,7 @@
     "semester": "V A",
     "domain": "IoT & Hardware Prototyping",
     "image": "Brahmi_Lakshmi_U.H.webp",
-    "bio": "Supporting workshop setups, component distribution, and team projects."
+    "linkedin": "https://www.linkedin.com/in/brahmi-lakshmi-uh"
   },
   {
     "id": "tm-20",
@@ -217,7 +215,7 @@
     "semester": "V A",
     "domain": "Electronic Instrumentation",
     "image": "Dhathri_P_G.webp",
-    "bio": "Assisting in project validation, testbench setups, and community workshops."
+    "linkedin": "https://www.linkedin.com/in/dhathri-p-g-a84b8b37a"
   },
   {
     "id": "tm-21",
@@ -228,7 +226,7 @@
     "semester": "V A",
     "domain": "Embedded Systems & Firmware",
     "image": "Disha.webp",
-    "bio": "Engaging in hands-on circuit fabrication, sensor integrations, and lab sessions."
+    "linkedin": "https://www.linkedin.com/in/disha-keshav-a79401414"
   },
   {
     "id": "tm-22",
@@ -239,6 +237,6 @@
     "semester": "V B",
     "domain": "Hardware Prototyping & Circuits",
     "image": "Roshni_Victoria_Dsouza.webp",
-    "bio": "Participating in circuit design, laboratory experiment validations, and event setups."
+    "linkedin": "https://www.linkedin.com/in/roshni-victoria-a9169131b"
   }
 ]
