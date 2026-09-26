@@ -1,30 +1,12 @@
 [
   {
     "id": "fac-001",
-    "name": "Ms. Madhavi Gatty",
-    "role": "Faculty Coordinator",
-    "designation": "Assistant Professor",
-    "department": "Electronics & Communication Engineering",
-    "specialization": "Embedded Systems & Signal Processing",
-    "image": "Madhavi_Gatty.webp",
-    "bio": "Guiding Samarthya club initiatives, hardware prototyping workshops, and student technical projects in the ECE Department.",
-    "email": "madhavig@sjec.ac.in",
-    "office": "ECE Faculty Block, SJEC",
-    "qualifications": [
-      "M.Tech in Digital Electronics",
-      "Assistant Professor - ECE"
-    ]
-  },
-  {
-    "id": "fac-002",
     "name": "Mr. Prasad S. M.",
     "role": "Faculty Coordinator",
     "designation": "Assistant Professor",
     "department": "Electronics & Communication Engineering",
-    "specialization": "VLSI Design & Hardware Systems",
     "image": "Prasad_SM.webp",
-    "bio": "Mentoring hardware engineering cohorts, Circuit Craft workshops, and symposium research testbenches.",
-    "email": "prasads@sjec.ac.in",
+    "linkedin": "https://www.linkedin.com/",
     "office": "ECE Faculty Block, SJEC",
     "qualifications": [
       "M.Tech in VLSI & Embedded Systems",
@@ -32,19 +14,17 @@
     ]
   },
   {
-    "id": "fac-003",
-    "name": "Dr. Dayakshini",
-    "role": "Head of Department (HOD)",
-    "designation": "Professor & HOD",
+    "id": "fac-002",
+    "name": "Ms. Madhavi Gatty",
+    "role": "Faculty Coordinator",
+    "designation": "Assistant Professor",
     "department": "Electronics & Communication Engineering",
-    "specialization": "Advanced Signal & Image Processing, VLSI",
-    "image": "",
-    "bio": "Providing executive academic leadership, institutional vision, and strategic direction for departmental student societies.",
-    "email": "hod_ece@sjec.ac.in",
-    "office": "HOD Office, ECE Department, SJEC",
+    "image": "Madhavi_Gatty.webp",
+    "linkedin": "https://www.linkedin.com/",
+    "office": "ECE Faculty Block, SJEC",
     "qualifications": [
-      "Ph.D. in Electronics Engineering",
-      "Professor & Head - ECE"
+      "M.Tech in Digital Electronics",
+      "Assistant Professor - ECE"
     ]
   }
 ]

@@ -1,0 +1,322 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   SAMARTHYA — Dark Bold Theme
+   ═══════════════════════════════════════════ */
+
+@theme {
+  --color-canvas: #040812;
+  --color-surface: #091120;
+  --color-surface-raised: #101c32;
+  --color-surface-hover: #162644;
+  --color-accent: #00E5CC;
+  --color-accent-dim: #00B8A3;
+  --color-accent-glow: rgba(0, 229, 204, 0.15);
+  --color-accent-glow-strong: rgba(0, 229, 204, 0.3);
+  --color-text-primary: #EAEAF0;
+  --color-text-secondary: #8A99AC;
+  --color-text-muted: #526377;
+  --color-border: rgba(0, 229, 204, 0.09);
+  --color-border-accent: rgba(0, 229, 204, 0.25);
+  --color-error: #FF4D6A;
+  --color-success: #00E5CC;
+
+  --font-outfit: "Outfit", sans-serif;
+  --font-geist: "Geist", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+}
+
+/* ═══════════════════════════════════════════
+   Base Resets & Typography
+   ═══════════════════════════════════════════ */
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scrolling */
+  overflow-x: clip;
+  scrollbar-color: var(--color-surface-hover) transparent;
+  scrollbar-width: thin;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-geist);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/* ═══════════════════════════════════════════
+   Custom Scrollbar
+   ═══════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-hover);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-dim);
+}
+
+/* ═══════════════════════════════════════════
+   Selection Color
+   ═══════════════════════════════════════════ */
+
+::selection {
+  background: var(--color-accent-glow-strong);
+  color: var(--color-text-primary);
+}
+
+/* ═══════════════════════════════════════════
+   Typography Utilities
+   ═══════════════════════════════════════════ */
+
+.heading-display {
+  font-family: var(--font-outfit);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.heading-section {
+  font-family: var(--font-outfit);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.text-body {
+  font-family: var(--font-geist);
+  line-height: 1.7;
+  max-width: 65ch;
+}
+
+.text-mono {
+  font-family: var(--font-geist-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════
+   Grain Overlay (Subtle texture)
+   ═══════════════════════════════════════════ */
+
+.grain-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════════════════
+   Glow & Accent Utilities
+   ═══════════════════════════════════════════ */
+
+.glow-accent {
+  box-shadow: 0 0 30px var(--color-accent-glow),
+              0 0 60px var(--color-accent-glow);
+}
+
+.glow-text {
+  text-shadow: 0 0 40px var(--color-accent-glow);
+}
+
+.gradient-accent-text {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dim));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════
+   Card Hover Effect
+   ═══════════════════════════════════════════ */
+
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+              0 0 30px var(--color-accent-glow);
+  border-color: var(--color-border-accent);
+}
+
+/* ═══════════════════════════════════════════
+   Button Interactions
+   ═══════════════════════════════════════════ */
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-canvas);
+  font-weight: 600;
+  font-family: var(--font-outfit);
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  font-family: var(--font-outfit);
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-glow);
+}
+
+.btn-ghost:active {
+  transform: translateY(1px);
+}
+
+/* ═══════════════════════════════════════════
+   Skeleton Loading
+   ═══════════════════════════════════════════ */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface) 25%,
+    var(--color-surface-raised) 50%,
+    var(--color-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   Page transitions
+   ═══════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Stagger delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ═══════════════════════════════════════════
+   Preloader ECG / Waveform Animation
+   ═══════════════════════════════════════════ */
+
+.loader-container {
+  width: 85%;
+  max-width: 600px;
+}
+
+/* Track (Dim background line) */
+.track {
+  fill: none;
+  stroke: #1a2634; /* Dark outline tone */
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Loading Line (Cyan Accent) */
+.progress {
+  fill: none;
+  stroke: #00f0ff; /* Bright Cyan Blue */
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: load 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  filter: drop-shadow(0 0 6px #00f0ff);
+  will-change: stroke-dashoffset;
+}
+
+@keyframes load {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -600;
+  }
+}

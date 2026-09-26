@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const links = [
   { id: "about", href: "/#about", label: "About" },
   { id: "faculty", href: "/#faculty", label: "Faculty" },
-  { id: "events", href: "/events", label: "Events" },
-  { id: "team", href: "/team", label: "Team" },
+  { id: "team", href: "/#team", label: "Team" },
+  { id: "events", href: "/#events", label: "Events" },
 ];
 
 export default function Navbar({ pathname = "/" }: { pathname?: string }) {
@@ -25,7 +25,7 @@ export default function Navbar({ pathname = "/" }: { pathname?: string }) {
       return;
     }
 
-    const sectionIds = ["about", "faculty"];
+    const sectionIds = ["about", "faculty", "team", "events"];
 
     const updateActive = () => {
       // If in Hero section at top of page, no section is active

@@ -171,8 +171,8 @@ function formatDate(value: string) {
         </RevealOnView>
       </div>
 
-      <!-- Faculty Cards Grid (Website1 Style) -->
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Faculty Cards Grid (Website1 Style - Centered for 2 Coordinators) -->
+      <div class="mx-auto max-w-4xl grid gap-8 sm:grid-cols-2">
         {faculty.map((member, i) => {
           const imageKey = `../assets/pics/faculty/${member.image}`;
           const imgMetadata = member.image ? facultyImages[imageKey]?.default : null;
@@ -183,7 +183,7 @@ function formatDate(value: string) {
                 <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
                   
                   <!-- Top Image Frame -->
-                  <div class="relative aspect-square w-full overflow-hidden bg-void">
+                  <div class="relative aspect-square w-full overflow-hidden bg-void border-b border-line/30">
                     {imgMetadata ? (
                       <Image
                         src={imgMetadata}
@@ -202,12 +202,6 @@ function formatDate(value: string) {
                       </div>
                     )}
                     <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-85 group-hover:opacity-40 transition-opacity duration-300"></div>
-
-                    <div class="absolute top-3 left-3">
-                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-mono text-[10px] uppercase tracking-[0.16em] bg-void/85 text-cyan border border-cyan/35 backdrop-blur-md shadow-md">
-                        {member.role || "Faculty Coordinator"}
-                      </span>
-                    </div>
                   </div>
 
                   <!-- Info Container -->
@@ -219,23 +213,26 @@ function formatDate(value: string) {
                       <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-cyan/90 font-medium">
                         {member.designation} · {member.department || "ECE Dept"}
                       </p>
-
-                      <div class="mt-3 inline-flex items-center gap-2 rounded-lg bg-white/[0.04] px-2.5 py-1 border border-white/10 group-hover:border-cyan/30 transition-colors">
-                        <svg class="w-3.5 h-3.5 text-cyan shrink-0 transition-transform duration-500 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                        </svg>
-                        <span class="font-mono text-[11px] text-paper/90 line-clamp-1">{member.specialization}</span>
-                      </div>
-
-                      <p class="mt-3 text-xs leading-relaxed text-mute line-clamp-2">
-                        {member.bio}
-                      </p>
                     </div>
 
-                    <div class="mt-4 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
-                      <span>{member.office || "ECE Block"}</span>
-                      {member.email && (
-                        <span class="text-cyan/80 hover:text-cyan transition-colors">{member.email}</span>
+                    <div class="mt-5 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
+                      <span class="uppercase tracking-wider">SAMARTHYA · SJEC</span>
+                      {member.linkedin ? (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
+                          aria-label={`${member.name}'s LinkedIn`}
+                        >
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" rx="0.5" />
+                            <circle cx="4" cy="4" r="2" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <span class="text-cyan/70">SJEC ECE</span>
                       )}
                     </div>
                   </div>
@@ -295,7 +292,7 @@ function formatDate(value: string) {
                 <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
                   
                   <!-- Aspect Square Image Frame with Zoom & Overlay -->
-                  <div class="relative aspect-square w-full overflow-hidden bg-void/80">
+                  <div class="relative aspect-square w-full overflow-hidden bg-void/80 border-b border-line/40">
                     {imgMetadata ? (
                       <Image
                         src={imgMetadata}
@@ -315,41 +312,38 @@ function formatDate(value: string) {
                     )}
                     
                     <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-300"></div>
-
-                    <div class="absolute top-3 left-3">
-                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-mono text-[10px] uppercase tracking-[0.16em] bg-void/85 text-cyan border border-cyan/35 backdrop-blur-md shadow-md">
-                        {member.role}
-                      </span>
-                    </div>
                   </div>
 
-                  <!-- Info -->
+                  <!-- Info Container -->
                   <div class="p-5 flex flex-col justify-between flex-1">
                     <div>
                       <h3 class="font-display text-xl sm:text-2xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
                         {member.name}
                       </h3>
 
-                      <div class="mt-1 flex items-center gap-2 font-mono text-[11px] text-cyan/90 font-medium tracking-wider uppercase">
-                        <span>{member.year}</span>
-                        <span>•</span>
-                        <span>{member.semester || "ECE"}</span>
-                      </div>
-
-                      {member.domain && (
-                        <p class="mt-2 text-xs font-mono text-paper/70 line-clamp-1">
-                          {member.domain}
+                      {member.role && (
+                        <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-cyan/90 font-medium line-clamp-1">
+                          {member.role}
                         </p>
                       )}
-
-                      <p class="mt-3 text-xs leading-relaxed text-mute line-clamp-2">
-                        {member.bio}
-                      </p>
                     </div>
 
-                    <div class="mt-4 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
-                      <span>SAMARTHYA</span>
-                      <span class="text-cyan/70 group-hover:text-cyan transition-colors uppercase">SJEC ECE</span>
+                    <!-- Bottom Tag + LinkedIn Icon -->
+                    <div class="mt-5 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
+                      <span class="uppercase tracking-wider">SAMARTHYA · SJEC</span>
+                      <a
+                        href={member.linkedin || "https://www.linkedin.com/"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
+                        aria-label={`${member.name}'s LinkedIn`}
+                      >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                          <rect x="2" y="9" width="4" height="12" rx="0.5" />
+                          <circle cx="4" cy="4" r="2" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
 
@@ -379,7 +373,7 @@ function formatDate(value: string) {
             <div class="mb-4">
               <GlitchText client:visible text="events" highlightWord="" />
             </div>
-            <p class="font-mono text-xs text-faint uppercase tracking-widest mt-1">Flagship Circuit Craft &amp; Hardware Tracks</p>
+            <p class="font-mono text-xs text-faint uppercase tracking-widest mt-1">Technical Workshops &amp; Prototyping</p>
           </RevealOnView>
         </div>
 
@@ -396,23 +390,15 @@ function formatDate(value: string) {
         </RevealOnView>
       </div>
 
-      <!-- Events Showcase Grid -->
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Events Showcase Grid (Centered 2-Card Layout) -->
+      <div class="mx-auto max-w-4xl grid gap-8 sm:grid-cols-2">
         
-        <!-- Card 1: Circuit Craft 2.0 with Photo Preview -->
+        <!-- Card 1: Circuit Craft 2.0 -->
         <RevealOnView client:visible delay={0}>
           <TiltCard client:visible className="h-full">
             <article class="group relative flex h-full flex-col justify-between rounded-2xl border border-cyan/40 bg-surface/50 p-6 transition-all duration-300 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.2)] hover:-translate-y-1.5 overflow-hidden">
               
               <div class="relative z-10">
-                <!-- Top Badge -->
-                <div class="flex items-center justify-between gap-2 mb-4">
-                  <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan text-void font-bold">
-                    CIRCUIT CRAFT 2.0
-                  </span>
-                  <span class="font-mono text-[10px] text-faint uppercase">Flagship Edition</span>
-                </div>
-
                 <!-- Event Photo Preview -->
                 {cc2Photos[0] && (
                   <div class="relative mb-4 overflow-hidden rounded-xl bg-void aspect-[16/10] border border-white/10">
@@ -439,29 +425,20 @@ function formatDate(value: string) {
                 </p>
               </div>
 
-              <div class="relative z-10 mt-6 pt-4 border-t border-line/30 space-y-1">
-                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
-                  Sep 22, 2026 · 10:00 AM
-                </p>
-                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-cyan">ECE Systems &amp; Hardware Lab</p>
+              <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
+                <span>Sep 22, 2026</span>
+                <span class="text-cyan">10:00 AM</span>
               </div>
             </article>
           </TiltCard>
         </RevealOnView>
 
-        <!-- Card 2: Circuit Craft 1.0 with Photo Preview -->
+        <!-- Card 2: Circuit Craft 1.0 -->
         <RevealOnView client:visible delay={70}>
           <TiltCard client:visible className="h-full">
             <article class="group relative flex h-full flex-col justify-between rounded-2xl border border-line bg-surface/40 p-6 transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_20px_rgba(0,251,248,0.1)] hover:-translate-y-1.5 overflow-hidden">
               
               <div class="relative z-10">
-                <div class="flex items-center justify-between gap-2 mb-4">
-                  <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan/15 text-cyan border border-cyan/30">
-                    CIRCUIT CRAFT 1.0
-                  </span>
-                  <span class="font-mono text-[10px] text-faint uppercase">Inaugural</span>
-                </div>
-
                 {cc1Photos[0] && (
                   <div class="relative mb-4 overflow-hidden rounded-xl bg-void aspect-[16/10] border border-white/10">
                     <Image
@@ -487,52 +464,9 @@ function formatDate(value: string) {
                 </p>
               </div>
 
-              <div class="relative z-10 mt-6 pt-4 border-t border-line/30 space-y-1">
-                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
-                  Apr 10, 2026 · 9:30 AM
-                </p>
-                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-faint">ECE Project Laboratory</p>
-              </div>
-            </article>
-          </TiltCard>
-        </RevealOnView>
-
-        <!-- Card 3: Circuit Craft 3.0 / Upcoming Symposium -->
-        <RevealOnView client:visible delay={140}>
-          <TiltCard client:visible className="h-full">
-            <article class="group relative flex h-full flex-col justify-between rounded-2xl border border-line bg-surface/40 p-6 transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_20px_rgba(0,251,248,0.1)] hover:-translate-y-1.5 overflow-hidden">
-              
-              <div class="relative z-10">
-                <div class="flex items-center justify-between gap-2 mb-4">
-                  <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/25">
-                    UPCOMING EDITION
-                  </span>
-                  <span class="flex items-center gap-1.5 font-mono text-[10px] text-cyan uppercase tracking-wider">
-                    <span class="h-2 w-2 rounded-full bg-cyan animate-ping"></span>
-                    Nov 2026
-                  </span>
-                </div>
-
-                <div class="relative mb-4 flex items-center justify-center rounded-xl bg-panel/60 aspect-[16/10] border border-line/40">
-                  <div class="text-center p-4">
-                    <span class="font-mono text-xs uppercase tracking-widest text-cyan block mb-1">Next Generation</span>
-                    <span class="font-display text-2xl text-paper">Multi-Layer PCB &amp; IoT</span>
-                  </div>
-                </div>
-
-                <h3 class="font-display text-2xl sm:text-3xl leading-tight text-paper group-hover:text-cyan transition-colors duration-300">
-                  Circuit Craft 3.0
-                </h3>
-                <p class="mt-2.5 text-sm leading-relaxed text-mute">
-                  Multi-layer board routing, high-frequency design, and ESP32/STM32 wireless telemetry.
-                </p>
-              </div>
-
-              <div class="relative z-10 mt-6 pt-4 border-t border-line/30 space-y-1">
-                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
-                  Nov 15, 2026 · 10:00 AM
-                </p>
-                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-cyan">ECE Advanced Fabrication Lab</p>
+              <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
+                <span>Apr 10, 2026</span>
+                <span class="text-cyan">9:30 AM</span>
               </div>
             </article>
           </TiltCard>

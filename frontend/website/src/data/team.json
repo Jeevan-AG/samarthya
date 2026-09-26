@@ -51,7 +51,8 @@
     "year": "Final Year",
     "semester": "VII A",
     "domain": "Operations & Logistics",
-    "image": "Kartik_Ulhas_Salaskar.webp"
+    "image": "Kartik_Ulhas_Salaskar.webp",
+    "linkedin": "https://www.linkedin.com/"
   },
   {
     "id": "tm-06",
@@ -72,7 +73,8 @@
     "year": "Third Year",
     "semester": "V A",
     "domain": "Technical Documentation",
-    "image": "Armaan_B.M.webp"
+    "image": "Armaan_B.M.webp",
+    "linkedin": "https://www.linkedin.com/"
   },
   {
     "id": "tm-08",
