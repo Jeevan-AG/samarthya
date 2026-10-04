@@ -20,6 +20,7 @@ const links = [
 ];
 
 const { title, description, current = "/" } = Astro.props;
+const adminUrl = import.meta.env.PUBLIC_ADMIN_URL || "http://localhost:5173";
 ---
 
 <!doctype html>
@@ -88,7 +89,9 @@ const { title, description, current = "/" } = Astro.props;
         <p>© 2026 SAMARTHYA — ECE Department Club</p>
         <div class="flex items-center gap-6">
           <a
-            href="/admin"
+            href={adminUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             class="font-mono text-[11px] text-faint hover:text-cyan transition-colors inline-flex items-center gap-1.5 group"
             title="Lead Admin Control Center"
           >

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "fac-001",
+    "name": "Mr. Prasad S. M.",
+    "role": "Faculty Coordinator",
+    "designation": "Assistant Professor",
+    "department": "Electronics & Communication Engineering",
+    "image": "Prasad_SM.webp",
+    "linkedin": "https://www.linkedin.com/",
+    "office": "ECE Faculty Block, SJEC",
+    "qualifications": [
+      "M.Tech in VLSI & Embedded Systems",
+      "Assistant Professor - ECE"
+    ]
+  },
+  {
+    "id": "fac-002",
+    "name": "Ms. Madhavi Gatty",
+    "role": "Faculty Coordinator",
+    "designation": "Assistant Professor",
+    "department": "Electronics & Communication Engineering",
+    "image": "Madhavi_Gatty.webp",
+    "linkedin": "https://www.linkedin.com/",
+    "office": "ECE Faculty Block, SJEC",
+    "qualifications": [
+      "M.Tech in Digital Electronics",
+      "Assistant Professor - ECE"
+    ]
+  }
+]

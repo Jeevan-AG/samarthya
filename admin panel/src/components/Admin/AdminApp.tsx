@@ -8,7 +8,8 @@ const AdminAppInner: React.FC = () => {
   const auth = useAdminAuth();
 
   const handleBackToSite = () => {
-    window.location.href = '/';
+    const siteUrl = import.meta.env.VITE_WEBSITE_URL || 'http://localhost:4321';
+    window.location.href = siteUrl;
   };
 
   const handleLogout = () => {
