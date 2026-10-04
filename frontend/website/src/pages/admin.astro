@@ -1,0 +1,25 @@
+---
+import "../styles/global.css";
+import AdminApp from "../components/Admin/AdminApp";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <title>SAMARTHYA // Admin Command Center</title>
+    <meta
+      name="description"
+      content="Administrative content controller for SAMARTHYA ECE Department Technical Society."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body class="grain scanlines bg-[#03060d] text-[#e8edf4] min-h-[100dvh]">
+    <div class="pointer-events-none fixed inset-0 z-0 grid-floor opacity-30" aria-hidden="true"></div>
+    <div class="relative z-10">
+      <AdminApp client:only="react" />
+    </div>
+  </body>
+</html>

@@ -13,7 +13,7 @@ interface Props {
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/#about", label: "About" },
   { href: "/faculty", label: "Faculty" },
   { href: "/team", label: "Team" },
   { href: "/events", label: "Events" },
@@ -79,14 +79,24 @@ const { title, description, current = "/" } = Astro.props;
         <div class="md:col-span-4">
           <p class="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-faint">Department office</p>
           <p class="text-sm text-mute">ECE Block, campus infrastructure</p>
-          <a href="mailto:samarthya@college.edu" class="mt-2 inline-block text-sm text-cyan">
-            samarthya@college.edu
+          <a href="mailto:samarthya@sjec.ac.in" class="mt-2 inline-block text-sm text-cyan">
+            samarthya@sjec.ac.in
           </a>
         </div>
       </div>
       <div class="mx-auto flex max-w-[1400px] flex-col gap-3 border-t border-line px-5 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between lg:px-8">
         <p>© 2026 SAMARTHYA — ECE Department Club</p>
-        <p class="font-mono tracking-[0.16em] uppercase">Signal. Circuit. Field.</p>
+        <div class="flex items-center gap-6">
+          <a
+            href="/admin"
+            class="font-mono text-[11px] text-faint hover:text-cyan transition-colors inline-flex items-center gap-1.5 group"
+            title="Lead Admin Control Center"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-cyan/60 group-hover:bg-cyan animate-pulse"></span>
+            <span>ADMIN PORTAL</span>
+          </a>
+          <p class="font-mono tracking-[0.16em] uppercase">Signal. Circuit. Field.</p>
+        </div>
       </div>
     </footer>
   </body>
