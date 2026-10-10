@@ -431,7 +431,14 @@ html.has-site-cursor * {
   }
 }
 
-/* Base image styles */
-img {
-  filter: none;
+/* Portrait Grayscale effect (Scoped specifically to Faculty & Team cards) */
+.portrait-grayscale {
+  filter: grayscale(100%);
+  transition: filter 0.4s ease-in-out, transform 0.6s ease-out;
+}
+
+.group:hover .portrait-grayscale,
+article:hover .portrait-grayscale,
+.portrait-grayscale:hover {
+  filter: grayscale(0%);
 }
