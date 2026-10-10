@@ -89,12 +89,17 @@ const categories = [
               const imageKey = `../assets/pics/team/${member.image}`;
               const imgMetadata = teamImages[imageKey]?.default;
 
+              // Parse scale value safely whether string ("1.15" / "scale-115") or numeric
+              const scaleVal = member.scale 
+                ? (typeof member.scale === 'number' ? member.scale : parseFloat(member.scale.replace(/[^0-9.]/g, '')) / 100 || member.scale)
+                : 1.1;
+
               return (
                 <RevealOnView client:visible delay={i * 45}>
                   <TiltCard client:visible className="h-full">
                     <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
                       
-                      {/* Image Frame */}
+                      {/* Image Frame with Guaranteed Style Application */}
                       <div class="relative aspect-square w-full overflow-hidden bg-void/80 border-b border-line/40">
                         {imgMetadata ? (
                           <Image
@@ -106,7 +111,11 @@ const categories = [
                             quality={88}
                             loading="lazy"
                             decoding="async"
-                            class="h-full w-full object-cover object-top brightness-[0.95] contrast-[1.03] transition-transform duration-700 ease-out group-hover:scale-108 group-hover:brightness-105"
+                            class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:brightness-105"
+                            style={{
+                              objectPosition: member.objectPosition || 'center 25%',
+                              transform: `scale(${scaleVal})`
+                            }}
                           />
                         ) : (
                           <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
