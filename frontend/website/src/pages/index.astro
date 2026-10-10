@@ -194,7 +194,7 @@ function formatDate(value: string) {
                         quality={88}
                         loading="lazy"
                         decoding="async"
-                        class="h-full w-full object-cover object-top brightness-[0.95] contrast-[1.03] transition-transform duration-700 ease-out group-hover:scale-108 group-hover:brightness-105"
+                        class="h-full w-full object-cover object-top grayscale group-hover:grayscale-0 brightness-[0.95] contrast-[1.03] transition-all duration-500 ease-out group-hover:scale-108 group-hover:brightness-105"
                       />
                     ) : (
                       <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
@@ -303,7 +303,10 @@ function formatDate(value: string) {
                         quality={88}
                         loading="lazy"
                         decoding="async"
-                        class="h-full w-full object-cover object-top brightness-[0.95] contrast-[1.03] transition-transform duration-700 ease-out group-hover:scale-108 group-hover:brightness-105"
+                        class="h-full w-full object-cover grayscale group-hover:grayscale-0 brightness-[0.95] contrast-[1.03] transition-all duration-500 ease-out group-hover:scale-108 group-hover:brightness-105"
+                        style={{
+                          objectPosition: member.objectPosition || 'center 20%'
+                        }}
                       />
                     ) : (
                       <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
