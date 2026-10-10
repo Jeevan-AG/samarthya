@@ -24,7 +24,9 @@ const cc2Photos = Object.values(cc2Images).map((m) => m.default);
 const cc1Photos = Object.values(cc1Images).map((m) => m.default);
 
 // Feature key leadership and leads on homepage grid
-const featuredTeam = team.slice(0, 8);
+const mid = Math.ceil(team.length / 2);
+const teamRow1 = team.slice(0, mid);
+const teamRow2 = team.slice(mid);
 const featuredEvents = events.slice(0, 3);
 
 function formatDate(value: string) {
@@ -280,84 +282,183 @@ function formatDate(value: string) {
         </RevealOnView>
       </div>
 
-      <!-- Team Members Grid (Website1 Style) -->
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {featuredTeam.map((member, i) => {
-          const imageKey = `../assets/pics/team/${member.image}`;
-          const imgMetadata = teamImages[imageKey]?.default;
+      <!-- Infinite Continuous Marquee Ticker (2 Alternating Rows) -->
+      <div class="relative w-full overflow-hidden marquee-mask space-y-6 py-4">
+        
+        <!-- Row 1: Leftward Scroll -->
+        <div class="group/marquee overflow-hidden">
+          <div class="animate-marquee flex gap-6 w-max">
+            {[...teamRow1, ...teamRow1, ...teamRow1].map((member) => {
+              const imageKey = `../assets/pics/team/${member.image}`;
+              const imgMetadata = teamImages[imageKey]?.default;
+              const scaleVal = member.scale 
+                ? (typeof member.scale === "number" ? member.scale : parseFloat(member.scale.replace(/[^0-9.]/g, "")) / 100 || member.scale)
+                : 1.1;
 
-          return (
-            <RevealOnView client:visible delay={i * 45}>
-              <TiltCard client:visible className="h-full">
-                <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
-                  
-                  <!-- Aspect Square Image Frame with Zoom & Overlay -->
-                  <div class="relative aspect-square w-full overflow-hidden bg-void/80 border-b border-line/40">
-                    {imgMetadata ? (
-                      <Image
-                        src={imgMetadata}
-                        alt={`Portrait of ${member.name}`}
-                        width={500}
-                        height={500}
-                        format="webp"
-                        quality={88}
-                        loading="lazy"
-                        decoding="async"
-                        class="portrait-grayscale h-full w-full object-cover brightness-[0.95] contrast-[1.03] group-hover:scale-108 group-hover:brightness-105"
-                        style={{
-                          objectPosition: member.objectPosition || 'center 20%'
-                        }}
-                      />
-                    ) : (
-                      <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
-                        [PHOTO]
-                      </div>
-                    )}
+              return (
+                <div class="w-[270px] sm:w-[300px] flex-shrink-0">
+                  <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
                     
-                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-300"></div>
-                  </div>
-
-                  <!-- Info Container -->
-                  <div class="p-5 flex flex-col justify-between flex-1">
-                    <div>
-                      <h3 class="font-display text-xl sm:text-2xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
-                        {member.name}
-                      </h3>
-
-                      {member.role && (
-                        <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-cyan/90 font-medium line-clamp-1">
-                          {member.role}
-                        </p>
+                    <!-- Aspect Square Image Frame with Zoom & Overlay -->
+                    <div class="relative aspect-square w-full overflow-hidden bg-void/80 border-b border-line/40">
+                      {imgMetadata ? (
+                        <Image
+                          src={imgMetadata}
+                          alt={`Portrait of ${member.name}`}
+                          width={500}
+                          height={500}
+                          format="webp"
+                          quality={88}
+                          loading="lazy"
+                          decoding="async"
+                          class="portrait-grayscale h-full w-full object-cover brightness-[0.95] contrast-[1.03] transition-transform duration-500 ease-out group-hover:scale-108 group-hover:brightness-105"
+                          style={{
+                            objectPosition: member.objectPosition || "center 20%",
+                            transform: `scale(${scaleVal})`
+                          }}
+                        />
+                      ) : (
+                        <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
+                          [PHOTO]
+                        </div>
                       )}
+                      
+                      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-300"></div>
                     </div>
 
-                    <!-- Bottom Tag + LinkedIn Icon -->
-                    <div class="mt-5 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
-                      <span class="uppercase tracking-wider">SAMARTHYA · SJEC</span>
-                      <a
-                        href={member.linkedin || "https://www.linkedin.com/"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
-                        aria-label={`${member.name}'s LinkedIn`}
-                      >
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                          <rect x="2" y="9" width="4" height="12" rx="0.5" />
-                          <circle cx="4" cy="4" r="2" />
-                        </svg>
-                      </a>
+                    <!-- Info Container -->
+                    <div class="p-5 flex flex-col justify-between flex-1">
+                      <div>
+                        <h3 class="font-display text-xl sm:text-2xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
+                          {member.name}
+                        </h3>
+
+                        {member.role && (
+                          <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-cyan/90 font-medium line-clamp-1">
+                            {member.role}
+                          </p>
+                        )}
+                      </div>
+
+                      <!-- Bottom Tag + LinkedIn Icon -->
+                      <div class="mt-5 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
+                        <span class="uppercase tracking-wider">SAMARTHYA · SJEC</span>
+                        {member.linkedin ? (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
+                            aria-label={`${member.name}'s LinkedIn`}
+                          >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                              <rect x="2" y="9" width="4" height="12" rx="0.5" />
+                            </svg>
+                          </a>
+                        ) : (
+                          <span class="text-cyan/70">SJEC ECE</span>
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  <!-- Bottom Accent Bar from Website1 -->
-                  <div class="absolute bottom-0 left-0 right-0 h-[2.5px] bg-cyan scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                    <!-- Bottom Accent Bar -->
+                    <div class="absolute bottom-0 left-0 right-0 h-[2.5px] bg-cyan scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
-                </article>
-              </TiltCard>
-            </RevealOnView>
-          );
-        })}
+                  </article>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <!-- Row 2: Rightward Scroll -->
+        <div class="group/marquee overflow-hidden">
+          <div class="animate-marquee-reverse flex gap-6 w-max">
+            {[...teamRow2, ...teamRow2, ...teamRow2].map((member) => {
+              const imageKey = `../assets/pics/team/${member.image}`;
+              const imgMetadata = teamImages[imageKey]?.default;
+              const scaleVal = member.scale 
+                ? (typeof member.scale === "number" ? member.scale : parseFloat(member.scale.replace(/[^0-9.]/g, "")) / 100 || member.scale)
+                : 1.1;
+
+              return (
+                <div class="w-[270px] sm:w-[300px] flex-shrink-0">
+                  <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
+                    
+                    <!-- Aspect Square Image Frame with Zoom & Overlay -->
+                    <div class="relative aspect-square w-full overflow-hidden bg-void/80 border-b border-line/40">
+                      {imgMetadata ? (
+                        <Image
+                          src={imgMetadata}
+                          alt={`Portrait of ${member.name}`}
+                          width={500}
+                          height={500}
+                          format="webp"
+                          quality={88}
+                          loading="lazy"
+                          decoding="async"
+                          class="portrait-grayscale h-full w-full object-cover brightness-[0.95] contrast-[1.03] transition-transform duration-500 ease-out group-hover:scale-108 group-hover:brightness-105"
+                          style={{
+                            objectPosition: member.objectPosition || "center 20%",
+                            transform: `scale(${scaleVal})`
+                          }}
+                        />
+                      ) : (
+                        <div class="flex h-full w-full items-center justify-center bg-panel font-mono text-xs text-faint">
+                          [PHOTO]
+                        </div>
+                      )}
+                      
+                      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-300"></div>
+                    </div>
+
+                    <!-- Info Container -->
+                    <div class="p-5 flex flex-col justify-between flex-1">
+                      <div>
+                        <h3 class="font-display text-xl sm:text-2xl text-paper transition-colors duration-300 group-hover:text-cyan line-clamp-1">
+                          {member.name}
+                        </h3>
+
+                        {member.role && (
+                          <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-cyan/90 font-medium line-clamp-1">
+                            {member.role}
+                          </p>
+                        )}
+                      </div>
+
+                      <!-- Bottom Tag + LinkedIn Icon -->
+                      <div class="mt-5 pt-3 border-t border-line/30 flex items-center justify-between font-mono text-[10px] text-faint">
+                        <span class="uppercase tracking-wider">SAMARTHYA · SJEC</span>
+                        {member.linkedin ? (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
+                            aria-label={`${member.name}'s LinkedIn`}
+                          >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                              <rect x="2" y="9" width="4" height="12" rx="0.5" />
+                            </svg>
+                          </a>
+                        ) : (
+                          <span class="text-cyan/70">SJEC ECE</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <!-- Bottom Accent Bar -->
+                    <div class="absolute bottom-0 left-0 right-0 h-[2.5px] bg-cyan scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
+                  </article>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
       </div>
 
     </div>
