@@ -96,22 +96,24 @@ function formatDate(value: string) {
               </p>
             </div>
 
-            <!-- Action buttons -->
-            <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5">
+            <!-- Action buttons (Parallelogram Style) -->
+            <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="/events"
-                class="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.45)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_28px_rgba(0,251,248,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>Events</span>
-                <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-                </svg>
+                <span class="inline-flex items-center gap-2 skew-x-12">
+                  <span>Events</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
               </a>
               <a
                 href="/team"
-                class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium text-paper bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-cyan/40 hover:text-white transition-all duration-200 backdrop-blur-md"
+                class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-medium text-paper bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-cyan/50 hover:text-white hover:shadow-[0_0_20px_rgba(0,251,248,0.25)] transition-all duration-200 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>Core Team</span>
+                <span class="skew-x-12">Core Team</span>
               </a>
             </div>
           </div>
