@@ -20,7 +20,6 @@ const links = [
 ];
 
 const { title, description, current = "/" } = Astro.props;
-const adminUrl = import.meta.env.PUBLIC_ADMIN_URL || "http://localhost:5173";
 ---
 
 <!doctype html>
@@ -58,8 +57,7 @@ const adminUrl = import.meta.env.PUBLIC_ADMIN_URL || "http://localhost:5173";
             <span class="font-display text-2xl tracking-[0.16em]">SAMARTHYA</span>
           </a>
           <p class="max-w-sm text-sm leading-relaxed text-mute">
-            Official technical club of the Electronics &amp; Communication Engineering
-            department. Hardware first. Theory with solder on it.
+            Electronics and Communication Department
           </p>
         </div>
         <div class="md:col-span-3">
@@ -78,28 +76,39 @@ const adminUrl = import.meta.env.PUBLIC_ADMIN_URL || "http://localhost:5173";
           </ul>
         </div>
         <div class="md:col-span-4">
-          <p class="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-faint">Department office</p>
-          <p class="text-sm text-mute">ECE Block, campus infrastructure</p>
-          <a href="mailto:samarthya@sjec.ac.in" class="mt-2 inline-block text-sm text-cyan">
-            samarthya@sjec.ac.in
-          </a>
+          <p class="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-faint">Room No 1403</p>
+          <div class="flex items-center gap-5 pt-1">
+            <a
+              href="https://instagram.com/samarthya_sjec?cplk=aGhxNXl2YTg5ZzV0"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-mute hover:text-cyan transition-all duration-200 hover:scale-110 inline-flex items-center justify-center"
+              aria-label="Instagram"
+            >
+              <svg class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/samarthyasjec?trk=blended-typeahead"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-mute hover:text-cyan transition-all duration-200 hover:scale-110 inline-flex items-center justify-center"
+              aria-label="LinkedIn"
+            >
+              <svg class="h-7 w-7 sm:h-8 sm:w-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12" rx="0.5"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="mx-auto flex max-w-[1400px] flex-col gap-3 border-t border-line px-5 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <div class="mx-auto flex max-w-[1400px] flex-col gap-3 border-t border-line/30 px-5 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between lg:px-8">
         <p>© 2026 SAMARTHYA — ECE Department Club</p>
-        <div class="flex items-center gap-6">
-          <a
-            href={adminUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-mono text-[11px] text-faint hover:text-cyan transition-colors inline-flex items-center gap-1.5 group"
-            title="Lead Admin Control Center"
-          >
-            <span class="h-1.5 w-1.5 rounded-full bg-cyan/60 group-hover:bg-cyan animate-pulse"></span>
-            <span>ADMIN PORTAL</span>
-          </a>
-          <p class="font-mono tracking-[0.16em] uppercase">Signal. Circuit. Field.</p>
-        </div>
       </div>
     </footer>
   </body>
