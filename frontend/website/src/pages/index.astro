@@ -44,7 +44,7 @@ function formatDate(value: string) {
   <!-- ═══════════════════════════════════════════
        HERO SCREEN (Centered 3D Core with Reference HUD Layout)
        ═══════════════════════════════════════════ -->
-  <section class="relative isolate min-h-[100dvh] flex items-center justify-center overflow-hidden pt-24 lg:pt-28 pb-16 lg:pb-20" aria-label="Hero">
+  <section class="relative isolate min-h-0 lg:min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-8 lg:pb-20" aria-label="Hero">
     <h1 class="sr-only">SAMARTHYA — Where Ideas Become Reality</h1>
 
     <!-- Ambient central glow aura behind the 3D core -->
@@ -53,15 +53,15 @@ function formatDate(value: string) {
     </div>
 
     <!-- Main Container: Wide Canvas for Perfect 3-Column Balance -->
-    <div class="relative z-10 mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-16 py-6">
+    <div class="relative z-10 mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-16 py-4 sm:py-6">
       
       <!-- Upper / Desktop Grid Overlay matching reference positioning -->
-      <div class="relative min-h-[600px] sm:min-h-[660px] lg:min-h-[720px] flex flex-col justify-center">
+      <div class="relative min-h-0 lg:min-h-[720px] flex flex-col justify-center">
 
         <!-- ═════════════════════════════════════════════
              3D CORE (Elevated & shifted aside)
              ═════════════════════════════════════════════ -->
-        <div class="lg:absolute inset-0 flex items-center justify-center pointer-events-none z-0 -translate-y-8 sm:-translate-y-12 lg:-translate-y-20 translate-x-4 sm:translate-x-8 lg:translate-x-16 xl:translate-x-24">
+        <div class="lg:absolute inset-0 flex items-center justify-center pointer-events-none z-0 -translate-y-4 sm:-translate-y-8 lg:-translate-y-20 translate-x-0 sm:translate-x-8 lg:translate-x-16 xl:translate-x-24">
           <div class="relative w-full max-w-[560px] sm:max-w-[640px] lg:max-w-[720px] aspect-square flex items-center justify-center pointer-events-auto">
             <!-- 3D Interactive Model Canvas -->
             <HeroScene3D client:only="react" className="relative z-10 h-full w-full" />
@@ -71,12 +71,12 @@ function formatDate(value: string) {
         <!-- ═════════════════════════════════════════════
              MID-LEFT & BOTTOM-RIGHT FLOATING CONTENT
              ═════════════════════════════════════════════ -->
-        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[560px] sm:min-h-[600px] lg:min-h-[660px] gap-8 pt-4 lg:pt-0">
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-0 lg:min-h-[660px] gap-8 pt-2 sm:pt-4 lg:pt-0">
           
           <!-- Left Column: Top aligns with the 3D Black Disc -->
-          <div class="lg:col-span-4 flex flex-col justify-start items-start text-left pt-3 sm:pt-4 lg:pt-8">
+          <div class="lg:col-span-4 flex flex-col justify-start items-start text-left pt-2 sm:pt-4 lg:pt-8">
             <!-- Left Edge Label: "SAMARTHYA is" with line -->
-            <div class="flex items-center gap-3 mb-5">
+            <div class="flex items-center gap-3 mb-4 sm:mb-5">
               <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-white/70 uppercase">
                 SAMARTHYA is
               </span>
@@ -97,7 +97,7 @@ function formatDate(value: string) {
             </div>
 
             <!-- Action buttons -->
-            <div class="mt-8 flex flex-wrap items-center gap-3.5">
+            <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5">
               <a
                 href="/events"
                 class="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.45)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
@@ -128,7 +128,7 @@ function formatDate(value: string) {
   <!-- ═══════════════════════════════════════════
        01 — ABOUT SAMARTHYA
        ═══════════════════════════════════════════ -->
-  <section id="about" class="relative pt-12 lg:pt-16 pb-20 lg:pb-28 scroll-mt-28" aria-label="About SAMARTHYA">
+  <section id="about" class="relative pt-6 sm:pt-10 lg:pt-16 pb-16 lg:pb-28 scroll-mt-28" aria-label="About SAMARTHYA">
     <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
       <div class="grid items-start gap-10 lg:gap-14 lg:grid-cols-12 -translate-y-3 lg:-translate-y-6">
         
@@ -584,7 +584,7 @@ function formatDate(value: string) {
   <!-- ═══════════════════════════════════════════
        05 — PARALLAX PHOTO STREAM
        ═══════════════════════════════════════════ -->
-  <section class="relative py-16 lg:py-24 overflow-hidden" aria-label="Workshop Highlights">
+  <section class="relative pt-6 sm:pt-10 lg:pt-16 pb-8 sm:pb-12 lg:pb-16 overflow-hidden" aria-label="Workshop Highlights">
     <div class="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-8">
       <RevealOnView client:visible delay={50}>
         <ParallaxGallery />
