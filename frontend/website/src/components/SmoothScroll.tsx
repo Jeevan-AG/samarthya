@@ -10,6 +10,7 @@ export default function SmoothScroll() {
       duration: 1.18,
       touchMultiplier: 1.55,
     });
+    (window as any).lenis = lenis;
 
     const onClick = (event: MouseEvent) => {
       const target = (event.target as HTMLElement | null)?.closest("a[href*='#'], a[href='/']");
@@ -54,6 +55,7 @@ export default function SmoothScroll() {
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(frame);
       lenis.destroy();
+      delete (window as any).lenis;
     };
   }, []);
 
