@@ -9,6 +9,7 @@ import ParallaxGallery from "../components/ParallaxGallery.astro";
 import TypewriterText from "../components/TypewriterText";
 import ScrambleText from "../components/ScrambleText";
 import GlitchText from "../components/GlitchText";
+import EventModal from "../components/EventModal";
 import faculty from "../data/faculty.json";
 import team from "../data/team.json";
 import events from "../data/events.json";
@@ -22,6 +23,16 @@ const cc1Images = import.meta.glob<{ default: ImageMetadata }>("../assets/pics/e
 
 const cc2Photos = Object.values(cc2Images).map((m) => m.default);
 const cc1Photos = Object.values(cc1Images).map((m) => m.default);
+
+const allEventsWithPhotos = events.map((event) => {
+  if (event.id === "evt-cc-2") {
+    return { ...event, photos: cc2Photos.map((p) => p.src) };
+  }
+  if (event.id === "evt-cc-1") {
+    return { ...event, photos: cc1Photos.map((p) => p.src) };
+  }
+  return event;
+});
 
 // Feature key leadership and leads on homepage grid
 const mid = Math.ceil(team.length / 2);
@@ -42,85 +53,71 @@ function formatDate(value: string) {
   description="Official technical club of the Electronics and Communication Engineering Department — hardware labs, Circuit Craft workshops, and student-built systems."
 >
   <!-- ═══════════════════════════════════════════
-       HERO SCREEN (Centered 3D Core with Reference HUD Layout)
+       HERO SCREEN (Side-by-Side 3D Core & HUD Traits)
        ═══════════════════════════════════════════ -->
-  <section class="relative isolate min-h-0 lg:min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-8 lg:pb-20" aria-label="Hero">
+  <section class="relative isolate flex items-center justify-center overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-14" aria-label="Hero">
     <h1 class="sr-only">SAMARTHYA — Where Ideas Become Reality</h1>
 
     <!-- Ambient central glow aura behind the 3D core -->
     <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-      <div class="h-[450px] w-[450px] sm:h-[600px] sm:w-[600px] lg:h-[700px] lg:w-[700px] rounded-full bg-gradient-to-tr from-cyan/20 via-sky-500/15 to-transparent blur-[120px] opacity-70 animate-pulse" style="animation-duration: 6s;"></div>
+      <div class="h-[450px] w-[450px] sm:h-[600px] sm:w-[600px] lg:h-[650px] lg:w-[650px] rounded-full bg-gradient-to-tr from-cyan/20 via-sky-500/15 to-transparent blur-[120px] opacity-70 animate-pulse" style="animation-duration: 6s;"></div>
     </div>
 
-    <!-- Main Container: Wide Canvas for Perfect 3-Column Balance -->
-    <div class="relative z-10 mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-16 py-4 sm:py-6">
-      
-      <!-- Upper / Desktop Grid Overlay matching reference positioning -->
-      <div class="relative min-h-0 lg:min-h-[720px] flex flex-col justify-center">
+    <!-- Main Container -->
+    <div class="relative z-10 mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12">
+        
+        <!-- Left Column: Traits & CTA Buttons -->
+        <div class="order-2 lg:order-1 lg:col-span-5 xl:col-span-5 flex flex-col justify-center items-start text-left">
+          <!-- Left Edge Label: "SAMARTHYA is" with line -->
+          <div class="flex items-center gap-3 mb-4 sm:mb-5">
+            <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-white/70 uppercase">
+              SAMARTHYA is
+            </span>
+            <div class="h-px w-10 sm:w-16 bg-gradient-to-r from-white/40 to-transparent"></div>
+          </div>
 
-        <!-- ═════════════════════════════════════════════
-             3D CORE (Elevated & shifted aside)
-             ═════════════════════════════════════════════ -->
-        <div class="lg:absolute inset-0 flex items-center justify-center pointer-events-none z-0 -translate-y-4 sm:-translate-y-8 lg:-translate-y-20 translate-x-0 sm:translate-x-8 lg:translate-x-16 xl:translate-x-24">
-          <div class="relative w-full max-w-[560px] sm:max-w-[640px] lg:max-w-[720px] aspect-square flex items-center justify-center pointer-events-auto">
-            <!-- 3D Interactive Model Canvas -->
-            <HeroScene3D client:only="react" className="relative z-10 h-full w-full" />
+          <!-- Traits Stack -->
+          <div class="space-y-1 sm:space-y-1.5 text-left font-sans normal-case">
+            <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
+              Innovation,
+            </p>
+            <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
+              Research, Impact,
+            </p>
+            <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-cyan leading-[1.12] drop-shadow-[0_0_20px_rgba(0,251,248,0.3)]">
+              Accessible
+            </p>
+          </div>
+
+          <!-- Action buttons (Parallelogram Style) -->
+          <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="/events"
+              class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_28px_rgba(0,251,248,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span class="inline-flex items-center gap-2 skew-x-12">
+                <span>Events</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+            <a
+              href="/team"
+              class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-medium text-paper bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-cyan/50 hover:text-white hover:shadow-[0_0_20px_rgba(0,251,248,0.25)] transition-all duration-200 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span class="skew-x-12">Core Team</span>
+            </a>
           </div>
         </div>
 
-        <!-- ═════════════════════════════════════════════
-             MID-LEFT & BOTTOM-RIGHT FLOATING CONTENT
-             ═════════════════════════════════════════════ -->
-        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-0 lg:min-h-[660px] gap-8 pt-2 sm:pt-4 lg:pt-0">
-          
-          <!-- Left Column: Top aligns with the 3D Black Disc -->
-          <div class="lg:col-span-4 flex flex-col justify-start items-start text-left pt-2 sm:pt-4 lg:pt-8">
-            <!-- Left Edge Label: "SAMARTHYA is" with line -->
-            <div class="flex items-center gap-3 mb-4 sm:mb-5">
-              <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-white/70 uppercase">
-                SAMARTHYA is
-              </span>
-              <div class="h-px w-10 sm:w-16 bg-gradient-to-r from-white/40 to-transparent"></div>
-            </div>
-
-            <!-- Traits Stack -->
-            <div class="space-y-1 sm:space-y-1.5 text-left font-sans normal-case">
-              <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
-                Innovation,
-              </p>
-              <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
-                Research, Impact,
-              </p>
-              <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-cyan leading-[1.12] drop-shadow-[0_0_20px_rgba(0,251,248,0.3)]">
-                Accessible
-              </p>
-            </div>
-
-            <!-- Action buttons (Parallelogram Style) -->
-            <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="/events"
-                class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_28px_rgba(0,251,248,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <span class="inline-flex items-center gap-2 skew-x-12">
-                  <span>Events</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </a>
-              <a
-                href="/team"
-                class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-medium text-paper bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-cyan/50 hover:text-white hover:shadow-[0_0_20px_rgba(0,251,248,0.25)] transition-all duration-200 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <span class="skew-x-12">Core Team</span>
-              </a>
-            </div>
+        <!-- Right Column: 3D Interactive Emblem -->
+        <div class="order-1 lg:order-2 lg:col-span-7 xl:col-span-7 flex items-center justify-center">
+          <div class="relative w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[500px] xl:max-w-[540px] aspect-square flex items-center justify-center">
+            <!-- 3D Interactive Model Canvas -->
+            <HeroScene3D client:only="react" className="relative z-10 h-full w-full" />
           </div>
-
-          <!-- Empty Right Column spacer to balance grid -->
-          <div class="hidden lg:block lg:col-span-8 pointer-events-none"></div>
-
         </div>
 
       </div>
@@ -130,9 +127,9 @@ function formatDate(value: string) {
   <!-- ═══════════════════════════════════════════
        01 — ABOUT SAMARTHYA
        ═══════════════════════════════════════════ -->
-  <section id="about" class="relative pt-6 sm:pt-10 lg:pt-16 pb-16 lg:pb-28 scroll-mt-28" aria-label="About SAMARTHYA">
+  <section id="about" class="relative pt-8 sm:pt-12 lg:pt-14 pb-16 lg:pb-28 scroll-mt-28" aria-label="About SAMARTHYA">
     <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
-      <div class="grid items-start gap-10 lg:gap-14 lg:grid-cols-12 -translate-y-3 lg:-translate-y-6">
+      <div class="grid items-start gap-10 lg:gap-14 lg:grid-cols-12">
         
         <!-- Left: Mission & Details -->
         <div class="lg:col-span-6 flex flex-col justify-start pt-1">
@@ -184,7 +181,13 @@ function formatDate(value: string) {
           return (
             <RevealOnView client:visible delay={i * 100}>
               <TiltCard client:visible className="h-full">
-                <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
+                <article
+                  data-cursor
+                  role="link"
+                  tabindex="0"
+                  onclick="window.location.href='/faculty'"
+                  class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 cursor-pointer"
+                >
                   
                   <!-- Top Image Frame -->
                   <div class="relative aspect-square w-full overflow-hidden bg-void border-b border-line/30">
@@ -226,6 +229,7 @@ function formatDate(value: string) {
                           href={member.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onclick="event.stopPropagation()"
                           class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
                           aria-label={`${member.name}'s LinkedIn`}
                         >
@@ -299,7 +303,13 @@ function formatDate(value: string) {
 
               return (
                 <div class="w-[270px] sm:w-[300px] flex-shrink-0">
-                  <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
+                  <article
+                    data-cursor
+                    role="link"
+                    tabindex="0"
+                    onclick="window.location.href='/team'"
+                    class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 cursor-pointer"
+                  >
                     
                     <!-- Aspect Square Image Frame with Zoom & Overlay -->
                     <div class="relative aspect-square w-full overflow-hidden bg-void/80 border-b border-line/40">
@@ -350,6 +360,7 @@ function formatDate(value: string) {
                             href={member.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="event.stopPropagation()"
                             class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
                             aria-label={`${member.name}'s LinkedIn`}
                           >
@@ -386,7 +397,13 @@ function formatDate(value: string) {
 
               return (
                 <div class="w-[270px] sm:w-[300px] flex-shrink-0">
-                  <article class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5">
+                  <article
+                    data-cursor
+                    role="link"
+                    tabindex="0"
+                    onclick="window.location.href='/team'"
+                    class="group relative flex flex-col justify-between h-full rounded-2xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.6),0_0_24px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 cursor-pointer"
+                  >
                     
                     <!-- Aspect Square Image Frame with Zoom & Overlay -->
                     <div class="relative aspect-square w-full overflow-hidden bg-void/80 border-b border-line/40">
@@ -437,6 +454,7 @@ function formatDate(value: string) {
                             href={member.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="event.stopPropagation()"
                             class="text-mute hover:text-cyan hover:scale-115 transition-all p-1"
                             aria-label={`${member.name}'s LinkedIn`}
                           >
@@ -502,7 +520,11 @@ function formatDate(value: string) {
         <!-- Card 1: Circuit Craft 2.0 -->
         <RevealOnView client:visible delay={0}>
           <TiltCard client:visible className="h-full">
-            <article class="group relative flex h-full flex-col justify-between rounded-2xl border border-cyan/40 bg-surface/50 p-6 transition-all duration-300 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.2)] hover:-translate-y-1.5 overflow-hidden">
+            <a
+              href="/events#evt-cc-2"
+              data-event-id="evt-cc-2"
+              class="group relative flex h-full flex-col justify-between rounded-2xl border border-cyan/40 bg-surface/50 p-6 transition-all duration-300 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.25)] hover:-translate-y-1.5 overflow-hidden cursor-pointer block"
+            >
               
               <div class="relative z-10">
                 <!-- Event Photo Preview -->
@@ -533,16 +555,23 @@ function formatDate(value: string) {
 
               <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
                 <span>Sep 22, 2026</span>
-                <span class="text-cyan">10:00 AM</span>
+                <span class="text-cyan group-hover:underline flex items-center gap-1">
+                  View Details
+                  <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
               </div>
-            </article>
+            </a>
           </TiltCard>
         </RevealOnView>
 
         <!-- Card 2: Circuit Craft 1.0 -->
         <RevealOnView client:visible delay={70}>
           <TiltCard client:visible className="h-full">
-            <article class="group relative flex h-full flex-col justify-between rounded-2xl border border-line bg-surface/40 p-6 transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_20px_rgba(0,251,248,0.1)] hover:-translate-y-1.5 overflow-hidden">
+            <a
+              href="/events#evt-cc-1"
+              data-event-id="evt-cc-1"
+              class="group relative flex h-full flex-col justify-between rounded-2xl border border-line bg-surface/40 p-6 transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_20px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 overflow-hidden cursor-pointer block"
+            >
               
               <div class="relative z-10">
                 {cc1Photos[0] && (
@@ -572,9 +601,12 @@ function formatDate(value: string) {
 
               <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
                 <span>Apr 10, 2026</span>
-                <span class="text-cyan">9:30 AM</span>
+                <span class="text-cyan group-hover:underline flex items-center gap-1">
+                  View Details
+                  <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
               </div>
-            </article>
+            </a>
           </TiltCard>
         </RevealOnView>
 
@@ -593,4 +625,7 @@ function formatDate(value: string) {
       </RevealOnView>
     </div>
   </section>
+
+  <!-- Event Details & Gallery Modal -->
+  <EventModal client:load events={allEventsWithPhotos} />
 </BaseLayout>

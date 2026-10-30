@@ -6,6 +6,8 @@ interface ScrambleTextProps {
   delay?: number;
   className?: string;
   highlightWord?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "span" | "div";
+  sizeClass?: string;
 }
 
 const GLYPHS = "!<>-_\\/[]{}—=+*^?#01_アイウエオカキクケコサシスセソタチツテト";
@@ -16,13 +18,15 @@ export default function ScrambleText({
   delay = 120,
   className = "",
   highlightWord = "",
+  as: Tag = "h2",
+  sizeClass = "text-4xl sm:text-5xl lg:text-6xl",
 }: ScrambleTextProps) {
   const [displayedChars, setDisplayedChars] = useState<string[]>(() =>
     text.split("").map((c) => (c === " " ? " " : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]))
   );
   const [isResolved, setIsResolved] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
-  const containerRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const isHoverScrambling = useRef(false);
 
   const startScramble = () => {
@@ -86,10 +90,10 @@ export default function ScrambleText({
   const highlightEnd = highlightStart !== -1 ? highlightStart + highlightWord.length : -1;
 
   return (
-    <h2
-      ref={containerRef}
+    <Tag
+      ref={containerRef as any}
       onMouseEnter={handleMouseEnter}
-      className={`font-mono inline-flex items-center text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white cursor-pointer select-none group ${className}`}
+      className={`font-mono inline-flex items-center ${sizeClass} font-bold tracking-tight text-white cursor-pointer select-none group ${className}`}
       aria-label={text}
       title="Hover to re-scramble"
     >
@@ -102,7 +106,7 @@ export default function ScrambleText({
             <span
               key={index}
               className={`transition-colors duration-150 ${
-                char === " " ? "inline-block w-3 sm:w-4" : ""
+                char === " " ? "inline-block w-[0.35em]" : ""
               } ${
                 isCurrentlyScrambled
                   ? "text-cyan/50 font-medium"
@@ -117,6 +121,6 @@ export default function ScrambleText({
         })}
       </span>
       <span className="sr-only">{text}</span>
-    </h2>
+    </Tag>
   );
 }

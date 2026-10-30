@@ -16,13 +16,27 @@ export default function SiteCursor() {
     let hovering = false;
     let frame = 0;
 
+    const checkHover = (targetNode: EventTarget | null): boolean => {
+      const node = targetNode as HTMLElement | null;
+      if (!node) return false;
+      const interactive = node.closest(
+        "a, button, [data-cursor], [role='button'], [role='link'], [data-event-id], .cursor-pointer, input, select, textarea, label, summary, [onclick], article, .tilt-card"
+      );
+      if (interactive) return true;
+      try {
+        return window.getComputedStyle(node).cursor === "pointer";
+      } catch {
+        return false;
+      }
+    };
+
     const move = (e: PointerEvent) => {
       target.x = e.clientX;
       target.y = e.clientY;
+      hovering = checkHover(e.target);
     };
     const over = (e: PointerEvent) => {
-      const node = e.target as HTMLElement | null;
-      hovering = Boolean(node?.closest("a, button, [data-cursor]"));
+      hovering = checkHover(e.target);
     };
 
     const tick = () => {
@@ -52,7 +66,7 @@ export default function SiteCursor() {
   return (
     <div
       ref={ringRef}
-      className="site-cursor pointer-events-none fixed left-0 top-0 z-[90] mix-blend-difference"
+      className="site-cursor pointer-events-none fixed left-0 top-0 z-[120]"
       aria-hidden="true"
     >
       <div className="site-cursor-dot" />

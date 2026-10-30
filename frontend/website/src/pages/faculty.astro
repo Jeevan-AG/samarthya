@@ -37,7 +37,10 @@ const facultyImages = import.meta.glob<{ default: ImageMetadata }>("../assets/pi
 
         return (
           <RevealOnView client:visible delay={i * 90}>
-            <div class="group relative rounded-3xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden shadow-2xl transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_16px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(0,251,248,0.12)] hover:-translate-y-1">
+            <div
+              data-cursor
+              class="group relative rounded-3xl border border-line bg-surface/50 backdrop-blur-md overflow-hidden shadow-2xl transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_16px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(0,251,248,0.12)] hover:-translate-y-1"
+            >
               
               <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                 

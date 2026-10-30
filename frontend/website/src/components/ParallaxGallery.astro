@@ -41,8 +41,8 @@ const col3 = [
   { img: gal9, aspect: "aspect-[16/10]" },
 ];
 
-// 2 Curated Columns for mobile continuous parallax flow (dual-column stream)
-const mobileCol1 = [
+// 2 Curated Rows for mobile continuous stream (gliding left & right)
+const mobileRow1 = [
   { img: gal1, aspect: "aspect-[16/10]" },
   { img: cc2_1, aspect: "aspect-[4/3]" },
   { img: gal4, aspect: "aspect-[16/10]" },
@@ -53,7 +53,7 @@ const mobileCol1 = [
   { img: cc1_1, aspect: "aspect-[4/3]" },
 ];
 
-const mobileCol2 = [
+const mobileRow2 = [
   { img: gal5, aspect: "aspect-[16/10]" },
   { img: cc1_2, aspect: "aspect-[4/3]" },
   { img: gal3, aspect: "aspect-[16/10]" },
@@ -68,50 +68,54 @@ const mobileCol2 = [
   <!-- Subtle ambient lighting safely centered so it never creates sharp cutoffs at edges -->
   <div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[500px] w-full max-w-[800px] rounded-full bg-cyan/[0.04] blur-[140px]"></div>
 
-  <!-- Mobile Dual-Column Parallax Grid (< md) -->
-  <div class="grid grid-cols-2 gap-3 sm:gap-4 md:hidden items-start">
-    <!-- Mobile Column 1 (Speed: +0.05) -->
-    <div class="parallax-col flex flex-col gap-3 sm:gap-4 will-change-transform" data-speed="0.05">
-      {mobileCol1.map((item) => (
-        <div class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-void/60 shadow-xl transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_25px_rgba(0,251,248,0.25)]">
-          <div class={`relative overflow-hidden ${item.aspect} w-full`}>
-            <Image
-              src={item.img}
-              alt="SAMARTHYA Workshop Photo"
-              width={600}
-              height={400}
-              format="webp"
-              quality={82}
-              loading="lazy"
-              decoding="async"
-              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-105"
-            />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent opacity-40"></div>
+  <!-- Mobile Dual Continuous Marquee Stream (< md) — 100% device compatible & GPU-accelerated -->
+  <div class="md:hidden space-y-3 sm:space-y-4 py-2 marquee-mask overflow-hidden">
+    <!-- Row 1: Leftward Gliding Stream -->
+    <div class="group/marquee overflow-hidden">
+      <div class="animate-marquee flex gap-3 sm:gap-4 w-max">
+        {[...mobileRow1, ...mobileRow1].map((item) => (
+          <div class="w-[210px] sm:w-[250px] flex-shrink-0 group/card relative overflow-hidden rounded-xl border border-white/10 bg-void/60 shadow-xl transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_20px_rgba(0,251,248,0.25)]">
+            <div class={`relative overflow-hidden ${item.aspect} w-full`}>
+              <Image
+                src={item.img}
+                alt="SAMARTHYA Workshop Photo"
+                width={500}
+                height={350}
+                format="webp"
+                quality={82}
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-500 ease-out group-hover/card:scale-105 group-hover/card:brightness-105"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent opacity-40"></div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
 
-    <!-- Mobile Column 2 (Speed: -0.05 with staggered top) -->
-    <div class="parallax-col flex flex-col gap-3 sm:gap-4 mt-6 sm:mt-8 will-change-transform" data-speed="-0.05">
-      {mobileCol2.map((item) => (
-        <div class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-void/60 shadow-xl transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_25px_rgba(0,251,248,0.25)]">
-          <div class={`relative overflow-hidden ${item.aspect} w-full`}>
-            <Image
-              src={item.img}
-              alt="SAMARTHYA Workshop Photo"
-              width={600}
-              height={400}
-              format="webp"
-              quality={82}
-              loading="lazy"
-              decoding="async"
-              class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-105"
-            />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent opacity-40"></div>
+    <!-- Row 2: Rightward Gliding Stream -->
+    <div class="group/marquee overflow-hidden">
+      <div class="animate-marquee-reverse flex gap-3 sm:gap-4 w-max">
+        {[...mobileRow2, ...mobileRow2].map((item) => (
+          <div class="w-[210px] sm:w-[250px] flex-shrink-0 group/card relative overflow-hidden rounded-xl border border-white/10 bg-void/60 shadow-xl transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_20px_rgba(0,251,248,0.25)]">
+            <div class={`relative overflow-hidden ${item.aspect} w-full`}>
+              <Image
+                src={item.img}
+                alt="SAMARTHYA Workshop Photo"
+                width={500}
+                height={350}
+                format="webp"
+                quality={82}
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.04] transition-all duration-500 ease-out group-hover/card:scale-105 group-hover/card:brightness-105"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent opacity-40"></div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 
@@ -192,23 +196,26 @@ const mobileCol2 = [
     const container = document.getElementById("parallax-flow-root");
     if (!container) return;
 
+    // Skip JS parallax transform entirely on mobile devices for 100% fluid CSS marquee
+    if (window.innerWidth < 768) return;
+
     const cols = container.querySelectorAll<HTMLElement>(".parallax-col");
     let ticking = false;
 
     function updateParallax() {
       if (!container) return;
+      if (window.innerWidth < 768) return;
+
       const rect = container.getBoundingClientRect();
       const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
       if (rect.top < viewportHeight + 100 && rect.bottom > -100) {
         const centerY = (rect.top + rect.height / 2) - (viewportHeight / 2);
-        const isMobile = window.innerWidth < 768;
-        const speedMultiplier = isMobile ? 0.75 : 1.0;
         
         cols.forEach((col) => {
           if (col.offsetParent === null) return;
           const speed = parseFloat(col.getAttribute("data-speed") || "0");
-          const offset = centerY * speed * speedMultiplier;
+          const offset = centerY * speed;
           col.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
         });
       }
@@ -224,7 +231,6 @@ const mobileCol2 = [
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
-    window.addEventListener("touchmove", onScroll, { passive: true });
 
     if ((window as any).lenis) {
       (window as any).lenis.on("scroll", onScroll);
