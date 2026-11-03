@@ -118,7 +118,7 @@ export const EventsSection: React.FC<{
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="w-[88vw] max-w-[440px] shrink-0 snap-center sm:w-full sm:max-w-none h-full"
+                className="w-[88vw] max-w-[440px] shrink-0 snap-center sm:w-full sm:max-w-none h-full min-h-[460px] sm:min-h-[490px]"
               >
                 <EventFlipCard
                   event={event}
