@@ -12,6 +12,7 @@ export interface GalleryModalData {
   cardSubtitle: string;
   paragraphs: string[];
   images: string[];
+  venue?: string;
 }
 
 interface EventGalleryModalProps {

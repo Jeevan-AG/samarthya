@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { Calendar, ArrowUpRight } from "lucide-react";
+import { Calendar } from "lucide-react";
 import type { GalleryModalData } from "./EventGalleryModal";
 
 export const EventFlipCard: React.FC<{
@@ -52,7 +52,7 @@ export const EventFlipCard: React.FC<{
 
   return (
     <div
-      className="flip-card-container h-full min-h-[460px] sm:min-h-[490px] w-full cursor-pointer select-none group"
+      className="flip-card-container h-full min-h-[410px] sm:min-h-[440px] w-full cursor-pointer select-none group"
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       role="button"
@@ -65,7 +65,7 @@ export const EventFlipCard: React.FC<{
       }}
     >
       <motion.div
-        className="flip-card-inner h-full min-h-[460px] sm:min-h-[490px] w-full rounded-2xl"
+        className="flip-card-inner h-full min-h-[410px] sm:min-h-[440px] w-full rounded-2xl"
         style={{
           rotateY,
           transformStyle: "preserve-3d",
@@ -74,7 +74,7 @@ export const EventFlipCard: React.FC<{
       >
         {/* FRONT FACE (Rich photo card with hover states) */}
         <motion.article
-          className="flip-card-face flip-card-front flex h-full min-h-[460px] sm:min-h-[490px] flex-col justify-between rounded-2xl border border-white/10 bg-surface/75 p-5 sm:p-6 text-left transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_35px_rgba(0,229,224,0.22)] hover:-translate-y-1.5 backdrop-blur-md"
+          className="flip-card-face flip-card-front flex h-full min-h-[410px] sm:min-h-[440px] flex-col rounded-2xl border border-white/10 bg-surface/75 p-5 sm:p-6 text-left transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_35px_rgba(0,229,224,0.22)] hover:-translate-y-1.5 backdrop-blur-md"
           style={{ opacity: frontOpacity }}
         >
           <div>
@@ -113,15 +113,6 @@ export const EventFlipCard: React.FC<{
             <p className="font-sans text-sm leading-relaxed text-mute line-clamp-3">
               {event.paragraphs[0]}
             </p>
-          </div>
-
-          {/* Bottom strip */}
-          <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-3.5 text-xs font-mono text-mute">
-            <span className="text-faint text-[11px]">SJEC-AICTE IDEA Lab</span>
-            <span className="inline-flex items-center gap-1.5 text-cyan font-semibold group-hover:translate-x-1 transition-transform">
-              <span>Launch 3D Gallery</span>
-              <ArrowUpRight size={14} />
-            </span>
           </div>
         </motion.article>
 

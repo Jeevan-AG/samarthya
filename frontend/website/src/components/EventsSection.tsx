@@ -12,6 +12,7 @@ export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
     dateStr: "16th – 18th March 2026 · SJEC-AICTE IDEA Lab",
     cardDateBadge: "16 - 18 MAR 2026",
     cardSubtitle: "PCB Design Using KiCad · 4th Sem",
+    venue: "SJEC-AICTE IDEA Lab",
     paragraphs: [
       "Building on the success of its first edition, Samarthya - The Electronics Technical Club of SJEC conducted CircuitCraft 2.0 from 16th - 18th March 2026, tailored for fourth-semester students.",
       "The three-day Student Development Programme (SDP) introduced 132 participants to the complete PCB development cycle, from schematic design and component selection to board layout, routing, and fabrication.",
@@ -35,6 +36,7 @@ export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
     dateStr: "4th – 6th February 2026 · SJEC-AICTE IDEA Lab",
     cardDateBadge: "04 - 06 FEB 2026",
     cardSubtitle: "PCB Design Using KiCad · 6th Sem",
+    venue: "SJEC-AICTE IDEA Lab",
     paragraphs: [
       "From 4th - 6th February 2026, we conducted CircuitCraft, a three-day hands-on Student Development Programme (SDP) on PCB design using KiCad, in collaboration with the SJEC-AICTE IDEA Lab and with support from Prodigi.",
       "The programme guided 119 sixth-semester students through the complete PCB design workflow, covering schematic capture and component selection, PCB layout and routing, Design Rule Checking (DRC), and fabrication file generation.",
@@ -47,6 +49,32 @@ export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
       "/pics/events/circuit_craft_1/circuit_craft_1_3.webp",
       "/pics/events/circuit_craft_1/circuit_craft_1_4.webp",
       "/pics/events/circuit_craft_1/circuit_craft_1_5.webp",
+    ],
+  },
+  {
+    slug: "ELECTROVATION_2",
+    tag: "Pitch & Funding",
+    title: "Electrovation 2.0",
+    dateStr: "24th January 2026 · DSP Lab, SJEC",
+    cardDateBadge: "24 JAN 2026",
+    cardSubtitle: "Project Pitch & Seed Funding",
+    venue: "DSP Lab, SJEC",
+    paragraphs: [
+      "At Samarthya - The Electronics Technical Club of SJEC, we believe every great innovation begins with an idea. We kicked off 2026 with Electrovation 2.0, held on 24th January 2026 at the DSP Lab, St. Joseph Engineering College, Mangaluru.",
+      "The event provided a platform for students to pitch innovative, technically feasible, and industry-relevant project ideas, bringing together 40 students across 11 competitive teams.",
+      "The project pitches were evaluated based on originality, technical feasibility, societal relevance, scalability, and presentation. Six projects were selected for seed-funding support: SpineAlign, Explorer, NeuroPulse, SignalX, Impedance, and Sahayog.",
+      "This initiative reflects our commitment to encouraging student innovation, nurturing problem-solving skills, and helping promising ideas take their first steps towards real-world impact. Here's to building, innovating, and turning ideas into impact! ⚡",
+    ],
+    images: [
+      "/pics/events/electrovation_2/electrovation_2_1.webp",
+      "/pics/events/electrovation_2/electrovation_2_2.webp",
+      "/pics/events/electrovation_2/electrovation_2_3.webp",
+      "/pics/events/electrovation_2/electrovation_2_4.webp",
+      "/pics/events/electrovation_2/electrovation_2_5.webp",
+      "/pics/events/electrovation_2/electrovation_2_6.webp",
+      "/pics/events/electrovation_2/electrovation_2_7.webp",
+      "/pics/events/electrovation_2/electrovation_2_8.webp",
+      "/pics/events/electrovation_2/electrovation_2_9.webp",
     ],
   },
 ];
@@ -104,12 +132,12 @@ export const EventsSection: React.FC<{
           </a>
         </div>
 
-        {/* Flagship Event Cards (Centered 2-Column Grid) */}
-        <div className="mx-auto max-w-5xl">
+        {/* Flagship Event Cards */}
+        <div className="mx-auto max-w-6xl">
           <div
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 sm:pb-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:overflow-visible no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0"
+            className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 lg:gap-8 sm:overflow-visible no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0"
           >
             {displayEvents.map((event, idx) => (
               <motion.div
@@ -118,7 +146,7 @@ export const EventsSection: React.FC<{
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="w-[88vw] max-w-[440px] shrink-0 snap-center sm:w-full sm:max-w-none h-full min-h-[460px] sm:min-h-[490px]"
+                className="w-[88vw] max-w-[440px] shrink-0 snap-center sm:w-full sm:max-w-none h-full min-h-[410px] sm:min-h-[440px]"
               >
                 <EventFlipCard
                   event={event}
