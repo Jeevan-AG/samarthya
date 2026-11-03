@@ -17,7 +17,7 @@ export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
       "Building on the success of its first edition, Samarthya - The Electronics Technical Club of SJEC conducted CircuitCraft 2.0 from 16th - 18th March 2026, tailored for fourth-semester students.",
       "The three-day Student Development Programme (SDP) introduced 132 participants to the complete PCB development cycle, from schematic design and component selection to board layout, routing, and fabrication.",
       "Putting their learning into practice, students designed an infrared (IR) receiver circuit, with dedicated support in debugging, validation, and optimization to help them develop a functional design.",
-      "Through initiatives like CircuitCraft, we continue to create opportunities for students to strengthen their technical skills, gain practical experience, and bring their ideas to life. Design. Build. Debug. Innovate. ⚡",
+      "Through initiatives like CircuitCraft, we continue to create opportunities for students to strengthen their technical skills, gain practical experience, and bring their ideas to life. Design. Build. Debug. Innovate.",
     ],
     images: [
       "/pics/events/circuit_craft_2/circuit_craft_2_1.webp",
@@ -41,7 +41,7 @@ export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
       "From 4th - 6th February 2026, we conducted CircuitCraft, a three-day hands-on Student Development Programme (SDP) on PCB design using KiCad, in collaboration with the SJEC-AICTE IDEA Lab and with support from Prodigi.",
       "The programme guided 119 sixth-semester students through the complete PCB design workflow, covering schematic capture and component selection, PCB layout and routing, Design Rule Checking (DRC), and fabrication file generation.",
       "Putting theory into practice, participants designed an infrared receiver circuit from start to finish, gaining practical experience in PCB design and development.",
-      "Through initiatives like CircuitCraft, Samarthya continues to create opportunities for students to explore beyond the classroom, strengthen their technical skills, and turn concepts into working designs. From schematic to board learning by building ⚡",
+      "Through initiatives like CircuitCraft, Samarthya continues to create opportunities for students to explore beyond the classroom, strengthen their technical skills, and turn concepts into working designs. From schematic to board learning by building.",
     ],
     images: [
       "/pics/events/circuit_craft_1/circuit_craft_1_1.webp",
@@ -63,7 +63,7 @@ export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
       "At Samarthya - The Electronics Technical Club of SJEC, we believe every great innovation begins with an idea. We kicked off 2026 with Electrovation 2.0, held on 24th January 2026 at the DSP Lab, St. Joseph Engineering College, Mangaluru.",
       "The event provided a platform for students to pitch innovative, technically feasible, and industry-relevant project ideas, bringing together 40 students across 11 competitive teams.",
       "The project pitches were evaluated based on originality, technical feasibility, societal relevance, scalability, and presentation. Six projects were selected for seed-funding support: SpineAlign, Explorer, NeuroPulse, SignalX, Impedance, and Sahayog.",
-      "This initiative reflects our commitment to encouraging student innovation, nurturing problem-solving skills, and helping promising ideas take their first steps towards real-world impact. Here's to building, innovating, and turning ideas into impact! ⚡",
+      "This initiative reflects our commitment to encouraging student innovation, nurturing problem-solving skills, and helping promising ideas take their first steps towards real-world impact. Here's to building, innovating, and turning ideas into impact!",
     ],
     images: [
       "/pics/events/electrovation_2/electrovation_2_1.webp",
@@ -108,10 +108,10 @@ export const EventsSection: React.FC<{
   };
 
   return (
-    <section id="events" className="relative py-24 lg:py-32 scroll-mt-20 border-t border-line/25" aria-label="Events and Technical Workshops">
+    <section id="events" className="relative py-14 sm:py-16 lg:py-20 scroll-mt-20 border-t border-line/25" aria-label="Events and Technical Workshops">
       <div className="mx-auto max-w-[1400px] px-5 lg:px-8">
         {/* Section Header (matching Core Team style) */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div>
             <div className="mb-4">
               <ScrambleText text="events" />

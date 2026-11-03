@@ -15,7 +15,7 @@
     "galleryFolder": "circuit_craft_2",
     "photosCount": 7,
     "participants": "132 students (4th Sem)",
-    "tagline": "Design. Build. Debug. Innovate. ⚡",
+    "tagline": "Design. Build. Debug. Innovate.",
     "highlights": [
       "Complete PCB development cycle",
       "Schematic design & component selection",
@@ -39,12 +39,36 @@
     "galleryFolder": "circuit_craft_1",
     "photosCount": 5,
     "participants": "119 students (6th Sem)",
-    "tagline": "From schematic to board learning by building ⚡",
+    "tagline": "From schematic to board learning by building",
     "highlights": [
       "Schematic capture and component selection",
       "PCB layout and routing",
       "Design Rule Checking (DRC)",
       "Fabrication file generation"
+    ]
+  },
+  {
+    "id": "evt-ev-2",
+    "title": "Electrovation 2.0",
+    "subtitle": "Project Pitch & Seed Funding",
+    "description": "On 24th January 2026, Samarthya conducted Electrovation 2.0 at the DSP Lab, SJEC Mangaluru. The event provided a platform for students to pitch innovative, technically feasible, and industry-relevant project ideas, bringing together 40 students across 11 competitive teams. Six projects were selected for seed-funding support: SpineAlign, Explorer, NeuroPulse, SignalX, Impedance, and Sahayog.",
+    "date": "2026-01-24",
+    "dateRange": "24th January 2026",
+    "time": "Project Pitch & Funding",
+    "venue": "DSP Lab, SJEC",
+    "category": "Project Pitch & Seed Funding",
+    "status": "completed",
+    "featured": true,
+    "edition": "2.0",
+    "galleryFolder": "electrovation_2",
+    "photosCount": 9,
+    "participants": "40 students | 11 teams",
+    "tagline": "Turning ideas into impact",
+    "highlights": [
+      "Originality & technical feasibility evaluation",
+      "Societal relevance & scalability assessment",
+      "Seed funding for 6 selected projects",
+      "11 teams pitching across multidisciplinary domains"
     ]
   }
 ]
