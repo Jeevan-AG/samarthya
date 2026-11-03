@@ -1,0 +1,367 @@
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ArrowLeft, ArrowRight } from "lucide-react";
+
+export interface GalleryModalData {
+  slug: string;
+  tag: string;
+  title: string;
+  dateStr: string;
+  cardDateBadge: string;
+  cardSubtitle: string;
+  paragraphs: string[];
+  images: string[];
+}
+
+interface EventGalleryModalProps {
+  data?: GalleryModalData | null;
+  onClose: () => void;
+}
+
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction === 0 ? 0 : direction > 0 ? 80 : -80,
+    opacity: direction === 0 ? 1 : 0,
+    scale: direction === 0 ? 1 : 0.96,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction > 0 ? -80 : 80,
+    opacity: 0,
+    scale: 0.96,
+  }),
+};
+
+export const EventGalleryModal: React.FC<EventGalleryModalProps> = ({ data, onClose }) => {
+  const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
+
+  // Universal pointer & touch gesture refs
+  const dragStartX = useRef<number | null>(null);
+  const dragStartY = useRef<number | null>(null);
+  const isDragging = useRef<boolean>(false);
+  const isHorizontalGesture = useRef<boolean>(false);
+
+  const activeData = data;
+  const images = activeData?.images || [];
+  const total = images.length;
+  const currentIndex = ((page % total) + total) % total;
+
+  // Preload all gallery images asynchronously
+  useEffect(() => {
+    if (!images.length) return;
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.decoding = "async";
+    });
+  }, [images]);
+
+  const paginate = useCallback((newDirection: number) => {
+    setPage(([prevPage]) => [prevPage + newDirection, newDirection]);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    if (!total) return;
+    paginate(1);
+  }, [total, paginate]);
+
+  const handlePrev = useCallback(() => {
+    if (!total) return;
+    paginate(-1);
+  }, [total, paginate]);
+
+  // Keyboard navigation & body scroll lock
+  useEffect(() => {
+    if (!activeData) return;
+
+    const scrollY = window.scrollY;
+    const originalStyle = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+    };
+
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = originalStyle.overflow;
+      document.body.style.position = originalStyle.position;
+      document.body.style.top = originalStyle.top;
+      document.body.style.width = originalStyle.width;
+      window.scrollTo(0, scrollY);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeData, onClose, handleNext, handlePrev]);
+
+  useEffect(() => {
+    setPage([0, 0]);
+  }, [activeData]);
+
+  // Gesture handling
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    dragStartX.current = e.clientX;
+    dragStartY.current = e.clientY;
+    isDragging.current = true;
+    isHorizontalGesture.current = false;
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging.current || dragStartX.current === null || dragStartY.current === null) return;
+    const dx = e.clientX - dragStartX.current;
+    const dy = e.clientY - dragStartY.current;
+
+    if (Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+      isHorizontalGesture.current = true;
+    }
+  };
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!isDragging.current || dragStartX.current === null) {
+      isDragging.current = false;
+      return;
+    }
+
+    const dx = e.clientX - dragStartX.current;
+
+    if (isHorizontalGesture.current || Math.abs(dx) > 35) {
+      if (dx < -30) {
+        handleNext();
+      } else if (dx > 30) {
+        handlePrev();
+      }
+    }
+
+    dragStartX.current = null;
+    dragStartY.current = null;
+    isDragging.current = false;
+    isHorizontalGesture.current = false;
+  };
+
+  const onPointerCancel = () => {
+    dragStartX.current = null;
+    dragStartY.current = null;
+    isDragging.current = false;
+    isHorizontalGesture.current = false;
+  };
+
+  if (!activeData || total === 0 || typeof document === "undefined") return null;
+
+  const nextImageIdx = (currentIndex + 1) % total;
+
+  const modalNode = (
+    <AnimatePresence>
+      {activeData && total > 0 && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${activeData.title} photo archive`}
+          className="fixed inset-0 z-[100] h-[100dvh] w-screen overflow-y-auto overscroll-contain bg-black/90 backdrop-blur-md"
+          style={{
+            WebkitOverflowScrolling: "touch",
+            touchAction: "pan-y",
+          }}
+          onClick={onClose}
+        >
+          <div className="flex min-h-full items-start md:items-center justify-center p-3 sm:p-6 pt-12 pb-24 md:py-10">
+            {/* Main Modal Card */}
+            <motion.div
+              className="relative z-10 w-full max-w-4xl rounded-2xl border border-cyan/40 bg-void/95 p-4 sm:p-6 md:p-8 shadow-[0_0_60px_rgba(0,229,224,0.22)] backdrop-blur-xl"
+              initial={{ opacity: 0, y: 16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close"
+                className="absolute right-3 top-3 sm:right-5 sm:top-5 z-30 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-void/90 text-paper transition-colors hover:border-cyan hover:text-cyan active:scale-95 shadow-lg"
+              >
+                <X size={18} />
+              </button>
+
+              {/* Mobile Header */}
+              <div className="mb-4 pr-12 md:hidden">
+                <h3 className="font-display text-xl sm:text-2xl font-semibold text-paper">
+                  {activeData.title}
+                </h3>
+                <span className="mt-0.5 block font-mono text-xs uppercase tracking-widest text-mute">
+                  {activeData.dateStr}
+                </span>
+              </div>
+
+              {/* 2-Column Responsive Grid */}
+              <div className="flex flex-col md:grid md:grid-cols-2 md:gap-8 items-start">
+                {/* Left Column (Desktop) / Bottom (Mobile): Narrative Text */}
+                <div className="order-2 md:order-1 flex flex-col mt-6 md:mt-0 w-full">
+                  {/* Desktop-only Header */}
+                  <div className="hidden md:block">
+                    <h3 className="font-display text-2xl text-paper md:text-3xl font-semibold">
+                      {activeData.title}
+                    </h3>
+                    <span className="mt-1 block font-mono text-xs uppercase tracking-widest text-mute">
+                      {activeData.dateStr}
+                    </span>
+                  </div>
+
+                  {/* Story Paragraphs */}
+                  <div className="space-y-3 font-mono text-xs sm:text-sm leading-relaxed text-mute md:mt-4">
+                    {activeData.paragraphs.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
+
+                  {/* Mobile-only Bottom Close Action */}
+                  <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-end md:hidden">
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className="inline-flex items-center gap-1.5 rounded border border-cyan/60 bg-cyan/10 px-3.5 py-1.5 font-mono text-xs text-cyan font-bold active:scale-95 transition-all"
+                    >
+                      <X size={13} />
+                      <span>CLOSE</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Right Column (Desktop) / Top Section (Mobile): Interactive Photo Album */}
+                <div className="order-1 md:order-2 flex flex-col items-center justify-center w-full">
+                  <div
+                    className="relative aspect-[3/4] w-full max-w-[270px] sm:max-w-[300px] md:max-w-[320px] overflow-hidden rounded-xl select-none cursor-grab active:cursor-grabbing shadow-[0_0_30px_rgba(0,0,0,0.9)]"
+                    style={{ touchAction: "pan-y" }}
+                    onPointerDown={onPointerDown}
+                    onPointerMove={onPointerMove}
+                    onPointerUp={onPointerUp}
+                    onPointerCancel={onPointerCancel}
+                  >
+                    {/* Background Depth Preview Underneath */}
+                    <div
+                      className="absolute inset-0 rounded-xl border border-white/10 bg-panel pointer-events-none"
+                      style={{
+                        transform: "translateY(6px) scale(0.96)",
+                        opacity: 0.5,
+                      }}
+                    >
+                      <img
+                        src={images[nextImageIdx]}
+                        alt=""
+                        width={320}
+                        height={427}
+                        decoding="async"
+                        loading="lazy"
+                        className="h-full w-full object-cover opacity-50"
+                      />
+                      <div className="absolute inset-0 bg-black/40" />
+                    </div>
+
+                    {/* Active Sliding Photo Card */}
+                    <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                      <motion.div
+                        key={page}
+                        custom={direction}
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{
+                          x: { type: "tween", ease: [0.25, 1, 0.5, 1], duration: 0.22 },
+                          opacity: { duration: 0.16 },
+                          scale: { duration: 0.22 },
+                        }}
+                        className="absolute inset-0 overflow-hidden rounded-xl border border-cyan/40 bg-panel shadow-[0_0_25px_rgba(0,229,224,0.2)] will-change-transform"
+                      >
+                        {/* Main Image (Clean, unobstructed) */}
+                        <img
+                          src={images[currentIndex]}
+                          alt={activeData.title}
+                          width={320}
+                          height={427}
+                          decoding="async"
+                          loading="eager"
+                          className="h-full w-full object-cover pointer-events-none"
+                          draggable={false}
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Navigation Controls & Indicators */}
+                  <div className="mt-4 flex w-full max-w-[270px] sm:max-w-[300px] md:max-w-[320px] items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={handlePrev}
+                      aria-label="Previous photo"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-mute transition-colors hover:border-cyan hover:text-cyan active:scale-90"
+                    >
+                      <ArrowLeft size={16} />
+                    </button>
+
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="font-mono text-xs text-cyan">
+                        {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                      </span>
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-mute/80">
+                        DRAG OR TAP &rarr;
+                      </span>
+                      <div className="flex items-center gap-1.5 mt-0.5">
+                        {images.map((_, dotIdx) => (
+                          <button
+                            key={dotIdx}
+                            type="button"
+                            onClick={() => {
+                              const diff = dotIdx - currentIndex;
+                              if (diff !== 0) paginate(diff);
+                            }}
+                            aria-label={`Go to photo ${dotIdx + 1}`}
+                            className={`h-1.5 rounded-full transition-all duration-200 p-0 ${
+                              dotIdx === currentIndex
+                                ? "w-4 bg-cyan shadow-[0_0_8px_rgba(0,229,224,0.8)]"
+                                : "w-1.5 bg-white/20 hover:bg-cyan/50"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      aria-label="Next photo"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-mute transition-colors hover:border-cyan hover:text-cyan active:scale-90"
+                    >
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+
+  return createPortal(modalNode, document.body);
+};
+

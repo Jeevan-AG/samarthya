@@ -1,44 +1,50 @@
 [
   {
     "id": "evt-cc-2",
-    "title": "Circuit Craft 2.0",
-    "subtitle": "Advanced PCB Prototyping & Hardware Workshop",
-    "description": "Our flagship hands-on workshop on modern PCB layout, SMD soldering, circuit troubleshooting, and microcontroller hardware interfacing. Students designed and soldered their own working circuits.",
-    "date": "2026-09-22",
-    "time": "10:00 AM - 5:30 PM",
-    "venue": "ECE Systems & Hardware Lab",
-    "category": "Flagship Workshop",
+    "title": "CircuitCraft 2.0",
+    "subtitle": "PCB Design Using KiCad",
+    "description": "Building on the success of its first edition, Samarthya - The Electronics Technical Club of SJEC conducted CircuitCraft 2.0 from 16th - 18th March 2026, tailored for fourth-semester students. The three-day Student Development Programme (SDP) introduced 132 participants to the complete PCB development cycle, from schematic design and component selection to board layout, routing, and fabrication. Students designed, debugged, and validated a functional infrared (IR) receiver circuit.",
+    "date": "2026-03-16",
+    "dateRange": "16th - 18th March 2026",
+    "time": "3-Day SDP",
+    "venue": "SJEC-AICTE IDEA Lab",
+    "category": "Student Development Programme",
     "status": "completed",
     "featured": true,
     "edition": "2.0",
     "galleryFolder": "circuit_craft_2",
     "photosCount": 7,
+    "participants": "132 students (4th Sem)",
+    "tagline": "Design. Build. Debug. Innovate. ⚡",
     "highlights": [
-      "Custom PCB layout with EDA tools",
-      "Hands-on soldering & component assembly",
-      "Live oscilloscope signal analysis",
-      "Over 120+ student participants"
+      "Complete PCB development cycle",
+      "Schematic design & component selection",
+      "Board layout, routing & fabrication",
+      "IR receiver circuit debugging & validation"
     ]
   },
   {
     "id": "evt-cc-1",
-    "title": "Circuit Craft 1.0",
-    "subtitle": "Fundamentals of Hardware Engineering & Prototyping",
-    "description": "The inaugural edition of Circuit Craft introducing core electronics, analog and digital circuitry, breadboard prototyping, and embedded sensor testing for aspiring hardware engineers.",
-    "date": "2026-04-10",
-    "time": "9:30 AM - 4:30 PM",
-    "venue": "ECE Project Laboratory",
-    "category": "Hands-on Workshop",
+    "title": "CircuitCraft",
+    "subtitle": "PCB Design Using KiCad",
+    "description": "From 4th - 6th February 2026, Samarthya conducted CircuitCraft, a three-day hands-on Student Development Programme (SDP) on PCB design using KiCad, in collaboration with the SJEC-AICTE IDEA Lab and with support from Prodigi. The programme guided 119 sixth-semester students through the complete PCB design workflow, designing an infrared (IR) receiver circuit from start to finish.",
+    "date": "2026-02-04",
+    "dateRange": "4th - 6th February 2026",
+    "time": "3-Day SDP",
+    "venue": "SJEC-AICTE IDEA Lab (Supported by Prodigi)",
+    "category": "Student Development Programme",
     "status": "completed",
     "featured": true,
     "edition": "1.0",
     "galleryFolder": "circuit_craft_1",
     "photosCount": 5,
+    "participants": "119 students (6th Sem)",
+    "tagline": "From schematic to board learning by building ⚡",
     "highlights": [
-      "Breadboard circuit prototyping & analysis",
-      "Introduction to ICs and passive networks",
-      "Fault detection with multi-meters & probes",
-      "Interactive hardware quiz & team challenges"
+      "Schematic capture and component selection",
+      "PCB layout and routing",
+      "Design Rule Checking (DRC)",
+      "Fabrication file generation"
     ]
   }
 ]

@@ -117,12 +117,14 @@ export default function TypewriterText({
         {needsSpaceBeforeHighlight && <span className="inline-block w-2.5 sm:w-3.5"></span>}
         {highlightedPart && <span className="text-cyan">{highlightedPart}</span>}
         {postPart && <span className="heading-chrome inline-block whitespace-pre-wrap">{postPart}</span>}
-        <span
-          className="inline-block ml-1 font-bold text-cyan animate-[pulse_1s_ease-in-out_infinite]"
-          aria-hidden="true"
-        >
-          {cursorChar}
-        </span>
+        {cursorChar && (
+          <span
+            className="inline-block ml-1 font-bold text-cyan animate-[pulse_1s_ease-in-out_infinite]"
+            aria-hidden="true"
+          >
+            {cursorChar}
+          </span>
+        )}
       </span>
       <span className="sr-only">{text}</span>
     </h2>

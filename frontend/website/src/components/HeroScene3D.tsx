@@ -37,8 +37,8 @@ export default function HeroScene3D({ className = "" }: { className?: string }) 
     const frameCamera = (w: number, h: number) => {
       const aspect = Math.max(w / Math.max(h, 1), 0.1);
       camera.aspect = aspect;
-      const targetWidth = 4.4;
-      const targetHeight = 3.6;
+      const targetWidth = 3.9;
+      const targetHeight = 3.05;
       const fovFromWidth = 2 * Math.atan(targetWidth / (2 * cameraDistance * aspect)) * (180 / Math.PI);
       const fovFromHeight = 2 * Math.atan(targetHeight / (2 * cameraDistance)) * (180 / Math.PI);
       camera.fov = Math.max(fovFromWidth, fovFromHeight);

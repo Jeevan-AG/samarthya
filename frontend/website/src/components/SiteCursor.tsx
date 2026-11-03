@@ -20,7 +20,7 @@ export default function SiteCursor() {
       const node = targetNode as HTMLElement | null;
       if (!node) return false;
       const interactive = node.closest(
-        "a, button, [data-cursor], [role='button'], [role='link'], [data-event-id], .cursor-pointer, input, select, textarea, label, summary, [onclick], article, .tilt-card"
+        "a, button, [data-cursor], [role='button'], [role='link'], .cursor-pointer, input, select, textarea, label, summary, [onclick], article, .tilt-card"
       );
       if (interactive) return true;
       try {

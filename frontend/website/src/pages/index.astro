@@ -9,10 +9,9 @@ import ParallaxGallery from "../components/ParallaxGallery.astro";
 import TypewriterText from "../components/TypewriterText";
 import ScrambleText from "../components/ScrambleText";
 import GlitchText from "../components/GlitchText";
-import EventModal from "../components/EventModal";
+import { EventsSection, DEFAULT_SAMARTHYA_EVENTS } from "../components/EventsSection";
 import faculty from "../data/faculty.json";
 import team from "../data/team.json";
-import events from "../data/events.json";
 
 // Import all team and faculty portrait images
 const teamImages = import.meta.glob<{ default: ImageMetadata }>("../assets/pics/team/*.webp", { eager: true });
@@ -23,16 +22,6 @@ const cc1Images = import.meta.glob<{ default: ImageMetadata }>("../assets/pics/e
 
 const cc2Photos = Object.values(cc2Images).map((m) => m.default);
 const cc1Photos = Object.values(cc1Images).map((m) => m.default);
-
-const allEventsWithPhotos = events.map((event) => {
-  if (event.id === "evt-cc-2") {
-    return { ...event, photos: cc2Photos.map((p) => p.src) };
-  }
-  if (event.id === "evt-cc-1") {
-    return { ...event, photos: cc1Photos.map((p) => p.src) };
-  }
-  return event;
-});
 
 // Feature key leadership and leads on homepage grid
 const mid = Math.ceil(team.length / 2);
@@ -46,74 +35,61 @@ const teamRow2 = team.slice(mid);
   description="Official technical club of the Electronics and Communication Engineering Department — hardware labs, Circuit Craft workshops, and student-built systems."
 >
   <!-- ═══════════════════════════════════════════
-       HERO SCREEN (Side-by-Side 3D Core & HUD Traits)
+       HERO SCREEN (Prominent 3D Emblem & Centered Layout)
        ═══════════════════════════════════════════ -->
-  <section class="relative isolate flex items-center justify-center overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-14" aria-label="Hero">
+  <section class="relative isolate min-h-screen min-h-[100dvh] flex items-center justify-center overflow-hidden pt-14 sm:pt-16 lg:pt-20 pb-8 sm:pb-12" aria-label="Hero">
     <h1 class="sr-only">SAMARTHYA — Where Ideas Become Reality</h1>
 
     <!-- Ambient central glow aura behind the 3D core -->
     <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-      <div class="h-[450px] w-[450px] sm:h-[600px] sm:w-[600px] lg:h-[650px] lg:w-[650px] rounded-full bg-gradient-to-tr from-cyan/20 via-sky-500/15 to-transparent blur-[120px] opacity-70 animate-pulse" style="animation-duration: 6s;"></div>
+      <div class="h-[460px] w-[460px] sm:h-[560px] sm:w-[560px] lg:h-[660px] lg:w-[660px] rounded-full bg-cyan/15 blur-[120px] opacity-40" aria-hidden="true"></div>
     </div>
 
-    <!-- Main Container -->
-    <div class="relative z-10 mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-16">
-      <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12">
-        
-        <!-- Left Column: Traits & CTA Buttons -->
-        <div class="order-2 lg:order-1 lg:col-span-5 xl:col-span-5 flex flex-col justify-center items-start text-left">
-          <!-- Left Edge Label: "SAMARTHYA is" with line -->
-          <div class="flex items-center gap-3 mb-4 sm:mb-5">
-            <span class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-white/70 uppercase">
-              SAMARTHYA is
-            </span>
-            <div class="h-px w-10 sm:w-16 bg-gradient-to-r from-white/40 to-transparent"></div>
-          </div>
-
-          <!-- Traits Stack -->
-          <div class="space-y-1 sm:space-y-1.5 text-left font-sans normal-case">
-            <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
-              Innovation,
-            </p>
-            <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]">
-              Research, Impact,
-            </p>
-            <p class="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-cyan leading-[1.12] drop-shadow-[0_0_20px_rgba(0,251,248,0.3)]">
-              Accessible
-            </p>
-          </div>
-
-          <!-- Action buttons (Parallelogram Style) -->
-          <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="/events"
-              class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_28px_rgba(0,251,248,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <span class="inline-flex items-center gap-2 skew-x-12">
-                <span>Events</span>
-                <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </a>
-            <a
-              href="/team"
-              class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 rounded-[2px] text-sm font-medium text-paper bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-cyan/50 hover:text-white hover:shadow-[0_0_20px_rgba(0,251,248,0.25)] transition-all duration-200 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <span class="skew-x-12">Core Team</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right Column: 3D Interactive Emblem -->
-        <div class="order-1 lg:order-2 lg:col-span-7 xl:col-span-7 flex items-center justify-center">
-          <div class="relative w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[500px] xl:max-w-[540px] aspect-square flex items-center justify-center">
-            <!-- 3D Interactive Model Canvas -->
-            <HeroScene3D client:only="react" className="relative z-10 h-full w-full" />
-          </div>
-        </div>
-
+    <!-- Main Centered Container -->
+    <div class="relative z-10 mx-auto w-full max-w-5xl px-5 sm:px-8 flex flex-col items-center text-center">
+      
+      <!-- 3D Interactive Emblem (Big Prominent Display) -->
+      <div class="relative w-full max-w-[480px] sm:max-w-[580px] md:max-w-[660px] lg:max-w-[740px] aspect-[4/3] max-h-[62vh] flex items-center justify-center">
+        <!-- Ambient Glow directly behind 3D model (soft & subtle) -->
+        <div class="pointer-events-none absolute inset-0 rounded-full bg-cyan/15 blur-[80px] opacity-40 -z-10" aria-hidden="true"></div>
+        <HeroScene3D client:only="react" className="relative z-10 h-full w-full" />
       </div>
+
+      <!-- Tagline: "Where Ideas Become Reality" styled like Faculty Co-ordinators (Big Shoulders Display, chrome gradient) -->
+      <div class="mt-5 sm:mt-7 lg:mt-8 flex justify-center text-center">
+        <TypewriterText
+          client:visible
+          text="where ideas become reality"
+          speed={32}
+          delay={120}
+          cursorChar=""
+          className="!text-2xl sm:!text-3xl md:!text-4xl lg:!text-[2.6rem] !font-display tracking-wider uppercase justify-center text-center"
+        />
+      </div>
+
+      <!-- Centered Action Buttons (Angled Parallelogram Shape from Reference) -->
+      <div class="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+        <a
+          href="/events"
+          class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 sm:px-8 sm:py-3.5 rounded-[2px] text-sm font-semibold text-void bg-white hover:bg-cyan hover:shadow-[0_0_28px_rgba(0,251,248,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <span class="inline-flex items-center gap-2.5 skew-x-12">
+            <span>Explore Events</span>
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+        <a
+          href="/team"
+          class="group inline-flex items-center justify-center -skew-x-12 px-7 py-3 sm:px-8 sm:py-3.5 rounded-[2px] text-sm font-medium text-paper bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-cyan/50 hover:text-white hover:shadow-[0_0_20px_rgba(0,251,248,0.25)] transition-all duration-200 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <span class="inline-block skew-x-12">
+            Core Team
+          </span>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -478,119 +454,9 @@ const teamRow2 = team.slice(mid);
   </section>
 
   <!-- ═══════════════════════════════════════════
-       04 — CIRCUIT CRAFT & EVENTS
+       04 — CIRCUIT CRAFT & EVENTS (Cipher 3D Flip Card Style)
        ═══════════════════════════════════════════ -->
-  <section id="events" class="relative py-24 lg:py-32 scroll-mt-20" aria-label="Circuit Craft Workshops">
-    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-        <div>
-          <RevealOnView client:visible>
-            <div class="mb-4">
-              <GlitchText client:visible text="events" highlightWord="" />
-            </div>
-            <p class="font-mono text-xs text-faint uppercase tracking-widest mt-1">Technical Workshops &amp; Prototyping</p>
-          </RevealOnView>
-        </div>
-
-        <RevealOnView client:visible delay={100}>
-          <a
-            href="/events"
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider text-cyan bg-cyan/10 border border-cyan/30 hover:bg-cyan hover:text-void transition-all duration-300"
-          >
-            <span>Explore All Events</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </RevealOnView>
-      </div>
-
-      <!-- Events Showcase Grid (Centered 2-Card Layout) -->
-      <div class="mx-auto max-w-4xl grid gap-8 sm:grid-cols-2">
-        
-        <!-- Card 1: Circuit Craft 2.0 -->
-        <RevealOnView client:visible delay={0}>
-          <TiltCard client:visible className="h-full">
-            <a
-              href="/events#evt-cc-2"
-              data-event-id="evt-cc-2"
-              class="group relative flex h-full flex-col justify-between rounded-2xl border border-cyan/40 bg-surface/50 p-6 transition-all duration-300 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,251,248,0.25)] hover:-translate-y-1.5 overflow-hidden cursor-pointer block"
-            >
-              
-              <div class="relative z-10">
-                <!-- Event Photo Preview -->
-                {cc2Photos[0] && (
-                  <div class="relative mb-4 overflow-hidden rounded-xl bg-void aspect-[16/10] border border-white/10">
-                    <Image
-                      src={cc2Photos[0]}
-                      alt="Circuit Craft 2.0 Hardware Workshop"
-                      width={500}
-                      height={312}
-                      format="webp"
-                      quality={88}
-                      loading="lazy"
-                      decoding="async"
-                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent"></div>
-                  </div>
-                )}
-
-                <h3 class="font-display text-2xl sm:text-3xl leading-tight text-paper group-hover:text-cyan transition-colors duration-300">
-                  Circuit Craft 2.0
-                </h3>
-                <p class="mt-2.5 text-sm leading-relaxed text-mute">
-                  Advanced PCB prototyping, surface-mount soldering, and live oscilloscope signal analysis.
-                </p>
-              </div>
-            </a>
-          </TiltCard>
-        </RevealOnView>
-
-        <!-- Card 2: Circuit Craft 1.0 -->
-        <RevealOnView client:visible delay={70}>
-          <TiltCard client:visible className="h-full">
-            <a
-              href="/events#evt-cc-1"
-              data-event-id="evt-cc-1"
-              class="group relative flex h-full flex-col justify-between rounded-2xl border border-line bg-surface/40 p-6 transition-all duration-300 hover:border-cyan/40 hover:shadow-[0_0_20px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 overflow-hidden cursor-pointer block"
-            >
-              
-              <div class="relative z-10">
-                {cc1Photos[0] && (
-                  <div class="relative mb-4 overflow-hidden rounded-xl bg-void aspect-[16/10] border border-white/10">
-                    <Image
-                      src={cc1Photos[0]}
-                      alt="Circuit Craft 1.0 Workshop"
-                      width={500}
-                      height={312}
-                      format="webp"
-                      quality={88}
-                      loading="lazy"
-                      decoding="async"
-                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent"></div>
-                  </div>
-                )}
-
-                <h3 class="font-display text-2xl sm:text-3xl leading-tight text-paper group-hover:text-cyan transition-colors duration-300">
-                  Circuit Craft 1.0
-                </h3>
-                <p class="mt-2.5 text-sm leading-relaxed text-mute">
-                  Fundamentals of electronic hardware engineering, breadboard prototyping, and component diagnostics.
-                </p>
-              </div>
-            </a>
-          </TiltCard>
-        </RevealOnView>
-
-      </div>
-
-    </div>
-  </section>
+  <EventsSection client:visible events={DEFAULT_SAMARTHYA_EVENTS} />
 
   <!-- ═══════════════════════════════════════════
        05 — PARALLAX PHOTO STREAM
@@ -602,7 +468,4 @@ const teamRow2 = team.slice(mid);
       </RevealOnView>
     </div>
   </section>
-
-  <!-- Event Details & Gallery Modal -->
-  <EventModal client:load events={allEventsWithPhotos} />
 </BaseLayout>
