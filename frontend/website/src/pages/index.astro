@@ -38,13 +38,6 @@ const allEventsWithPhotos = events.map((event) => {
 const mid = Math.ceil(team.length / 2);
 const teamRow1 = team.slice(0, mid);
 const teamRow2 = team.slice(mid);
-const featuredEvents = events.slice(0, 3);
-
-function formatDate(value: string) {
-  const [y, m, d] = value.split("-");
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${months[Number(m) - 1]} ${d ? d + ", " : ""}${y}`;
-}
 ---
 
 <BaseLayout
@@ -552,14 +545,6 @@ function formatDate(value: string) {
                   Advanced PCB prototyping, surface-mount soldering, and live oscilloscope signal analysis.
                 </p>
               </div>
-
-              <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
-                <span>Sep 22, 2026</span>
-                <span class="text-cyan group-hover:underline flex items-center gap-1">
-                  View Details
-                  <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </span>
-              </div>
             </a>
           </TiltCard>
         </RevealOnView>
@@ -597,14 +582,6 @@ function formatDate(value: string) {
                 <p class="mt-2.5 text-sm leading-relaxed text-mute">
                   Fundamentals of electronic hardware engineering, breadboard prototyping, and component diagnostics.
                 </p>
-              </div>
-
-              <div class="relative z-10 mt-6 pt-4 border-t border-line/30 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">
-                <span>Apr 10, 2026</span>
-                <span class="text-cyan group-hover:underline flex items-center gap-1">
-                  View Details
-                  <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </span>
               </div>
             </a>
           </TiltCard>

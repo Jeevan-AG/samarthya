@@ -50,14 +50,14 @@ function formatDate(value: string) {
         Events &amp; Workshops
       </h1>
       <p class="mt-6 text-base sm:text-lg leading-relaxed text-mute">
-        Hands-on electronics workshops, PCB fabrication bootcamps, and technical symposiums designed to bridge theoretical classroom concepts with industry-standard hardware engineering.
+        Hands-on electronics workshops and hardware prototyping bootcamps designed to bridge theoretical classroom concepts with industry-standard hardware engineering.
       </p>
     </div>
 
     <!-- ═══════════════════════════════════════════
          CIRCUIT CRAFT 2.0
          ═══════════════════════════════════════════ -->
-    <div class="mb-24">
+    <div id="evt-cc-2" class="mb-24 scroll-mt-24">
       <RevealOnView client:visible>
         <div class="relative rounded-3xl border border-cyan/30 bg-surface/60 backdrop-blur-md p-6 sm:p-10 lg:p-12 overflow-hidden shadow-[0_0_50px_rgba(0,251,248,0.1)]">
           
@@ -68,10 +68,6 @@ function formatDate(value: string) {
             
             <!-- Left Info Column -->
             <div class="lg:col-span-6 space-y-5">
-              <div class="flex flex-wrap items-center gap-3">
-                <span class="font-mono text-xs text-cyan tracking-wider uppercase font-semibold">Completed · Sep 2026</span>
-              </div>
-
               <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-paper">
                 Circuit Craft 2.0
               </h2>
@@ -108,9 +104,8 @@ function formatDate(value: string) {
                 </div>
               </div>
 
-              <!-- Date Details & Action CTA -->
-              <div class="pt-4 border-t border-line/30 flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-paper/70">
-                <span>📅 Sep 22, 2026</span>
+              <!-- Action CTA -->
+              <div class="pt-4 border-t border-line/30 flex items-center justify-end">
                 <button
                   type="button"
                   data-event-id="evt-cc-2"
@@ -192,10 +187,6 @@ function formatDate(value: string) {
 
             <!-- Right Info Column -->
             <div class="lg:col-span-6 order-1 lg:order-2 space-y-5">
-              <div class="flex flex-wrap items-center gap-3">
-                <span class="font-mono text-xs text-cyan tracking-wider uppercase font-semibold">Completed · Apr 2026</span>
-              </div>
-
               <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-paper">
                 Circuit Craft 1.0
               </h2>
@@ -232,9 +223,8 @@ function formatDate(value: string) {
                 </div>
               </div>
 
-              <!-- Date Details & Action CTA -->
-              <div class="pt-4 border-t border-line/30 flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-paper/70">
-                <span>📅 Apr 10, 2026</span>
+              <!-- Action CTA -->
+              <div class="pt-4 border-t border-line/30 flex items-center justify-end">
                 <button
                   type="button"
                   data-event-id="evt-cc-1"
@@ -253,95 +243,97 @@ function formatDate(value: string) {
       </RevealOnView>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         UPCOMING & DEPARTMENT CALENDAR
-         ═══════════════════════════════════════════ -->
-    <div class="relative">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-line/50 pb-5 mb-10">
-        <div>
-          <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan font-medium">
-            Calendar &amp; Symposiums
-          </span>
-          <h2 class="font-display text-3xl sm:text-4xl text-paper mt-1">
-            Department Technical Schedule
-          </h2>
+    {otherEvents.length > 0 && (
+      <!-- ═══════════════════════════════════════════
+           UPCOMING & DEPARTMENT CALENDAR
+           ═══════════════════════════════════════════ -->
+      <div class="relative">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-line/50 pb-5 mb-10">
+          <div>
+            <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan font-medium">
+              Calendar &amp; Symposiums
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl text-paper mt-1">
+              Department Technical Schedule
+            </h2>
+          </div>
+          <p class="max-w-md text-xs sm:text-sm text-mute leading-relaxed">
+            Upcoming hardware hackathons, symposia, and embedded bootcamp sessions. Click any card for full details.
+          </p>
         </div>
-        <p class="max-w-md text-xs sm:text-sm text-mute leading-relaxed">
-          Upcoming hardware hackathons, symposia, and embedded bootcamp sessions. Click any card for full details.
-        </p>
-      </div>
 
-      <div class="grid gap-6 md:grid-cols-2">
-        {otherEvents.map((event, i) => (
-          <RevealOnView client:visible delay={i * 50}>
-            <TiltCard client:visible className="h-full">
-              <article
-                id={event.id}
-                data-event-id={event.id}
-                role="button"
-                tabindex="0"
-                aria-label={`View details for ${event.title}`}
-                class="hud-border group relative flex flex-col justify-between h-full p-8 rounded-2xl bg-surface/40 backdrop-blur-sm transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_25px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 overflow-hidden cursor-pointer"
-              >
-                
-                <div class="relative z-10">
-                  <div class="flex items-center justify-between gap-3 mb-4">
-                    <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/25">
-                      {event.category}
-                    </span>
-                    <span class={`font-mono text-[10.5px] uppercase tracking-wider ${event.status === 'upcoming' ? 'text-cyan font-semibold flex items-center gap-1.5' : 'text-faint'}`}>
-                      {event.status === 'upcoming' && <span class="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse"></span>}
-                      {event.status}
-                    </span>
-                  </div>
-
-                  <h3 class="font-display text-3xl text-paper transition-colors duration-300 group-hover:text-cyan">
-                    {event.title}
-                  </h3>
-
-                  {event.subtitle && (
-                    <p class="mt-1 font-mono text-xs text-paper/70">
-                      {event.subtitle}
-                    </p>
-                  )}
-
-                  <p class="mt-4 text-sm leading-relaxed text-mute">
-                    {event.description}
-                  </p>
-
-                  {event.highlights && (
-                    <div class="mt-4 flex flex-wrap gap-2">
-                      {event.highlights.map((h: string) => (
-                        <span class="font-mono text-[10px] px-2 py-1 rounded bg-white/[0.04] text-paper/70 border border-white/5">
-                          {h}
-                        </span>
-                      ))}
+        <div class="grid gap-6 md:grid-cols-2">
+          {otherEvents.map((event, i) => (
+            <RevealOnView client:visible delay={i * 50}>
+              <TiltCard client:visible className="h-full">
+                <article
+                  id={event.id}
+                  data-event-id={event.id}
+                  role="button"
+                  tabindex="0"
+                  aria-label={`View details for ${event.title}`}
+                  class="hud-border group relative flex flex-col justify-between h-full p-8 rounded-2xl bg-surface/40 backdrop-blur-sm transition-all duration-300 hover:border-cyan/50 hover:shadow-[0_0_25px_rgba(0,251,248,0.15)] hover:-translate-y-1.5 overflow-hidden cursor-pointer"
+                >
+                  
+                  <div class="relative z-10">
+                    <div class="flex items-center justify-between gap-3 mb-4">
+                      <span class="font-mono text-[10.5px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/25">
+                        {event.category}
+                      </span>
+                      <span class={`font-mono text-[10.5px] uppercase tracking-wider ${event.status === 'upcoming' ? 'text-cyan font-semibold flex items-center gap-1.5' : 'text-faint'}`}>
+                        {event.status === 'upcoming' && <span class="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse"></span>}
+                        {event.status}
+                      </span>
                     </div>
-                  )}
-                </div>
 
-                <div class="relative z-10 mt-6 pt-4 border-t border-line/30">
-                  <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-faint">
-                    <span>📅 {formatDate(event.date)}</span>
-                    <span>{event.venue}</span>
+                    <h3 class="font-display text-3xl text-paper transition-colors duration-300 group-hover:text-cyan">
+                      {event.title}
+                    </h3>
+
+                    {event.subtitle && (
+                      <p class="mt-1 font-mono text-xs text-paper/70">
+                        {event.subtitle}
+                      </p>
+                    )}
+
+                    <p class="mt-4 text-sm leading-relaxed text-mute">
+                      {event.description}
+                    </p>
+
+                    {event.highlights && (
+                      <div class="mt-4 flex flex-wrap gap-2">
+                        {event.highlights.map((h: string) => (
+                          <span class="font-mono text-[10px] px-2 py-1 rounded bg-white/[0.04] text-paper/70 border border-white/5">
+                            {h}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  <!-- Click Affordance CTA -->
-                  <div class="mt-3 flex items-center justify-between text-xs font-mono text-cyan/80 group-hover:text-cyan font-medium pt-2 border-t border-white/5">
-                    <span class="inline-flex items-center gap-1.5">
-                      <span class="h-1.5 w-1.5 rounded-full bg-cyan/60 group-hover:bg-cyan group-hover:animate-ping"></span>
-                      Click to open full dossier
-                    </span>
-                    <span class="transform transition-transform duration-300 group-hover:translate-x-1 font-mono">→</span>
-                  </div>
-                </div>
+                  <div class="relative z-10 mt-6 pt-4 border-t border-line/30">
+                    <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-faint">
+                      <span>📅 {formatDate(event.date)}</span>
+                      <span>{event.venue}</span>
+                    </div>
 
-              </article>
-            </TiltCard>
-          </RevealOnView>
-        ))}
+                    <!-- Click Affordance CTA -->
+                    <div class="mt-3 flex items-center justify-between text-xs font-mono text-cyan/80 group-hover:text-cyan font-medium pt-2 border-t border-white/5">
+                      <span class="inline-flex items-center gap-1.5">
+                        <span class="h-1.5 w-1.5 rounded-full bg-cyan/60 group-hover:bg-cyan group-hover:animate-ping"></span>
+                        Click to open full dossier
+                      </span>
+                      <span class="transform transition-transform duration-300 group-hover:translate-x-1 font-mono">→</span>
+                    </div>
+                  </div>
+
+                </article>
+              </TiltCard>
+            </RevealOnView>
+          ))}
+        </div>
       </div>
-    </div>
+    )}
 
     <!-- Event Details & Gallery Modal -->
     <EventModal client:load events={allEventsWithPhotos} />
