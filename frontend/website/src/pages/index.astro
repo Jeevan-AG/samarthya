@@ -96,17 +96,19 @@ const teamRow2 = team.slice(mid);
   <!-- ═══════════════════════════════════════════
        01 — ABOUT SAMARTHYA
        ═══════════════════════════════════════════ -->
-  <section id="about" class="relative pt-8 sm:pt-12 lg:pt-14 pb-12 sm:pb-14 lg:pb-16 scroll-mt-28" aria-label="About SAMARTHYA">
-    <div class="mx-auto max-w-[1400px] px-5 lg:px-8">
-      <div class="grid items-start gap-10 lg:gap-14 lg:grid-cols-12">
+  <section id="about" class="relative pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-20 lg:pb-24 scroll-mt-28" aria-label="About SAMARTHYA">
+    <div class="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-16">
+      
+      {/* Grid container with corrected left margin padding and balanced text-to-image spacing */}
+      <div class="grid items-center gap-12 lg:gap-16 lg:grid-cols-12">
         
-        <!-- Left: Mission & Details -->
-        <div class="lg:col-span-6 flex flex-col justify-start pt-1">
+        {/* Left Column: Mission & Details */}
+        <div class="lg:col-span-7 flex flex-col justify-start">
           <RevealOnView client:visible>
             <div class="mb-4">
               <TypewriterText client:visible text="// about" />
             </div>
-            <p class="mt-6 text-base sm:text-lg leading-relaxed text-mute">
+            <p class="mt-4 text-base sm:text-lg leading-relaxed text-mute">
               The Samarthya Club is the official technical society of the Electronics and Communication Engineering Department, dedicated to enhancing students' technical skills, promoting project-based learning, and cultivating leadership qualities. The club actively engages in cutting-edge domains such as embedded systems, image processing, and biomedical applications, with an emphasis on social innovation. By organizing workshops, seminars, and hands-on projects, Samarthya provides students with practical experience, bridging theoretical knowledge with real-world engineering applications.
             </p>
             <p class="mt-4 text-base sm:text-lg leading-relaxed text-mute">
@@ -115,8 +117,8 @@ const teamRow2 = team.slice(mid);
           </RevealOnView>
         </div>
 
-        <!-- Right: Scattered Photo Collage Showcase (with 2 new photos) -->
-        <div class="lg:col-span-6">
+        {/* Right Column: Scattered Photo Collage Showcase */}
+        <div class="lg:col-span-5">
           <RevealOnView client:visible delay={120}>
             <AboutCollage />
           </RevealOnView>
