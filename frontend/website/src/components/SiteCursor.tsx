@@ -66,7 +66,7 @@ export default function SiteCursor() {
   return (
     <div
       ref={ringRef}
-      className="site-cursor pointer-events-none fixed left-0 top-0 z-[120]"
+      className="site-cursor pointer-events-none fixed left-0 top-0 z-[120] mix-blend-difference"
       aria-hidden="true"
     >
       <div className="site-cursor-dot" />

@@ -6,6 +6,65 @@ import ScrambleText from "./ScrambleText";
 
 export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
   {
+    slug: "OPPORTUNITIES_CORE_DOMAIN",
+    tag: "Career Guidance",
+    title: "Opportunities for Core Domain",
+    dateStr: "12th October 2026 · Prerana Hall",
+    cardDateBadge: "12 OCT 2026",
+    cardSubtitle: "Exploring Career Pathways in ECE · 1st Year",
+    venue: "Prerana Hall",
+    paragraphs: [
+      "On 12th October 2026, the Department of Electronics and Communication Engineering, in association with the Samarthya Club, organised an interactive guidance session on “Opportunities for Core Domain” at Prerana Hall for first-year ECE and VLSI students.",
+      "The session commenced with the welcome address by Dr. Dayakshini, HOD-ECE, followed by insightful sessions led by senior students covering Analog, Digital/VLSI, Embedded Systems, IT, and other career opportunities available to ECE graduates.",
+      "Through real-world experiences, project insights, placement journeys, and preparation strategies, the speakers helped students explore diverse career pathways and understand how to begin their journey early. An engaging Q&A session further encouraged students to interact, clarify their doubts, and identify their areas of interest.",
+      "The session successfully achieved its objectives of creating awareness, sharing practical insights, and helping students make more informed decisions about their future.",
+      "Understanding the possibilities today. Building the careers of tomorrow. At Samarthya, we believe that the right guidance today can shape the innovators of tomorrow.",
+    ],
+    images: [
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_1.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_2.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_3.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_4.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_5.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_6.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_7.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_8.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_9.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_10.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_11.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_12.webp",
+      "/pics/events/opportunities_core_domain/opportunities_core_domain_13.webp",
+    ],
+  },
+  {
+    slug: "INAUGURATION_2026",
+    tag: "Club Inauguration",
+    title: "SAMARTHYA 2026-27 Inauguration",
+    dateStr: "26th September 2026 · Kalam Auditorium",
+    cardDateBadge: "26 SEP 2026",
+    cardSubtitle: "Inauguration & Installation of Office Bearers",
+    venue: "Kalam Auditorium",
+    paragraphs: [
+      "Samarthya, the Electronics Technical Club of St. Joseph Engineering College, Mangaluru, inaugurated its activities for the academic year 2026-27 on 26th September 2026 at Kalam Auditorium.",
+      "The occasion was graced by Mr. Karthik Shenoy, Co-founder of Virtual Origami Technologies, as the Chief Guest, and presided over by our faculty coordinators, Ms. Madhavi Gatty and Mr. Prasad S. M., in the presence of Dr. Dayakshini, HOD-ECE, and Mr. Winston Pereira, President of Samarthya, along with his team.",
+      "The programme featured the welcome address by Dr. Dayakshini, the annual club report presented by Ms. Frenny Saldanha, Vice President, and the installation of the new office bearers by Dr. Rohan Pinto, HOD-VLSI. The Plan of Action for 2026-27 was presented by Mr. Winston Pereira, outlining the team's vision and initiatives for the year ahead.",
+      "With the invaluable guidance of our faculty coordinators, the inauguration marked a promising start to a year of hands-on learning, technical exploration, collaboration, and innovation.",
+      "A new chapter. A renewed vision. A stronger commitment to innovation. Here's to building ideas, creating impact, and taking Samarthya forward!",
+    ],
+    images: [
+      "/pics/events/inauguration_2026/inauguration_2026_1.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_2.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_3.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_4.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_5.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_6.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_7.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_8.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_9.webp",
+      "/pics/events/inauguration_2026/inauguration_2026_10.webp",
+    ],
+  },
+  {
     slug: "CIRCUIT_CRAFT_2",
     tag: "SDP Workshop",
     title: "CircuitCraft 2.0",
@@ -81,12 +140,14 @@ export const DEFAULT_SAMARTHYA_EVENTS: GalleryModalData[] = [
 
 export const EventsSection: React.FC<{
   events?: GalleryModalData[];
-}> = ({ events = DEFAULT_SAMARTHYA_EVENTS }) => {
+  limit?: number;
+}> = ({ events = DEFAULT_SAMARTHYA_EVENTS, limit = 3 }) => {
   const [activeModalData, setActiveModalData] = useState<GalleryModalData | null>(null);
   const [activeEventIndex, setActiveEventIndex] = useState<number>(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const displayEvents = events && events.length > 0 ? events : DEFAULT_SAMARTHYA_EVENTS;
+  const allEvents = events && events.length > 0 ? events : DEFAULT_SAMARTHYA_EVENTS;
+  const displayEvents = limit ? allEvents.slice(0, limit) : allEvents;
 
   const handleScroll = () => {
     const el = scrollContainerRef.current;

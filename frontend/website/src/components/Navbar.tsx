@@ -5,6 +5,7 @@ const links = [
   { id: "faculty", href: "/#faculty", label: "Faculty" },
   { id: "team", href: "/#team", label: "Team" },
   { id: "events", href: "/#events", label: "Events" },
+  { id: "upcoming", href: "/#upcoming", label: "Upcoming Events" },
 ];
 
 export default function Navbar({ pathname = "/" }: { pathname?: string }) {
@@ -25,7 +26,7 @@ export default function Navbar({ pathname = "/" }: { pathname?: string }) {
       return;
     }
 
-    const sectionIds = ["about", "faculty", "team", "events"];
+    const sectionIds = ["about", "faculty", "team", "events", "upcoming"];
 
     const updateActive = () => {
       // If in Hero section at top of page, no section is active
@@ -113,7 +114,7 @@ export default function Navbar({ pathname = "/" }: { pathname?: string }) {
         </a>
 
         {/* Desktop Primary Navigation */}
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-8 relative z-10" aria-label="Primary">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-7 relative z-10" aria-label="Primary">
           {links.map((link) => {
             const isSectionActive = pathname === "/" && activeSection === link.id;
             const isPathActive = pathname !== "/" && pathname.startsWith(`/${link.id}`);
@@ -123,7 +124,7 @@ export default function Navbar({ pathname = "/" }: { pathname?: string }) {
                 key={link.href}
                 href={link.href}
                 aria-current={active ? "page" : undefined}
-                className={`relative inline-flex items-center py-2 text-[14px] sm:text-[14.5px] font-semibold tracking-[0.14em] uppercase transition-colors duration-180 focus-visible:outline-2 focus-visible:outline-cyan ${
+                className={`relative inline-flex items-center py-2 text-[13px] xl:text-[14px] font-semibold tracking-[0.11em] uppercase transition-colors duration-180 focus-visible:outline-2 focus-visible:outline-cyan ${
                   active
                     ? "text-cyan"
                     : "text-paper/70 hover:text-cyan"

@@ -2,12 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { EventsPageContent } from "../components/EventsPageContent";
 import { DEFAULT_SAMARTHYA_EVENTS } from "../components/EventsSection";
+import UpcomingEventsSection from "../components/UpcomingEventsSection";
 ---
 
 <BaseLayout
   current="/events"
   title="CircuitCraft & Events | SAMARTHYA"
-  description="Explore CircuitCraft and CircuitCraft 2.0 hands-on KiCad PCB design workshops conducted by SAMARTHYA in collaboration with SJEC-AICTE IDEA Lab."
+  description="Explore hands-on KiCad workshops, Electrovation pitches, Core Domain career guidance, and SAMARTHYA club activities at SJEC."
 >
   <EventsPageContent client:load events={DEFAULT_SAMARTHYA_EVENTS} />
+  <UpcomingEventsSection client:load />
 </BaseLayout>

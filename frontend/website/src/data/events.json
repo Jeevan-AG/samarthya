@@ -1,5 +1,53 @@
 [
   {
+    "id": "evt-oc-2026",
+    "title": "Opportunities for Core Domain",
+    "subtitle": "Exploring Career Pathways in ECE",
+    "description": "On 12th October 2026, the Department of Electronics and Communication Engineering, in association with the Samarthya Club, organised an interactive guidance session on “Opportunities for Core Domain” at Prerana Hall for first-year ECE and VLSI students. The session commenced with a welcome address by Dr. Dayakshini, HOD-ECE, followed by insightful sessions led by senior students covering Analog, Digital/VLSI, Embedded Systems, IT, real-world experiences, placement journeys, and preparation strategies.",
+    "date": "2026-10-12",
+    "dateRange": "12th October 2026",
+    "time": "Interactive Guidance Session",
+    "venue": "Prerana Hall",
+    "category": "Career Guidance",
+    "status": "completed",
+    "featured": true,
+    "edition": "2026",
+    "galleryFolder": "opportunities_core_domain",
+    "photosCount": 13,
+    "participants": "1st Year ECE & VLSI Students",
+    "tagline": "Understanding the possibilities today. Building the careers of tomorrow.",
+    "highlights": [
+      "Welcome address by Dr. Dayakshini, HOD-ECE",
+      "Career roadmaps in Analog, Digital/VLSI, Embedded Systems & IT",
+      "Senior student mentorship on preparation strategies & placement journeys",
+      "Interactive Q&A session clarifying doubts and domains of interest"
+    ]
+  },
+  {
+    "id": "evt-inaug-2026",
+    "title": "SAMARTHYA 2026-27",
+    "subtitle": "Inauguration & Installation of Office Bearers",
+    "description": "Samarthya, the Electronics Technical Club of St. Joseph Engineering College, Mangaluru, inaugurated its activities for the academic year 2026-27 on 26th September 2026 at Kalam Auditorium. The occasion was graced by Mr. Karthik Shenoy, Co-founder of Virtual Origami Technologies, as Chief Guest, along with faculty coordinators Ms. Madhavi Gatty and Mr. Prasad S. M., Dr. Dayakshini, HOD-ECE, and Mr. Winston Pereira, President of Samarthya. The event featured the annual club report, installation of office bearers by Dr. Rohan Pinto, and presentation of the Plan of Action for 2026-27.",
+    "date": "2026-09-26",
+    "dateRange": "26th September 2026",
+    "time": "Inaugural Ceremony",
+    "venue": "Kalam Auditorium",
+    "category": "Club Inauguration",
+    "status": "completed",
+    "featured": true,
+    "edition": "2026-27",
+    "galleryFolder": "inauguration_2026",
+    "photosCount": 10,
+    "participants": "ECE & VLSI Faculty, Office Bearers & Students",
+    "tagline": "A new chapter. A renewed vision. A stronger commitment to innovation.",
+    "highlights": [
+      "Chief Guest: Mr. Karthik Shenoy, Co-founder of Virtual Origami Technologies",
+      "Welcome address by Dr. Dayakshini, HOD-ECE",
+      "Installation of 2026-27 office bearers by Dr. Rohan Pinto, HOD-VLSI",
+      "Presentation of 2026-27 Plan of Action by Winston Pereira, President"
+    ]
+  },
+  {
     "id": "evt-cc-2",
     "title": "CircuitCraft 2.0",
     "subtitle": "PCB Design Using KiCad",

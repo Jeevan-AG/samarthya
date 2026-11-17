@@ -10,6 +10,7 @@ import TypewriterText from "../components/TypewriterText";
 import ScrambleText from "../components/ScrambleText";
 import GlitchText from "../components/GlitchText";
 import { EventsSection, DEFAULT_SAMARTHYA_EVENTS } from "../components/EventsSection";
+import UpcomingEventsSection from "../components/UpcomingEventsSection";
 import faculty from "../data/faculty.json";
 import team from "../data/team.json";
 
@@ -459,6 +460,11 @@ const teamRow2 = team.slice(mid);
        04 — CIRCUIT CRAFT & EVENTS (Cipher 3D Flip Card Style)
        ═══════════════════════════════════════════ -->
   <EventsSection client:visible events={DEFAULT_SAMARTHYA_EVENTS} />
+
+  <!-- ═══════════════════════════════════════════
+       05 — UPCOMING EVENTS (Roadmap & Sprints)
+       ═══════════════════════════════════════════ -->
+  <UpcomingEventsSection client:visible />
 
   <!-- ═══════════════════════════════════════════
        05 — PARALLAX PHOTO STREAM
